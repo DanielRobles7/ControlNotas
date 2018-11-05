@@ -41,6 +41,7 @@ public class MantenimientoAcceso {
            em.getTransaction().commit();
            flag=1;
         }catch(Exception e){
+            System.out.println(e.getMessage());
             em.getTransaction().rollback();
         }finally{
             em.close();
@@ -55,6 +56,8 @@ public class MantenimientoAcceso {
         try{
            acceso=em.find(Acceso.class, idAcceso);
            em.getTransaction().commit();
+           
+            System.out.println(acceso);
         }catch(Exception e){
             em.getTransaction().rollback();
         }finally{
@@ -97,12 +100,14 @@ public class MantenimientoAcceso {
     }
     
     public int actualizarAcceso(Acceso acceso){
+        
         EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
         Acceso acces=null;
         em.getTransaction().begin();
         int flag=0;
+        System.out.println(acceso);
         try{
-           acceso=em.find(Acceso.class,acceso.getIdAcceso());
+           acces=em.find(Acceso.class,acceso.getIdAcceso());
            acces.setIdAcceso(acceso.getIdAcceso());
            acces.setUsuario(acceso.getUsuario());
            acces.setContrasena(acceso.getContrasena());

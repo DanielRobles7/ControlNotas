@@ -1,6 +1,9 @@
 
 import Mantenimiento.MantenimientoAcceso;
+import Mantenimiento.MantenimientoNivel;
 import Persistencia.Acceso;
+import Persistencia.Escuelas;
+import Persistencia.Nivel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,15 +17,16 @@ import Persistencia.Acceso;
  */
 public class NewClass {
     public static void main(String[] args) {
-       Acceso acc= new Acceso();
-       acc.setIdAcceso(0);
-       acc.setUsuario("prueba");
-       acc.setContrasena("1234");
-       acc.setNivelAcceso("1");
-       acc.setEstado("s");
-       acc.setCampo("a");
-        
-        MantenimientoAcceso man= new MantenimientoAcceso();
-       man.guardarAcesso(acc);
+      Nivel nivel = new Nivel();
+      Escuelas es = new Escuelas();
+      es.setCodigoEscuela(1);
+       nivel.setGrado("primero");
+       nivel.setCodigoEscuela(es);
+       nivel.setEstado("af");
+       nivel.setCampo("af");
+       
+MantenimientoNivel man= new MantenimientoNivel();
+       
+        System.out.println(man.Actualizar(nivel));
     }
 }
