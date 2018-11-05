@@ -6,6 +6,7 @@ id_acceso int not null auto_increment primary key,
 usuario varchar(50),
 contrasena varchar(50),
 nivel_acceso varchar(50),
+estado varchar(20),
 campo varchar(20)
 );
 
@@ -20,6 +21,7 @@ longitud varchar(20),
 latitud varchar(20),
 nombre_director varchar(50),
 id_acceso int not null,
+estado varchar(20),
 campo varchar(20),
 foreign key (id_acceso) references acceso (id_acceso)
 );
@@ -27,6 +29,7 @@ foreign key (id_acceso) references acceso (id_acceso)
 create table nivel(
 grado varchar(20) not null primary key,
 codigo_escuela int not null,
+estado varchar(20),
 campo varchar(20),
 foreign key (codigo_escuela) references escuelas (codigo_escuela)
 );
@@ -44,6 +47,7 @@ fecha_registro varchar(20),
 id_acceso int not null,
 codigo_escuela int not null,
 grado varchar(20) not null,
+estado varchar(20),
 campo varchar(20),
 foreign key (id_acceso) references acceso (id_acceso),
 foreign key (codigo_escuela) references escuelas (codigo_escuela),
@@ -63,6 +67,7 @@ fecha_registro varchar(20),
 id_acceso int not null,
 codigo_escuela int not null,
 grado varchar(20) not null,
+estado varchar(20),
 campo varchar(20),
 foreign key (id_acceso) references acceso (id_acceso),
 foreign key (codigo_escuela) references escuelas (codigo_escuela),
@@ -78,12 +83,16 @@ ponderacion_3 double(5,2),
 ponderacion_4 double(5,2),
 ponderacion_5 double(5,2),
 ponderacion_6 double(5,2),
+periodo varchar(20),
+estado_periodo varchar(20),
+estado varchar(20),
 campo varchar(20),
 foreign key (grado) references nivel (grado)
 );
 
 create table notas(
 id_nota int not null auto_increment primary key,
+nie int not null,
 nombre_materia varchar(50) not null,
 nota_1 double(5,2),
 nota_2 double(5,2),
@@ -94,6 +103,9 @@ nota_6 double(5,2),
 promerio double(5,2),
 reposicion double(5,2),
 final double(5,2),
+estado_alumno varchar(20),
+estado_notas varchar(20),
 campo varchar(20),
+foreign key (nie) references alumnos (nie),
 foreign key (nombre_materia) references materias (nombre_materia)
 );
