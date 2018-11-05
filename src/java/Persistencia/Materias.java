@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author guillermo.bermudes
+ * @author eliseo.garciausam
  */
 @Entity
 @Table(name = "materias")

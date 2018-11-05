@@ -14,7 +14,7 @@ public class JpaUtil {
         try{
            emf=Persistence.createEntityManagerFactory("ProyectoEscuelaPU");
         }catch(Throwable ex){
-            System.err.println("Creacion de sesion fallo"+ ex);
+            System.err.println("Creacion de sesion fallo"+ ex.getMessage());
             throw new ExceptionInInitializerError(ex);
         }
     }
