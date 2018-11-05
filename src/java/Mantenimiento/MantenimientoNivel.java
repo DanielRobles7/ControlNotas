@@ -32,7 +32,7 @@ public class MantenimientoNivel {
 
     }
 */
-    public int guardarUsuario(Nivel nivel){
+    public int guardarNivel(Nivel nivel){
         EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
         int flag=0;
         em.getTransaction().begin();
@@ -50,7 +50,7 @@ public class MantenimientoNivel {
         return flag;
     }
     
-    public Nivel consultarUsuario(String grado){
+    public Nivel consultarNivel(String grado){
           EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
           Nivel nivel=null;
           em.getTransaction().begin();
@@ -67,7 +67,7 @@ public class MantenimientoNivel {
          return nivel; 
     }
     
-    public List<Nivel> consultarTodosUsuario(){
+    public List<Nivel> consultarTodosNivel(){
         List<Nivel> listaNivel=null;
           EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
           em.getTransaction().begin();
@@ -87,7 +87,7 @@ public class MantenimientoNivel {
           }
           
     }
- public int Actualizar(Nivel nivel){
+ public int ActualizarNivel(Nivel nivel){
           EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
           Nivel niv=null;
           em.getTransaction().begin();
@@ -118,7 +118,7 @@ public class MantenimientoNivel {
    
 }    
  
-  public int eliminar(Nivel nivel){
+  public int eliminarNivel(Nivel nivel){
           EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
           Nivel niv=null;
           em.getTransaction().begin();
