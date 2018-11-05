@@ -96,19 +96,20 @@ public class MantenimientoAcceso {
          return acceso;
     }
     
-    public int actualizarAcceso(int idAcceso,String usuario,String contrasena,String nivelAcceso,String estado,String campo){
+    public int actualizarAcceso(Acceso acceso){
         EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
-        Acceso acceso=null;
+        Acceso acces=null;
+        em.getTransaction().begin();
         int flag=0;
         try{
-           acceso=em.find(Acceso.class,idAcceso);
-           em.getTransaction().begin();
-           acceso.setIdAcceso(idAcceso);
-           acceso.setUsuario(usuario);
-           acceso.setContrasena(contrasena);
-           acceso.setNivelAcceso(nivelAcceso);
-           acceso.setEstado(estado);
-           acceso.setCampo(campo);
+           acceso=em.find(Acceso.class,acceso.getIdAcceso());
+           acces.setIdAcceso(acceso.getIdAcceso());
+           acces.setUsuario(acceso.getUsuario());
+           acces.setContrasena(acceso.getContrasena());
+           acces.setNivelAcceso(acceso.getNivelAcceso());
+           acces.setEstado(acceso.getEstado());
+           acces.setCampo(acceso.getCampo());
+           em.getTransaction().commit();
            flag=1;
         }catch(Exception e){
             System.out.println("error"+e);
