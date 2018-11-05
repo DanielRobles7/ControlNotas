@@ -35,6 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Profesores.findByTelefono", query = "SELECT p FROM Profesores p WHERE p.telefono = :telefono")
     , @NamedQuery(name = "Profesores.findByFechaNacimiento", query = "SELECT p FROM Profesores p WHERE p.fechaNacimiento = :fechaNacimiento")
     , @NamedQuery(name = "Profesores.findByFechaRegistro", query = "SELECT p FROM Profesores p WHERE p.fechaRegistro = :fechaRegistro")
+    , @NamedQuery(name = "Profesores.findByEstado", query = "SELECT p FROM Profesores p WHERE p.estado = :estado")
     , @NamedQuery(name = "Profesores.findByCampo", query = "SELECT p FROM Profesores p WHERE p.campo = :campo")})
 public class Profesores implements Serializable {
 
@@ -59,6 +60,8 @@ public class Profesores implements Serializable {
     private String fechaNacimiento;
     @Column(name = "fecha_registro")
     private String fechaRegistro;
+    @Column(name = "estado")
+    private String estado;
     @Column(name = "campo")
     private String campo;
     @JoinColumn(name = "id_acceso", referencedColumnName = "id_acceso")
@@ -148,6 +151,14 @@ public class Profesores implements Serializable {
 
     public void setFechaRegistro(String fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public String getCampo() {

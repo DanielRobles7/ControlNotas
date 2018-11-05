@@ -6,7 +6,9 @@
 package Persistencia;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,8 +16,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -35,6 +39,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Alumnos.findByTelefono", query = "SELECT a FROM Alumnos a WHERE a.telefono = :telefono")
     , @NamedQuery(name = "Alumnos.findByFechaNacimiento", query = "SELECT a FROM Alumnos a WHERE a.fechaNacimiento = :fechaNacimiento")
     , @NamedQuery(name = "Alumnos.findByFechaRegistro", query = "SELECT a FROM Alumnos a WHERE a.fechaRegistro = :fechaRegistro")
+    , @NamedQuery(name = "Alumnos.findByEstado", query = "SELECT a FROM Alumnos a WHERE a.estado = :estado")
     , @NamedQuery(name = "Alumnos.findByCampo", query = "SELECT a FROM Alumnos a WHERE a.campo = :campo")})
 public class Alumnos implements Serializable {
 
@@ -59,6 +64,8 @@ public class Alumnos implements Serializable {
     private String fechaNacimiento;
     @Column(name = "fecha_registro")
     private String fechaRegistro;
+    @Column(name = "estado")
+    private String estado;
     @Column(name = "campo")
     private String campo;
     @JoinColumn(name = "id_acceso", referencedColumnName = "id_acceso")
@@ -70,6 +77,8 @@ public class Alumnos implements Serializable {
     @JoinColumn(name = "grado", referencedColumnName = "grado")
     @ManyToOne(optional = false)
     private Nivel grado;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "nie")
+    private Collection<Notas> notasCollection;
 
     public Alumnos() {
     }
@@ -150,6 +159,14 @@ public class Alumnos implements Serializable {
         this.fechaRegistro = fechaRegistro;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
     public String getCampo() {
         return campo;
     }
@@ -180,6 +197,15 @@ public class Alumnos implements Serializable {
 
     public void setGrado(Nivel grado) {
         this.grado = grado;
+    }
+
+    @XmlTransient
+    public Collection<Notas> getNotasCollection() {
+        return notasCollection;
+    }
+
+    public void setNotasCollection(Collection<Notas> notasCollection) {
+        this.notasCollection = notasCollection;
     }
 
     @Override

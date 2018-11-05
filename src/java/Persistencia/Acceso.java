@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Acceso.findByUsuario", query = "SELECT a FROM Acceso a WHERE a.usuario = :usuario")
     , @NamedQuery(name = "Acceso.findByContrasena", query = "SELECT a FROM Acceso a WHERE a.contrasena = :contrasena")
     , @NamedQuery(name = "Acceso.findByNivelAcceso", query = "SELECT a FROM Acceso a WHERE a.nivelAcceso = :nivelAcceso")
+    , @NamedQuery(name = "Acceso.findByEstado", query = "SELECT a FROM Acceso a WHERE a.estado = :estado")
     , @NamedQuery(name = "Acceso.findByCampo", query = "SELECT a FROM Acceso a WHERE a.campo = :campo")})
 public class Acceso implements Serializable {
 
@@ -49,6 +50,8 @@ public class Acceso implements Serializable {
     private String contrasena;
     @Column(name = "nivel_acceso")
     private String nivelAcceso;
+    @Column(name = "estado")
+    private String estado;
     @Column(name = "campo")
     private String campo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idAcceso")
@@ -95,6 +98,14 @@ public class Acceso implements Serializable {
 
     public void setNivelAcceso(String nivelAcceso) {
         this.nivelAcceso = nivelAcceso;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public String getCampo() {

@@ -38,6 +38,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Notas.findByPromerio", query = "SELECT n FROM Notas n WHERE n.promerio = :promerio")
     , @NamedQuery(name = "Notas.findByReposicion", query = "SELECT n FROM Notas n WHERE n.reposicion = :reposicion")
     , @NamedQuery(name = "Notas.findByFinal1", query = "SELECT n FROM Notas n WHERE n.final1 = :final1")
+    , @NamedQuery(name = "Notas.findByEstadoAlumno", query = "SELECT n FROM Notas n WHERE n.estadoAlumno = :estadoAlumno")
+    , @NamedQuery(name = "Notas.findByEstadoNotas", query = "SELECT n FROM Notas n WHERE n.estadoNotas = :estadoNotas")
     , @NamedQuery(name = "Notas.findByCampo", query = "SELECT n FROM Notas n WHERE n.campo = :campo")})
 public class Notas implements Serializable {
 
@@ -66,8 +68,15 @@ public class Notas implements Serializable {
     private Double reposicion;
     @Column(name = "final")
     private Double final1;
+    @Column(name = "estado_alumno")
+    private String estadoAlumno;
+    @Column(name = "estado_notas")
+    private String estadoNotas;
     @Column(name = "campo")
     private String campo;
+    @JoinColumn(name = "nie", referencedColumnName = "nie")
+    @ManyToOne(optional = false)
+    private Alumnos nie;
     @JoinColumn(name = "nombre_materia", referencedColumnName = "nombre_materia")
     @ManyToOne(optional = false)
     private Materias nombreMateria;
@@ -159,12 +168,36 @@ public class Notas implements Serializable {
         this.final1 = final1;
     }
 
+    public String getEstadoAlumno() {
+        return estadoAlumno;
+    }
+
+    public void setEstadoAlumno(String estadoAlumno) {
+        this.estadoAlumno = estadoAlumno;
+    }
+
+    public String getEstadoNotas() {
+        return estadoNotas;
+    }
+
+    public void setEstadoNotas(String estadoNotas) {
+        this.estadoNotas = estadoNotas;
+    }
+
     public String getCampo() {
         return campo;
     }
 
     public void setCampo(String campo) {
         this.campo = campo;
+    }
+
+    public Alumnos getNie() {
+        return nie;
+    }
+
+    public void setNie(Alumnos nie) {
+        this.nie = nie;
     }
 
     public Materias getNombreMateria() {

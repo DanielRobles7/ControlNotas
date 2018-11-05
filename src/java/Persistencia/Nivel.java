@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Nivel.findAll", query = "SELECT n FROM Nivel n")
     , @NamedQuery(name = "Nivel.findByGrado", query = "SELECT n FROM Nivel n WHERE n.grado = :grado")
+    , @NamedQuery(name = "Nivel.findByEstado", query = "SELECT n FROM Nivel n WHERE n.estado = :estado")
     , @NamedQuery(name = "Nivel.findByCampo", query = "SELECT n FROM Nivel n WHERE n.campo = :campo")})
 public class Nivel implements Serializable {
 
@@ -39,6 +40,8 @@ public class Nivel implements Serializable {
     @Basic(optional = false)
     @Column(name = "grado")
     private String grado;
+    @Column(name = "estado")
+    private String estado;
     @Column(name = "campo")
     private String campo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "grado")
@@ -64,6 +67,14 @@ public class Nivel implements Serializable {
 
     public void setGrado(String grado) {
         this.grado = grado;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public String getCampo() {

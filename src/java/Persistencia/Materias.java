@@ -37,6 +37,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Materias.findByPonderacion4", query = "SELECT m FROM Materias m WHERE m.ponderacion4 = :ponderacion4")
     , @NamedQuery(name = "Materias.findByPonderacion5", query = "SELECT m FROM Materias m WHERE m.ponderacion5 = :ponderacion5")
     , @NamedQuery(name = "Materias.findByPonderacion6", query = "SELECT m FROM Materias m WHERE m.ponderacion6 = :ponderacion6")
+    , @NamedQuery(name = "Materias.findByPeriodo", query = "SELECT m FROM Materias m WHERE m.periodo = :periodo")
+    , @NamedQuery(name = "Materias.findByEstadoPeriodo", query = "SELECT m FROM Materias m WHERE m.estadoPeriodo = :estadoPeriodo")
+    , @NamedQuery(name = "Materias.findByEstado", query = "SELECT m FROM Materias m WHERE m.estado = :estado")
     , @NamedQuery(name = "Materias.findByCampo", query = "SELECT m FROM Materias m WHERE m.campo = :campo")})
 public class Materias implements Serializable {
 
@@ -58,6 +61,12 @@ public class Materias implements Serializable {
     private Double ponderacion5;
     @Column(name = "ponderacion_6")
     private Double ponderacion6;
+    @Column(name = "periodo")
+    private String periodo;
+    @Column(name = "estado_periodo")
+    private String estadoPeriodo;
+    @Column(name = "estado")
+    private String estado;
     @Column(name = "campo")
     private String campo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "nombreMateria")
@@ -127,6 +136,30 @@ public class Materias implements Serializable {
 
     public void setPonderacion6(Double ponderacion6) {
         this.ponderacion6 = ponderacion6;
+    }
+
+    public String getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
+    }
+
+    public String getEstadoPeriodo() {
+        return estadoPeriodo;
+    }
+
+    public void setEstadoPeriodo(String estadoPeriodo) {
+        this.estadoPeriodo = estadoPeriodo;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public String getCampo() {

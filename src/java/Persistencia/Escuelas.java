@@ -39,6 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Escuelas.findByLongitud", query = "SELECT e FROM Escuelas e WHERE e.longitud = :longitud")
     , @NamedQuery(name = "Escuelas.findByLatitud", query = "SELECT e FROM Escuelas e WHERE e.latitud = :latitud")
     , @NamedQuery(name = "Escuelas.findByNombreDirector", query = "SELECT e FROM Escuelas e WHERE e.nombreDirector = :nombreDirector")
+    , @NamedQuery(name = "Escuelas.findByEstado", query = "SELECT e FROM Escuelas e WHERE e.estado = :estado")
     , @NamedQuery(name = "Escuelas.findByCampo", query = "SELECT e FROM Escuelas e WHERE e.campo = :campo")})
 public class Escuelas implements Serializable {
 
@@ -63,6 +64,8 @@ public class Escuelas implements Serializable {
     private String latitud;
     @Column(name = "nombre_director")
     private String nombreDirector;
+    @Column(name = "estado")
+    private String estado;
     @Column(name = "campo")
     private String campo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codigoEscuela")
@@ -152,6 +155,14 @@ public class Escuelas implements Serializable {
 
     public void setNombreDirector(String nombreDirector) {
         this.nombreDirector = nombreDirector;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public String getCampo() {
