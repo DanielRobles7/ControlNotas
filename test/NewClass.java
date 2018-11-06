@@ -17,16 +17,12 @@ import Persistencia.Nivel;
  */
 public class NewClass {
     public static void main(String[] args) {
-      Nivel nivel = new Nivel();
-      Escuelas es = new Escuelas();
-      es.setCodigoEscuela(1);
-       nivel.setGrado("primero");
-       nivel.setCodigoEscuela(es);
-       nivel.setEstado("af");
-       nivel.setCampo("af");
+    
+   MantenimientoAcceso mana = new MantenimientoAcceso();    
+
+
+
        
-MantenimientoNivel man= new MantenimientoNivel();
-       
-        System.out.println(man.Actualizar(nivel));
+        System.out.println(mana.consultarTodosAcceso());
     }
 }
