@@ -5,9 +5,13 @@
  */
 package ManagedBean;
 
+import Mantenimiento.MantenimientoNivel;
+import Persistencia.Escuelas;
 import Persistencia.Nivel;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -17,12 +21,19 @@ import javax.faces.bean.RequestScoped;
  */
 @ManagedBean
 @RequestScoped
-public class BeanNivel {
+public class BeanNivel implements Serializable {
+    private Nivel nivel;
+    private  List<Nivel> lista=new ArrayList();
 
-    Nivel nivel=new Nivel();
-    private static List<Nivel> listN=new ArrayList();
-    
-    public Nivel getNivel() {
+   
+   
+    @PostConstruct
+            public void ini(){
+                 nivel = new Nivel ();
+              MantenimientoNivel man = new MantenimientoNivel();
+             nivel.setCodigoEscuela(new Escuelas());
+            }
+             public Nivel getNivel() {
         return nivel;
     }
 
@@ -30,21 +41,25 @@ public class BeanNivel {
         this.nivel = nivel;
     }
 
-    public List<Nivel> getListN() {
-        return listN;
+    public List<Nivel> getLista() {
+        return lista;
     }
 
-    public void setListN(List<Nivel> listN) {
-        this.listN = listN;
+    public void setLista(List<Nivel> lista) {
+        this.lista = lista;
     }
+
+
     
-     public void agregar(){
-        System.out.println(nivel);
-        
-        listN.add(nivel);
-        System.out.println(listN);
-        
-        nivel=new Nivel();
+    
+   
+     public void agregar() {
+
+        System.out.println("esto son las facturas" + nivel);
+        MantenimientoNivel man = new MantenimientoNivel();
+        man.guardarNivel(nivel);
+        lista = man.consultarTodosNivel();
+        nivel.setCodigoEscuela(new Escuelas());
     }
     
     public void eliminar(Nivel nivel){
@@ -53,10 +68,10 @@ public class BeanNivel {
         listN.remove(nivel);
     }
     
-    public void modificar(Nivel nivel){
-        this.nivel= nivel; 
-        System.out.println(nivel);
-   
+    public void eliminar(Factura factura) {
+        MantenimientoFactura manf = new MantenimientoFactura();
+        manf.eliminarFact(factura);
+        lista = manf.consultarFact();
 }
      public void actualizar(){
          int numero=listN.lastIndexOf(nivel);

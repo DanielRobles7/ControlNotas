@@ -32,11 +32,11 @@ and open the template in the editor.
         <br></br>
         <br></br>
 
-        <p:dataTable id="table" value="#{beanNivel.listN}" var="listN" paginator="true">
+        <p:dataTable id="table" value="#{beanNivel.lista}" var="lista" paginator="true">
             
             <p:column headerText="Grado">
                 <p:cellEditor>
-                    <f:facet name="output"><p:outputLabel value="#{listN.grado}" /></f:facet>
+                    <f:facet name="output"><p:outputLabel value="grado" /></f:facet>
                     <f:facet name="input"> <p:inputText value="#{listN.grado}" /> </f:facet>
                 </p:cellEditor>
             </p:column>
