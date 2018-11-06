@@ -27,6 +27,6 @@ public class NewClass {
        
 MantenimientoNivel man= new MantenimientoNivel();
        
-        System.out.println(man.Actualizar(nivel));
+        System.out.println(man.ActualizarNivel(nivel));
     }
 }
