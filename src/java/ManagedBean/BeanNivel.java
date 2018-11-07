@@ -61,21 +61,21 @@ public class BeanNivel implements Serializable {
         lista = man.consultarTodosNivel();
         nivel.setCodigoEscuela(new Escuelas());
     }
+//    
+//    public void eliminar(Nivel nivel){
+//        this.nivel=nivel;
+//        System.out.println(nivel);
+//        lista.remove(nivel);
+//    }
     
-    public void eliminar(Nivel nivel){
-        this.nivel=nivel;
-        System.out.println(nivel);
-        listN.remove(nivel);
-    }
-    
-    public void eliminar(Factura factura) {
-        MantenimientoFactura manf = new MantenimientoFactura();
-        manf.eliminarFact(factura);
-        lista = manf.consultarFact();
+    public void eliminar(Nivel nivel) {
+        MantenimientoNivel manf = new MantenimientoNivel();
+        manf.eliminarNivel(nivel);
+        lista = manf.consultarTodosNivel();
 }
      public void actualizar(){
-         int numero=listN.lastIndexOf(nivel);
-         listN.set(numero, nivel);
+         int numero=lista.lastIndexOf(nivel);
+         lista.set(numero, nivel);
          
          nivel = new Nivel();
      }
