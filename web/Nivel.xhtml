@@ -13,7 +13,7 @@ and open the template in the editor.
         <title>Nivel</title>
     </h:head>
     <h:body>
-       
+
         <h:form id="fo">
             <p:panel id="horizontal" header="" toggleable="true" toggleOrientation="horizontal">
                 <p:spacer width="170" height="15" />
@@ -21,45 +21,31 @@ and open the template in the editor.
                 <p:spacer width="90" height="15" />
                 <h:outputLabel value="Escuela: " /> 
                 <h:selectOneMenu  value="#{beanNivel.nivel.codigoEscuela.codigoEscuela}" style="width:225px" >
-                    <f:selectItems itemValue="" itemLabel="Seleccione" />
-                    <f:selectItems itemValue="#{beanNivel.nivel.codigoEscuela.codigoEscuela}" />
+                    <f:selectItems itemValue="#{beanNivel.nivel.codigoEscuela.codigoEscuela}" itemLabel="#{beanNivel.nivel.codigoEscuela.nombreEscuela}" />
                 </h:selectOneMenu>
                 <p:spacer width="120" height="15" />
                 <p:commandButton value="Guardar" actionListener="#{beanNivel.agregar()}" />
             </p:panel>
-        <br></br>
-        <br></br>
-<<<<<<< HEAD
-        <p:dataTable id="table" value="#{beanNivel.listN}" var="listN" paginator="true" rows="10">
-            <p:column headerText="Id">
-                <p:cellEditor>
-                    <f:facet name="output"><p:outputLabel value="#{listN}" /></f:facet>
-                    <f:facet name="input"> <p:inputText value="#{listN}" /> </f:facet>
-                </p:cellEditor>
-            </p:column>
-=======
+            <br></br>
+            <br></br>
 
-        <p:dataTable id="table" value="#{beanNivel.lista}" var="lista" paginator="true">
-            
->>>>>>> e5bde9a1986d6c40631d11f87624c872d9d858d7
-            <p:column headerText="Grado">
-                <p:cellEditor>
-                    <f:facet name="output"><p:outputLabel value="grado" /></f:facet>
-                    <f:facet name="input"> <p:inputText value="#{listN.grado}" /> </f:facet>
-                </p:cellEditor>
-            </p:column>
-            <p:column headerText="Escuela">
-                <p:cellEditor>
-                    <f:facet name="output"><p:outputLabel value="#{listN.codigoEscuela}" /></f:facet>
-                    <f:facet name="input"> <p:inputText value="#{listN.codigoEscuela}" /> </f:facet>
-                </p:cellEditor>
-            </p:column>
-            <p:column style="width:32px">
-                <p:commandButton value="Edit" icon="fa fa-fw fa-edit" actionListener="#{beanNivel.actualizar()}" type="button"/>
-                <p:commandButton value="Delete" actionListener="#{beanNivel.eliminar(nivel)}" ajax="false" icon="ui-icon-close" />
-            </p:column>
-        </p:dataTable>
-</h:form>
-        
+
+            <p:dataTable  id="table" value="#{beanNivel.lista}" var="lista" paginator="true">
+
+                <p:column headerText="Grado">
+                    <p:outputLabel value="#{lista.grado}" />
+                </p:column>
+                <p:column headerText="Escuela">
+                    <p:outputLabel value="#{lista.codigoEscuela.nombreEscuela}" />
+                </p:column>
+                <p:column>
+                    <p:commandButton value="Editar" icon="ui-icon-pencil" actionListener="#{beanNivel.actualizar()}" type="button"/>
+                </p:column>
+                <p:column >
+                    <p:commandButton value="Eliminar" actionListener="#{beanNivel.eliminar(nivel)}" ajax="false" icon="ui-icon-close" />
+                </p:column>
+            </p:dataTable>
+        </h:form>
+
     </h:body>
 </html>

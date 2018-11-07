@@ -3,21 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/src/java/ManagedBean/BeanNotas.java</file>
-            <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/web/index.xhtml</file>
+            <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/src/java/ManagedBean/BeanAcceso.java</file>
             <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/src/java/Mantenimiento/JpaUtil.java</file>
             <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/web/Notas.xhtml</file>
-            <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/src/java/Persistencia/Notas.java</file>
+            <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/src/java/Mantenimiento/MantenimientoAcceso.java</file>
             <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/src/java/Mantenimiento/MantenimientoProfesores.java</file>
+            <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/src/java/Persistencia/Notas.java</file>
             <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/src/java/Persistencia/Nivel.java</file>
             <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/src/java/ManagedBean/BeanNivel.java</file>
-            <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/web/Nivel.xhtml</file>
-=======
-            <file>file:/C:/Users/guillermo.bermudes/Documents/GitHub/ControlNotas/src/java/ManagedBean/BeanAcceso.java</file>
-            <file>file:/C:/Users/guillermo.bermudes/Documents/GitHub/ControlNotas/web/Nivel.xhtml</file>
-            <file>file:/C:/Users/guillermo.bermudes/Documents/GitHub/ControlNotas/src/java/ManagedBean/BeanNivel.java</file>
->>>>>>> e5bde9a1986d6c40631d11f87624c872d9d858d7
+            <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/src/java/Persistencia/Acceso.java</file>
+            <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/src/java/Mantenimiento/MantenimientoNivel.java</file>
         </group>
     </open-files>
 </project-private>

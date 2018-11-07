@@ -6,9 +6,12 @@
 package ManagedBean;
 
 
+import Mantenimiento.MantenimientoMaterias;
+import Persistencia.Materias;
 import Persistencia.Notas;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -21,8 +24,20 @@ import javax.faces.bean.RequestScoped;
 public class BeanNotas {
 
      Notas notas=new Notas();
-    List<Notas> listNo=new ArrayList();
+    private List<Notas> listNo=new ArrayList();
+    private List<Materias> listM=new ArrayList();
     
+    @PostConstruct
+    public void init() {
+        notas = new Notas();
+        MantenimientoMaterias manm = new MantenimientoMaterias();
+//        MantenimientoNotas man = new MantenimientoNotas();
+       notas.setNombreMateria(new Materias());
+        
+//        lista=man.consultarTodosNivel();
+            listM=manm.consultartodasMaterias();
+        
+    }
     
     public BeanNotas() {
     }
@@ -41,6 +56,14 @@ public class BeanNotas {
 
     public void setListNo(List<Notas> listNo) {
         this.listNo = listNo;
+    }
+
+    public List<Materias> getListM() {
+        return listM;
+    }
+
+    public void setListM(List<Materias> listM) {
+        this.listM = listM;
     }
     
     

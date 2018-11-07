@@ -22,18 +22,22 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean
 @RequestScoped
 public class BeanNivel implements Serializable {
-    private Nivel nivel;
-    private  List<Nivel> lista=new ArrayList();
 
-   
-   
+    private Nivel nivel;
+    private List<Nivel> lista = new ArrayList();
+    private List<Escuelas> listaE = new ArrayList();
+
     @PostConstruct
-            public void ini(){
-                 nivel = new Nivel ();
-              MantenimientoNivel man = new MantenimientoNivel();
-             nivel.setCodigoEscuela(new Escuelas());
-            }
-             public Nivel getNivel() {
+    public void init() {
+        nivel = new Nivel();
+        MantenimientoNivel man = new MantenimientoNivel();
+        nivel.setCodigoEscuela(new Escuelas());
+        
+        lista=man.consultarTodosNivel();
+        
+    }
+
+    public Nivel getNivel() {
         return nivel;
     }
 
@@ -49,11 +53,15 @@ public class BeanNivel implements Serializable {
         this.lista = lista;
     }
 
+    public List<Escuelas> getListaE() {
+        return listaE;
+    }
 
-    
-    
-   
-     public void agregar() {
+    public void setListaE(List<Escuelas> listaE) {
+        this.listaE = listaE;
+    }
+
+    public void agregar() {
 
         System.out.println("esto son las facturas" + nivel);
         MantenimientoNivel man = new MantenimientoNivel();
@@ -67,17 +75,18 @@ public class BeanNivel implements Serializable {
 //        System.out.println(nivel);
 //        lista.remove(nivel);
 //    }
-    
+
     public void eliminar(Nivel nivel) {
         MantenimientoNivel manf = new MantenimientoNivel();
         manf.eliminarNivel(nivel);
         lista = manf.consultarTodosNivel();
-}
-     public void actualizar(){
-         int numero=lista.lastIndexOf(nivel);
-         lista.set(numero, nivel);
-         
-         nivel = new Nivel();
-     }
-    
+    }
+
+    public void actualizar() {
+        int numero = lista.lastIndexOf(nivel);
+        lista.set(numero, nivel);
+
+        nivel = new Nivel();
+    }
+
 }
