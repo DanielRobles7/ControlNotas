@@ -22,11 +22,6 @@ public class NewClass {
 
 
 
-       
-<<<<<<< HEAD
-        System.out.println(mana.consultarTodosAcceso());
-=======
-        System.out.println(man.ActualizarNivel(nivel));
->>>>>>> b29c674a57eb4fbc87036e5247020eea1eca0cdd
-    }
+
+    
 }

@@ -22,18 +22,20 @@ and open the template in the editor.
                 <h:outputLabel value="Escuela: " /> 
                 <h:selectOneMenu  value="#{beanNivel.nivel.codigoEscuela.codigoEscuela}" style="width:225px" >
                     <f:selectItems itemValue="" itemLabel="Seleccione" />
-                    <f:selectItems itemValue="#{beanNivel.nivel.codigoEscuela.nombreEscuela}" />
+                    <f:selectItems itemValue="#{beanNivel.nivel.codigoEscuela.codigoEscuela}" />
                 </h:selectOneMenu>
                 <p:spacer width="120" height="15" />
                 <p:commandButton value="Guardar" actionListener="#{beanNivel.agregar()}" />
             </p:panel>
-        
-
         <br></br>
         <br></br>
-
-        <p:dataTable id="table" value="#{beanNivel.listN}" var="listN" paginator="true">
-            
+        <p:dataTable id="table" value="#{beanNivel.listN}" var="listN" paginator="true" rows="10">
+            <p:column headerText="Id">
+                <p:cellEditor>
+                    <f:facet name="output"><p:outputLabel value="#{listN}" /></f:facet>
+                    <f:facet name="input"> <p:inputText value="#{listN}" /> </f:facet>
+                </p:cellEditor>
+            </p:column>
             <p:column headerText="Grado">
                 <p:cellEditor>
                     <f:facet name="output"><p:outputLabel value="#{listN.grado}" /></f:facet>
@@ -47,13 +49,11 @@ and open the template in the editor.
                 </p:cellEditor>
             </p:column>
             <p:column style="width:32px">
-                <p:rowEditor />
+                <p:commandButton value="Edit" icon="fa fa-fw fa-edit" actionListener="#{beanNivel.actualizar()}" type="button"/>
+                <p:commandButton value="Delete" actionListener="#{beanNivel.eliminar(nivel)}" ajax="false" icon="ui-icon-close" />
             </p:column>
-            <p:column style="width:32px">
-                <p:menuitem value="Delete" actionListener="#{beanNivel.eliminar(nivel)}" ajax="false" icon="ui-icon-close" />
-            </p:column>
-            
         </p:dataTable>
 </h:form>
+        
     </h:body>
 </html>
