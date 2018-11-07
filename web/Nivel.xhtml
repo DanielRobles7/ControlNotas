@@ -29,6 +29,7 @@ and open the template in the editor.
             </p:panel>
         <br></br>
         <br></br>
+<<<<<<< HEAD
         <p:dataTable id="table" value="#{beanNivel.listN}" var="listN" paginator="true" rows="10">
             <p:column headerText="Id">
                 <p:cellEditor>
@@ -36,9 +37,14 @@ and open the template in the editor.
                     <f:facet name="input"> <p:inputText value="#{listN}" /> </f:facet>
                 </p:cellEditor>
             </p:column>
+=======
+
+        <p:dataTable id="table" value="#{beanNivel.lista}" var="lista" paginator="true">
+            
+>>>>>>> e5bde9a1986d6c40631d11f87624c872d9d858d7
             <p:column headerText="Grado">
                 <p:cellEditor>
-                    <f:facet name="output"><p:outputLabel value="#{listN.grado}" /></f:facet>
+                    <f:facet name="output"><p:outputLabel value="grado" /></f:facet>
                     <f:facet name="input"> <p:inputText value="#{listN.grado}" /> </f:facet>
                 </p:cellEditor>
             </p:column>
