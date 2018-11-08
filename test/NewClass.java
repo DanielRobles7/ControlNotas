@@ -18,10 +18,13 @@ import Persistencia.Nivel;
 public class NewClass {
     public static void main(String[] args) {
     
-   MantenimientoAcceso mana = new MantenimientoAcceso();    
+   MantenimientoAcceso mana = new MantenimientoAcceso();  
+   
+   Man
 
 
 
 
     
+}
 }
