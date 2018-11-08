@@ -1,0 +1,83 @@
+package ManagerBeans;
+
+import Mantenimiento.MantenimientoCliente;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+
+import javax.faces.bean.ViewScoped;
+import Model.Cliente;
+
+/**
+ *
+ * @author guillermo.bermudes
+ */
+@ManagedBean
+@ViewScoped
+public class BeansCliente implements Serializable {
+    private Cliente cliente = new Cliente();
+    private List<Cliente>lista= new ArrayList();
+    @PostConstruct
+    public void ini(){
+       MantenimientoCliente manc = new MantenimientoCliente();
+        lista= manc.consultarTodosUsuario();
+        
+       
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<Cliente> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Cliente> lista) {
+        this.lista = lista;
+    }
+    
+    public void agregar(){
+        
+        System.out.println("esto son los usuarios"+ cliente);
+        MantenimientoCliente manc = new MantenimientoCliente();
+        manc.guardarUsuario(cliente);
+        lista= manc.consultarTodosUsuario();
+        cliente = new Cliente();
+    }
+    
+    public void eliminar(Cliente cliente){
+        MantenimientoCliente man = new MantenimientoCliente();
+        man.eliminar(cliente);
+        lista= man.consultarTodosUsuario();
+        
+    }
+     public void modificar(Cliente cliente){
+           MantenimientoCliente man = new MantenimientoCliente();
+        
+cliente=  man.consultarUsuario(cliente.getIdCliente());
+       this.cliente=cliente;
+
+System.out.println("este de modificar"+cliente);
+   
+}
+       public void actualizar(){
+         System.out.println("este es de actualizar"+cliente);
+          MantenimientoCliente man = new MantenimientoCliente();
+          man.Actualizar(cliente);
+         System.out.println(man.Actualizar(cliente)); 
+       
+         
+         lista= man.consultarTodosUsuario();
+         
+         System.out.println("esta es actualizar"+ cliente);
+        
+       
+     }
+}
