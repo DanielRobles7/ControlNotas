@@ -18,31 +18,31 @@ and open the template in the editor.
                 <center>
                 <h:outputLabel style="color: black" value="NIE: " /> 
                 <h:selectOneMenu  value="#{beanNotas.notas.nie.nie}" style="width:225px" >
-                    <f:selectItems itemValue="" itemLabel="Seleccione" />
-                    <f:selectItems itemValue="#{beanNotas.notas.nie.nie}" />
+                    <f:selectItem itemValue="" itemLabel="Seleccione" />
+                    <f:selectItems value="#{beanNotas.listNie}" var="listNie" itemValue="#{listNie.nie}" itemLabel="#{listNie.nombre} #{listNie.apellido}" />
                 </h:selectOneMenu>
                 <p:spacer width="180" height="15" />
                 <h:outputLabel style="color: black" value="Materia: " /> 
-                <h:selectOneMenu  value="#{beanNotas.listM}" style="width:225px" >
-                    <f:selectItems itemValue="" itemLabel="Seleccione" />
-                    <f:selectItems itemValue="#{beanNotas.notas.nombreMateria}" />
+                <h:selectOneMenu  value="#{beanNotas.notas.nombreMateria.nombreMateria}" style="width:225px" >
+                    <f:selectItem itemValue="" itemLabel="Seleccione" />
+                    <f:selectItems value="#{beanNotas.listM}" var="listM" itemValue="#{listM.nombreMateria}" itemLabel="#{listM.nombreMateria}" />
                 </h:selectOneMenu>
                 </center>
                 <br />
                 <center>
                     <br />
                     <br />
-                    <p:commandButton value="Guardar" actionListener="#{beanNotas.agregar()}" />
+                    <p:commandButton value="Guardar" actionListener="#{beanNotas.agregar()}" update="tableNotas,fo" />
                 </center>
             </p:panel>
             <br />
             <br />
             <p:panel style="border: #461bba;background: #5b9fde" id="horizontal2" header="" toggleable="true" toggleOrientation="horizontal">
                 <center>
-                <h:outputLabel style="color: black" value="Materia: " /> 
-                <h:selectOneMenu  value="#{beanNotas.notas.nombreMateria}" style="width:225px" >
-                    <f:selectItems itemValue="" itemLabel="Seleccione" />
-                    <f:selectItems itemValue="#{beanNotas.notas.nombreMateria}" />
+               <h:outputLabel style="color: black" value="Materia: " /> 
+                <h:selectOneMenu  value="#{beanNotas.notas.nombreMateria.nombreMateria}" style="width:225px" >
+                    <f:selectItem itemValue="" itemLabel="Seleccione" />
+                    <f:selectItems value="#{beanNotas.listM}" var="listM" itemValue="#{listM.nombreMateria}" itemLabel="#{listM.nombreMateria}" />
                 </h:selectOneMenu>
                 <br></br>
                 <br></br>
@@ -59,7 +59,6 @@ and open the template in the editor.
                         <p:column rowspan="2" headerText="Apellido"></p:column>
                         <p:column rowspan="2" headerText="Materia"></p:column>
                         <p:column colspan="9" headerText="Notas"></p:column>
-                        <p:column rowspan="2" headerText="Estado Alumno"></p:column>
                         <p:column rowspan="2" ></p:column>
                     </p:row>
                     <p:row>
@@ -78,13 +77,13 @@ and open the template in the editor.
                     <h:outputText value="#{listNo.idNota}"></h:outputText>
                 </p:column>
                 <p:column>
-                    <h:outputText value="#{listNo.nie}"></h:outputText>
+                    <h:outputText value="#{listNo.nie.nombre}"></h:outputText>
                 </p:column>
                 <p:column>
-                    <h:outputText value="#{listNo}"></h:outputText>
+                    <h:outputText value="#{listNo.nie.apellido}"></h:outputText>
                 </p:column>
                 <p:column>
-                    <h:outputText value="#{listNo.nombreMateria}"></h:outputText>
+                    <h:outputText value="#{listNo.nombreMateria.nombreMateria}"></h:outputText>
                 </p:column>
                 <p:column>
                     <h:outputText value="#{listNo.nota1}"></h:outputText>
@@ -113,14 +112,40 @@ and open the template in the editor.
                 <p:column>
                     <h:outputText value="#{listNo.final1}"></h:outputText>
                 </p:column>
-                <p:column>
-                    <h:outputText value="#{listNo.estadoAlumno}"></h:outputText>
-                </p:column>
                 <p:column style="width:32px">
-                    <p:commandButton value="Edit" icon="fa fa-fw fa-edit" actionListener="#{beanNivel.actualizar()}" type="button"/>
-                    <p:commandButton value="Delete" actionListener="#{beanNivel.eliminar(nivel)}" ajax="false" icon="ui-icon-close" />
+                    <p:commandButton value="Edit" icon="fa fa-fw fa-edit" actionListener="#{beanNivel.modificar(listNo)}" oncomplete="PF('wdlgdesplegable').show();" update=":desplegable"/>
+                    <p:commandButton value="Delete" actionListener="#{beanNivel.eliminar(listNo)}" ajax="false" icon="ui-icon-close" update="tableNotas" />
                 </p:column>
             </p:dataTable>
         </h:form>
+        
+         <p:dialog id="desplegable" header="Actualizar" widgetVar="wdlgdesplegable">
+            <h:form style="text-align: center;">
+                <h:outputLabel value="Id: " /> <br />
+                <p:inputText value="#{beanNotas.notas.idNota}" /><br /><br />
+                <h:outputLabel value="Nie: " /> <br />
+                <p:inputText value="#{beanNotas.notas.nie}"/><br /><br />
+                <h:outputLabel value="Nota1: " /> <br />
+                <p:inputText value="#{beanNotas.notas.nota1}"/><br /><br />
+                <h:outputLabel value="Nota2: " /> <br />
+                <p:inputText value="#{beanNotas.notas.nota2}" /><br /><br />
+                <h:outputLabel value="Nota3: " /> <br />
+                <p:inputText value="#{beanNotas.notas.nota3}" /><br /><br />
+                <h:outputLabel value="Nota4: " /> <br />
+                <p:inputText value="#{beanNotas.notas.nota4}" /><br /><br />
+                <h:outputLabel value="Nota5: " /> <br />
+                <p:inputText value="#{beanNotas.notas.nota5}" /><br /><br />
+                <h:outputLabel value="Nota6: " /> <br />
+                <p:inputText value="#{beanNotas.notas.nota6}" /><br /><br />
+                <h:outputLabel value="Promedio: " /> <br />
+                <p:inputText value="#{beanNotas.notas.promerio}" /><br /><br />
+                <h:outputLabel value="Reposicion: " /> <br />
+                <p:inputText value="#{beanNotas.notas.reposicion}" /><br /><br />
+                <h:outputLabel value="Nota Final: " /> <br />
+                <p:inputText value="#{beanNotas.notas.final1}" /><br /><br />
+                <br /><br /><br />
+                <p:commandButton value="Guardar" actionListener="#{beanNivel.actualizar()}" update=":fo:tableNotas desplegable"/>
+            </h:form>
+        </p:dialog>
     </h:body>
 </html>

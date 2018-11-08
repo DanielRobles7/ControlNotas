@@ -21,16 +21,17 @@ and open the template in the editor.
                 <p:spacer width="90" height="15" />
                 <h:outputLabel value="Escuela: " /> 
                 <h:selectOneMenu  value="#{beanNivel.nivel.codigoEscuela.codigoEscuela}" style="width:225px" >
-                    <f:selectItems itemValue="#{beanNivel.nivel.codigoEscuela.codigoEscuela}" itemLabel="#{beanNivel.nivel.codigoEscuela.nombreEscuela}" />
+                    <f:selectItem itemValue="" itemLabel="Escoger Escuela" />
+                    <f:selectItems value="#{beanNivel.listaE}" var="listaE" itemLabel="#{listaE.nombreEscuela}" itemValue="#{listaE.codigoEscuela}" />
                 </h:selectOneMenu>
                 <p:spacer width="120" height="15" />
-                <p:commandButton value="Guardar" actionListener="#{beanNivel.agregar()}" />
+                <p:commandButton value="Guardar" actionListener="#{beanNivel.agregar()}" update="table,fo"/>
             </p:panel>
             <br></br>
             <br></br>
 
 
-            <p:dataTable  id="table" value="#{beanNivel.lista}" var="lista" paginator="true">
+            <p:dataTable  id="table" value="#{beanNivel.lista}" var="lista" paginator="true" rows="10" >
 
                 <p:column headerText="Grado">
                     <p:outputLabel value="#{lista.grado}" />

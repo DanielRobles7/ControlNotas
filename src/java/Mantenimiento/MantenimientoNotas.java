@@ -36,6 +36,7 @@ public class MantenimientoNotas {
         int flag=0;
         em.getTransaction().begin();
         try{
+            System.out.println("esta son las notas "+notas.toString());
             em.persist(notas);
             em.getTransaction().commit();
             flag=1;
