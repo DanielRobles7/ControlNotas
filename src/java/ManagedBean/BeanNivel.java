@@ -32,9 +32,9 @@ public class BeanNivel implements Serializable {
         nivel = new Nivel();
         MantenimientoNivel man = new MantenimientoNivel();
         nivel.setCodigoEscuela(new Escuelas());
-        
-        lista=man.consultarTodosNivel();
-        
+
+        lista = man.consultarTodosNivel();
+
     }
 
     public Nivel getNivel() {
@@ -68,6 +68,7 @@ public class BeanNivel implements Serializable {
         man.guardarNivel(nivel);
         lista = man.consultarTodosNivel();
         nivel.setCodigoEscuela(new Escuelas());
+        nivel=new Nivel();
     }
 //    
 //    public void eliminar(Nivel nivel){
@@ -76,6 +77,16 @@ public class BeanNivel implements Serializable {
 //        lista.remove(nivel);
 //    }
 
+    public void modificar(Nivel nivel) {
+        MantenimientoNivel man = new MantenimientoNivel();
+        System.out.println("Modificaremos "+nivel.getGrado());
+        nivel = man.consultarNivel(nivel.getGrado());
+        this.nivel = nivel;
+
+        System.out.println("este de modificar" + nivel);
+
+    }
+
     public void eliminar(Nivel nivel) {
         MantenimientoNivel manf = new MantenimientoNivel();
         manf.eliminarNivel(nivel);
@@ -83,10 +94,15 @@ public class BeanNivel implements Serializable {
     }
 
     public void actualizar() {
-        int numero = lista.lastIndexOf(nivel);
-        lista.set(numero, nivel);
+        System.out.println("este es de actualizar"+nivel);
+          MantenimientoNivel man = new MantenimientoNivel();
+          man.ActualizarNivel(nivel);
+         System.out.println(man.ActualizarNivel(nivel)); 
+       
+         lista= man.consultarTodosNivel();
+         
+         System.out.println("esta es actualizar"+ nivel);
 
-        nivel = new Nivel();
     }
 
 }

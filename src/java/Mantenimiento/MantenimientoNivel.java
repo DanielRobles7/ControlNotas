@@ -21,6 +21,11 @@ public class MantenimientoNivel {
           //  Usuario u=(Usuario) it.next();
           // System.out.println("usuario"+u.getNombre());
             //System.out.println("correo"+u.getCorreo());
+//            MantenimientoNivel mn=new MantenimientoNivel();
+//            String grado="primero";
+//            mn.consultarNivel(grado);
+//            System.out.println(mn);
+            
         }
          /* Usuario usuario = new Usuario();
         usuario.setNombre("guillermo");

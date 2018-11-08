@@ -15,7 +15,7 @@ and open the template in the editor.
     <h:body>
 
         <h:form id="fo">
-            <p:panel id="horizontal" header="" toggleable="true" toggleOrientation="horizontal">
+            <p:panel id="horizontal" header="" style="text-align: center" toggleable="true" toggleOrientation="horizontal">
                 <p:spacer width="170" height="15" />
                 <h:outputLabel value="Grado: " /> <p:inputText value="#{beanNivel.nivel.grado}" ><p:keyFilter regEx="/[a-z_]/i" /></p:inputText>
                 <p:spacer width="90" height="15" />
@@ -39,13 +39,23 @@ and open the template in the editor.
                     <p:outputLabel value="#{lista.codigoEscuela.nombreEscuela}" />
                 </p:column>
                 <p:column>
-                    <p:commandButton value="Editar" icon="ui-icon-pencil" actionListener="#{beanNivel.actualizar()}" type="button"/>
+                    <p:commandButton value="Editar" icon="ui-icon-pencil" actionListener="#{beanNivel.modificar(lista)}" oncomplete="PF('wdlgdesplegable').show();" update=":desplegable"/>
                 </p:column>
                 <p:column >
-                    <p:commandButton value="Eliminar" actionListener="#{beanNivel.eliminar(nivel)}" ajax="false" icon="ui-icon-close" />
+                    <p:commandButton value="Eliminar" actionListener="#{beanNivel.eliminar(lista)}" icon="ui-icon-close" update="table" />
                 </p:column>
             </p:dataTable>
         </h:form>
 
+        <p:dialog id="desplegable" header="Actualizar" widgetVar="wdlgdesplegable">
+            <h:form style="text-align: center;">
+                <h:outputLabel value="Grado: " /> <br />
+                <p:inputText value="#{beanNivel.nivel.grado}" /><br /><br />
+                <h:outputLabel value="Escuela: " /> <br />
+                <p:inputText value="#{beanNivel.nivel.codigoEscuela.codigoEscuela}" label="#{beanNivel.nivel.codigoEscuela.nombreEscuela}"/><br />
+                <br /><br /><br />
+                <p:commandButton value="Guardar" actionListener="#{beanNivel.actualizar()}" update=":fo:table desplegable"/>
+            </h:form>
+        </p:dialog>
     </h:body>
 </html>
