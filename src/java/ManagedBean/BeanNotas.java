@@ -5,8 +5,10 @@
  */
 package ManagedBean;
 
-
+import Mantenimiento.MantenimientoAlumnos;
 import Mantenimiento.MantenimientoMaterias;
+import Mantenimiento.MantenimientoNotas;
+import Persistencia.Alumnos;
 import Persistencia.Materias;
 import Persistencia.Notas;
 import java.util.ArrayList;
@@ -23,22 +25,27 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class BeanNotas {
 
-     Notas notas=new Notas();
-    private List<Notas> listNo=new ArrayList();
-    private List<Materias> listM=new ArrayList();
-    
+    Notas notas = new Notas();
+    private List<Notas> listNo = new ArrayList();
+    private List<Materias> listM = new ArrayList();
+    private List<Alumnos> listNie = new ArrayList();
+
     @PostConstruct
     public void init() {
-        notas = new Notas();
+        
         MantenimientoMaterias manm = new MantenimientoMaterias();
-//        MantenimientoNotas man = new MantenimientoNotas();
-       notas.setNombreMateria(new Materias());
-        
-//        lista=man.consultarTodosNivel();
-            listM=manm.consultartodasMaterias();
-        
+        MantenimientoNotas man = new MantenimientoNotas();
+        MantenimientoAlumnos ma = new MantenimientoAlumnos();
+       
+     notas.setNie(new Alumnos());
+     notas.setNombreMateria(new Materias());
+        listNie=ma.consultarTodosAlumnos();
+        listNo = man.consultar();
+        listM = manm.consultartodasMaterias();
+  
+         
     }
-    
+
     public BeanNotas() {
     }
 
@@ -65,33 +72,53 @@ public class BeanNotas {
     public void setListM(List<Materias> listM) {
         this.listM = listM;
     }
-    
-    
-    
-    public void agregar(){
-        System.out.println(notas);
-        
-        listNo.add(notas);
-        System.out.println(listNo);
-        
-        notas=new Notas();
+
+    public List<Alumnos> getListNie() {
+        return listNie;
     }
-    public void eliminar(Notas notas){
-        this.notas=notas;
-        System.out.println(notas);
-        listNo.remove(notas);
+
+    public void setListNie(List<Alumnos> listNie) {
+        this.listNie = listNie;
     }
     
-    public void modificar(Notas notas){
-        this.notas= notas; 
-        System.out.println(notas);
-   
-}
-     public void actualizar(){
-         int numero=listNo.lastIndexOf(notas);
-         listNo.set(numero, notas);
+
+    public void agregar() {
+        System.out.println("esto son las facturas" + notas);
+        MantenimientoNotas man = new MantenimientoNotas();
+        man.guardar(notas);
+        listNo = man.consultar();
+        notas.setNombreMateria(notas.getNombreMateria());
+        
+         notas.setNie(new Alumnos());
+        notas.setNombreMateria(new Materias());
+    }
+       
+
+    public void modificar(Notas notas) {
+        MantenimientoNotas man = new MantenimientoNotas();
+        System.out.println("Modificaremos " + notas.getIdNota());
+        notas = man.consultarid(notas.getIdNota());
+        this.notas = notas;
+
+        System.out.println("este de modificar" + notas);
+
+    }
+
+    public void eliminar(Notas notas) {
+        MantenimientoNotas man = new MantenimientoNotas();
+        man.eliminar(notas);
+        listNo = man.consultar();
+    }
+
+    public void actualizar() {
+       System.out.println("este es de actualizar"+notas);
+          MantenimientoNotas man = new MantenimientoNotas();
+          man.Actualizar(notas);
+         System.out.println(man.Actualizar(notas)); 
+       
+         listNo= man.consultar();
          
-         notas = new Notas();
-     }
-    
+         System.out.println("esta es actualizar"+ notas);
+    }
+
 }

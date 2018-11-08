@@ -5,6 +5,7 @@
  */
 package ManagedBean;
 
+import Mantenimiento.MantenimientoEscuela;
 import Mantenimiento.MantenimientoNivel;
 import Persistencia.Escuelas;
 import Persistencia.Nivel;
@@ -31,10 +32,16 @@ public class BeanNivel implements Serializable {
     public void init() {
         nivel = new Nivel();
         MantenimientoNivel man = new MantenimientoNivel();
+        MantenimientoEscuela mae = new MantenimientoEscuela();
         nivel.setCodigoEscuela(new Escuelas());
-
+        listaE = mae.consultar();
         lista = man.consultarTodosNivel();
-
+      
+  for(Escuelas e: listaE){
+      System.out.println(e.getCodigoEscuela());
+       System.out.println(e.getNombreEscuela());
+  }
+      
     }
 
     public Nivel getNivel() {
