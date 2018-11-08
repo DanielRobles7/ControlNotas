@@ -73,7 +73,7 @@ public class MantenimientoEscuela {
               
               em.getTransaction().commit();
               listaE=query.getResultList();
-              System.out.println(listaE);
+              System.out.println(listaE+"si");
               return listaE;
               
           }catch(Exception e){
