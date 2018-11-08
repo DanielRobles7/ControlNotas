@@ -5,11 +5,12 @@ import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.EntityManager;
 
-import Persistencia.Escuelas;
+
+import Persistencia.Notas;
 
 
 
-public class MantenimientoEscuela {
+public class MantenimientoNotas {
   
     public static void main(String[] args) {
      
@@ -30,12 +31,12 @@ public class MantenimientoEscuela {
 
     }
 */
-    public int guardar(Escuelas escuelas){
+    public int guardar(Notas notas){
         EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
         int flag=0;
         em.getTransaction().begin();
         try{
-            em.persist(escuelas);
+            em.persist(notas);
             em.getTransaction().commit();
             flag=1;
         }catch(Exception e){
@@ -47,12 +48,12 @@ public class MantenimientoEscuela {
         return flag;
     }
     
-    public Escuelas consultarid(int codigoEscuela){
+    public Notas consultarid(int idNota){
           EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
-          Escuelas escuel=null;
+          Notas not=null;
           em.getTransaction().begin();
           try{
-             escuel=em.find(Escuelas.class, codigoEscuela);
+             not=em.find(Notas.class, idNota);
               em.getTransaction().commit();
               
           }catch(Exception e){
@@ -61,20 +62,20 @@ public class MantenimientoEscuela {
           }finally{
               em.close();
           }
-         return escuel; 
+         return not; 
     }
     
-    public List<Escuelas> consultar(){
-        List<Escuelas> listaE=null;
+    public List<Notas> consultar(){
+        List<Notas> listaN=null;
           EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
           em.getTransaction().begin();
           try{
-              Query query=em.createQuery("SELECT e FROM Escuelas e");
+              Query query=em.createQuery("SELECT n FROM Notas n");
               
               em.getTransaction().commit();
-              listaE=query.getResultList();
-              System.out.println(listaE+"si");
-              return listaE;
+              listaN=query.getResultList();
+              System.out.println(listaN+"si");
+              return listaN;
               
           }catch(Exception e){
               em.getTransaction().rollback();
@@ -84,26 +85,28 @@ public class MantenimientoEscuela {
           }
           
     }
- public int Actualizar(Escuelas escuela){
+ public int Actualizar(Notas notas){
           EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
-          Escuelas esc=null;
+          Notas not=null;
           em.getTransaction().begin();
          int flag=0;
           try{
-              esc=em.find(Escuelas.class, escuela.getCodigoEscuela());
-           esc.setCodigoEscuela(escuela.getCodigoEscuela());
-              esc.setNombreEscuela(escuela.getNombreEscuela());
-             esc.setDireccion(escuela.getDireccion());
-             esc.setMunicipio(escuela.getMunicipio());
-             esc.setTelefono(escuela.getTelefono());
-             esc.setCorreo(escuela.getCorreo());
-             esc.setLongitud(escuela.getLongitud());
-             esc.setLatitud(escuela.getLatitud());
-             esc.setNombreDirector(escuela.getNombreEscuela());
-             esc.setIdAcceso(escuela.getIdAcceso());
-             esc.setEstado(escuela.getEstado());
-             esc.setCampo(escuela.getCampo());
-                      
+              not=em.find(Notas.class, notas.getIdNota());
+            not.setIdNota(notas.getIdNota());
+             not.setNie(notas.getNie());
+             not.setNombreMateria(notas.getNombreMateria());
+             not.setNota1(notas.getNota1());
+             not.setNota2(notas.getNota2());
+             not.setNota3(notas.getNota3());
+             not.setNota4(notas.getNota4());
+             not.setNota5(notas.getNota5());
+             not.setNota6(notas.getNota6());
+             not.setPromerio(notas.getPromerio());
+             not.setReposicion(notas.getReposicion());
+             not.setFinal1(notas.getFinal1());
+             not.setEstadoAlumno(notas.getEstadoAlumno());
+             not.setEstadoNotas(notas.getEstadoNotas());
+             not.setCampo(notas.getCampo());
               em.getTransaction().commit();
                flag=1;
           }catch(Exception e){
@@ -121,14 +124,14 @@ public class MantenimientoEscuela {
    
 }    
  
-  public int eliminar(Escuelas escuelas){
+  public int eliminar(Notas notas){
           EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
-          Escuelas escue=null;
+          Notas not=null;
           em.getTransaction().begin();
          int flag=0;
           try{
-              escue=em.find(Escuelas.class, escuelas.getCodigoEscuela());
-            em.remove(escue);
+              not=em.find(Notas.class, notas.getIdNota());
+            em.remove(not);
                       
               em.getTransaction().commit();
                flag=1;
