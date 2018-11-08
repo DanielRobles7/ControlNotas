@@ -83,12 +83,10 @@ public class BeanNotas {
     
 
     public void agregar() {
-        System.out.println("esto son las facturas" + notas);
+        System.out.println("esto son las notas" + notas);
         MantenimientoNotas man = new MantenimientoNotas();
         man.guardar(notas);
         listNo = man.consultar();
-        notas.setNombreMateria(notas.getNombreMateria());
-        
          notas.setNie(new Alumnos());
         notas.setNombreMateria(new Materias());
     }
