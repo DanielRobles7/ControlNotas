@@ -1,9 +1,6 @@
 
 import Mantenimiento.MantenimientoAcceso;
-import Mantenimiento.MantenimientoNivel;
-import Persistencia.Acceso;
-import Persistencia.Escuelas;
-import Persistencia.Nivel;
+import Mantenimiento.MantenimientoEscuela;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,10 +15,15 @@ import Persistencia.Nivel;
 public class NewClass {
     public static void main(String[] args) {
     
-   MantenimientoAcceso mana = new MantenimientoAcceso();    
+   MantenimientoAcceso mana = new MantenimientoAcceso();  
+   
+   MantenimientoEscuela man = new MantenimientoEscuela();
+   
+        System.out.println(man.consultar());
 
 
 
 
     
+}
 }
