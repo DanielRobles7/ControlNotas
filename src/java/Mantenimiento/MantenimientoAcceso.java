@@ -124,4 +124,21 @@ public class MantenimientoAcceso {
         }
         return flag;
     }
+    
+     public Integer consultarMaxAcceso(){
+        int idMax=0;
+        String sql="select max(a.idAcceso) from Acceso a";
+        EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
+        em.getTransaction().begin();
+        try{
+           idMax = Integer.parseInt(em.createQuery(sql).getSingleResult().toString());
+           em.getTransaction().commit();
+        }catch(Exception e){
+            em.getTransaction().rollback();
+        }finally{
+            em.close();
+        }
+        return idMax;
+    }
+    
 }

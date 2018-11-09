@@ -18,10 +18,10 @@ public class NewClass {
     
    MantenimientoAcceso mana = new MantenimientoAcceso();  
    
-   MantenimientoEscuela man = new MantenimientoEscuela();
-   MantenimientoNotas manN= new MantenimientoNotas();
+//   MantenimientoEscuela man = new MantenimientoEscuela();
+//   MantenimientoNotas manN= new MantenimientoNotas();
    
-        System.out.println(man.consultar());
+        System.out.println(mana.consultarMaxAcceso());
 
 
 
