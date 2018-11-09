@@ -73,6 +73,9 @@ DELIMITER ;
 		genera un numero real aleatorio entre 0 y 1, y ROUND("numero real") redondea
 		el numero real (convierte en entero de la cantidad de digitos ingresados)
 		
+**	NOTA 1: al ingresar escuela considerar clave foranea de id_acceso
+**	NOTA 2: al ingresar alumno considerar clave foranea de id_acceso y codigo de escuela y grado.
+		
 */
 SET @randcod = NULL;
 SELECT (100000 + ROUND(RAND() * (999999-100000))) INTO @randcod;
