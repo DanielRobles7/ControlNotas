@@ -3,26 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/guillermo.bermudes/Documents/GitHub/ControlNotas/src/java/Mantenimiento/MantenimientoEscuela.java</file>
-            <file>file:/C:/Users/guillermo.bermudes/Documents/GitHub/ControlNotas/src/java/Persistencia/Escuelas.java</file>
-            <file>file:/C:/Users/guillermo.bermudes/Documents/GitHub/ControlNotas/src/java/Persistencia/Notas.java</file>
-            <file>file:/C:/Users/guillermo.bermudes/Documents/GitHub/ControlNotas/web/Nivel.xhtml</file>
-            <file>file:/C:/Users/guillermo.bermudes/Documents/GitHub/ControlNotas/src/java/ManagedBean/BeanNivel.java</file>
-            <file>file:/C:/Users/guillermo.bermudes/Documents/GitHub/ControlNotas/src/java/Mantenimiento/MantenimientoNivel.java</file>
-            <file>file:/C:/Users/guillermo.bermudes/Documents/GitHub/ControlNotas/src/java/Mantenimiento/MantenimientoNotas.java</file>
-=======
             <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/src/java/ManagedBean/BeanNotas.java</file>
+            <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/web/Notas.xhtml</file>
             <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/src/java/Persistencia/Notas.java</file>
             <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/src/java/ManagedBean/BeanNivel.java</file>
             <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/web/Nivel.xhtml</file>
-<<<<<<< HEAD
             <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/src/java/Mantenimiento/MantenimientoNotas.java</file>
             <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/src/java/Persistencia/Materias.java</file>
-            <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/test/NewClass.java</file>
-=======
->>>>>>> ddf780ab8757f6ef3e45433da336c74dfd62f9a1
->>>>>>> e24e35c53c794ad1f9404fb96d9a7fd3f88a9b14
         </group>
     </open-files>
 </project-private>
