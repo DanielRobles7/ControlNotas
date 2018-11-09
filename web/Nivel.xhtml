@@ -10,12 +10,27 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
+        <style type="text/css">
+            form .styleGreen {    
+                background-color: #3bbd4b !important;
+                font-family: 'Berlin Sans FB Demi' !important;
+            }
+            form .panelBlue{
+                background-color: #66ccff !important;
+                font-family: fantasy !important;
+            }
+            form .tabla{
+                background-color: #00cc99 !important;
+                font-family: 'Berlin Sans FB Demi' !important;
+                font-size: 18px !important;
+            }
+        </style>
         <title>Nivel</title>
     </h:head>
     <h:body>
 
         <h:form id="fo">
-            <p:panel id="horizontal" header="" style="text-align: center" toggleable="true" toggleOrientation="horizontal">
+            <p:panel id="horizontal" styleClass="panelBlue" header="" style="text-align: center" toggleable="true" toggleOrientation="horizontal">
                 <p:spacer width="170" height="15" />
                 <h:outputLabel value="Grado: " /> <p:inputText value="#{beanNivel.nivel.grado}" ><p:keyFilter regEx="/[a-z_]/i" /></p:inputText>
                 <p:spacer width="90" height="15" />
@@ -25,13 +40,13 @@ and open the template in the editor.
                     <f:selectItems value="#{beanNivel.listaE}" var="listaE" itemLabel="#{listaE.nombreEscuela}" itemValue="#{listaE.codigoEscuela}" />
                 </h:selectOneMenu>
                 <p:spacer width="120" height="15" />
-                <p:commandButton value="Guardar" actionListener="#{beanNivel.agregar()}" update="table,fo"/>
+                <p:commandButton value="Guardar"  styleClass="styleGreen" actionListener="#{beanNivel.agregar()}" update="table,fo"/>
             </p:panel>
             <br></br>
             <br></br>
 
 
-            <p:dataTable  id="table" value="#{beanNivel.lista}" var="lista" paginator="true" rows="10" >
+            <p:dataTable  id="table" styleClass="tabla" value="#{beanNivel.lista}" var="lista" paginator="true" rows="10" >
 
                 <p:column headerText="Grado">
                     <p:outputLabel value="#{lista.grado}" />

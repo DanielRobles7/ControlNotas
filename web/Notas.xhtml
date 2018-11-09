@@ -11,10 +11,20 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Notas</title>
+        <style>
+            form .Formu{
+                background-color: aquamarine !important;
+                font-family: 'Eras Bold ITC' !important;
+            }
+            form .tabla{
+                font-size: 14px !important;
+            }
+        </style>
     </h:head>
     <h:body style="box-decoration-break: initial">
         <h:form id="fo">
-            <p:panel style="background: #61a6fa;border: #b3d5f5" id="horizontal" header="" toggleable="true" toggleOrientation="horizontal">
+            <center>
+                <p:panel styleClass="Formu" style="background: #61a6fa;border: #b3d5f5;margin-bottom:20px" id="horizontal" header="" toggleable="true" toggleOrientation="horizontal">
                 <center>
                     <h:outputLabel style="color: black" value="NIE: " /> 
                     <h:selectOneMenu  value="#{beanNotas.notas.nie.nie}" style="width:225px" >
@@ -32,12 +42,13 @@ and open the template in the editor.
                 <center>
                     <br />
                     <br />
-                    <p:commandButton value="Guardar" actionListener="#{beanNotas.agregar()}" update="tableNotas,fo" />
+                    <p:commandButton  value="Guardar" actionListener="#{beanNotas.agregar()}" update="tableNotas,fo" />
                 </center>
             </p:panel>
+            </center>
             <br />
             <br />
-            <p:dataTable style="text-align: center"  id="tableNotas" value="#{beanNotas.listNo}" var="listNo" paginator="true" rows="10">
+            <p:dataTable styleClass="tabla" style="text-align: center"  id="tableNotas" value="#{beanNotas.listNo}" var="listNo" paginator="true" rows="10">
                 <p:columnGroup type="header">
                     <p:row>
                         <p:column rowspan="2" headerText="Id"></p:column>
