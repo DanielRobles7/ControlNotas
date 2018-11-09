@@ -70,7 +70,7 @@ public class BeanNivel implements Serializable {
 
     public void agregar() {
 
-        System.out.println("esto son las facturas" + nivel);
+        System.out.println("esto son las nivel" + nivel);
         MantenimientoNivel man = new MantenimientoNivel();
         man.guardarNivel(nivel);
         lista = man.consultarTodosNivel();

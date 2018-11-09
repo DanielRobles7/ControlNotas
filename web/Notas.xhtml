@@ -37,20 +37,6 @@ and open the template in the editor.
             </p:panel>
             <br />
             <br />
-            <p:panel style="border: #461bba;background: #5b9fde" id="horizontal2" header="" toggleable="true" toggleOrientation="horizontal">
-                <center>
-               <h:outputLabel style="color: black" value="Materia: " /> 
-                <h:selectOneMenu  value="#{beanNotas.notas.nombreMateria.nombreMateria}" style="width:225px" >
-                    <f:selectItem itemValue="" itemLabel="Seleccione" />
-                    <f:selectItems value="#{beanNotas.listM}" var="listM" itemValue="#{listM.nombreMateria}" itemLabel="#{listM.nombreMateria}" />
-                </h:selectOneMenu>
-                <br></br>
-                <br></br>
-                 <p:commandButton value="Consultar" actionListener="#{beanNotas}" />
-                 </center>
-            </p:panel>
-            <br />
-            <br />
             <p:dataTable style="background: #f5cfb3"  id="tableNotas" value="#{beanNotas.listNo}" var="listNo" paginator="true" rows="10">
                 <p:columnGroup type="header">
                     <p:row>

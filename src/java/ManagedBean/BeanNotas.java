@@ -32,18 +32,16 @@ public class BeanNotas {
 
     @PostConstruct
     public void init() {
-        
+
         MantenimientoMaterias manm = new MantenimientoMaterias();
         MantenimientoNotas man = new MantenimientoNotas();
         MantenimientoAlumnos ma = new MantenimientoAlumnos();
-       
-     notas.setNie(new Alumnos());
-     notas.setNombreMateria(new Materias());
-        listNie=ma.consultarTodosAlumnos();
+        notas.setNie(new Alumnos());
+        notas.setNombreMateria(new Materias());
+        listNie = ma.consultarTodosAlumnos();
         listNo = man.consultar();
         listM = manm.consultartodasMaterias();
-  
-         
+
     }
 
     public BeanNotas() {
@@ -80,17 +78,16 @@ public class BeanNotas {
     public void setListNie(List<Alumnos> listNie) {
         this.listNie = listNie;
     }
-    
 
     public void agregar() {
         System.out.println("esto son las notas" + notas);
         MantenimientoNotas man = new MantenimientoNotas();
         man.guardar(notas);
         listNo = man.consultar();
-         notas.setNie(new Alumnos());
+        notas.setNie(new Alumnos());
         notas.setNombreMateria(new Materias());
+        notas=new Notas();
     }
-       
 
     public void modificar(Notas notas) {
         MantenimientoNotas man = new MantenimientoNotas();
@@ -109,14 +106,14 @@ public class BeanNotas {
     }
 
     public void actualizar() {
-       System.out.println("este es de actualizar"+notas);
-          MantenimientoNotas man = new MantenimientoNotas();
-          man.Actualizar(notas);
-         System.out.println(man.Actualizar(notas)); 
-       
-         listNo= man.consultar();
-         
-         System.out.println("esta es actualizar"+ notas);
+        System.out.println("este es de actualizar" + notas);
+        MantenimientoNotas man = new MantenimientoNotas();
+        man.Actualizar(notas);
+        System.out.println(man.Actualizar(notas));
+
+        listNo = man.consultar();
+
+        System.out.println("esta es actualizar" + notas);
     }
 
 }
