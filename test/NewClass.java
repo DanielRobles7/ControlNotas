@@ -16,12 +16,12 @@ import Mantenimiento.MantenimientoNotas;
 public class NewClass {
     public static void main(String[] args) {
     
-   MantenimientoAcceso mana = new MantenimientoAcceso();  
+   //MantenimientoAcceso mana = new MantenimientoAcceso();  
    
 //   MantenimientoEscuela man = new MantenimientoEscuela();
-//   MantenimientoNotas manN= new MantenimientoNotas();
+  MantenimientoNotas manN= new MantenimientoNotas();
    
-        System.out.println(mana.consultarMaxAcceso());
+        System.out.println(manN.consultarMaxNotas());
 
 
 

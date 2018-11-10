@@ -147,4 +147,20 @@ public class MantenimientoNotas {
        
 
 }
+  
+       public Integer consultarMaxNotas(){
+        int idMax=0;
+        String sql="select max(n.idNota) from Notas n";
+        EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
+        em.getTransaction().begin();
+        try{
+           idMax = Integer.parseInt(em.createQuery(sql).getSingleResult().toString());
+           em.getTransaction().commit();
+        }catch(Exception e){
+            em.getTransaction().rollback();
+        }finally{
+            em.close();
+        }
+        return idMax;
+    }
 }
