@@ -19,6 +19,7 @@ and open the template in the editor.
             }
             form .tabla{
                 font-size: 13px !important;
+                color: darkslateblue !important;
             }
             form .btnBo{
                 background-color: #999999 !important;
@@ -34,7 +35,8 @@ and open the template in the editor.
                 background-color: #000000;
             }
             .ui-datatable .ui-paginator-page{
-                background-color: #ccffff !important;   
+                background-color: #333333 !important;  
+                color: white !important;
       }
         </style>
     </h:head>
@@ -68,24 +70,24 @@ and open the template in the editor.
             <p:dataTable styleClass="tabla" style="text-align: center"  id="tableNotas" value="#{beanNotas.listNo}" var="listNo" paginator="true" rows="10">
                 <p:columnGroup type="header">
                     <p:row>
-                        <p:column rowspan="2" headerText="Id"></p:column>
-                        <p:column rowspan="2" headerText="Nombre"></p:column>
-                        <p:column rowspan="2" headerText="Apellido"></p:column>
-                        <p:column rowspan="2" headerText="Materia"></p:column>
-                        <p:column colspan="9" headerText="Notas"></p:column>
+                        <p:column rowspan="2" headerText="Id" styleClass="tabla"></p:column>
+                        <p:column rowspan="2" headerText="Nombre" styleClass="tabla"></p:column>
+                        <p:column rowspan="2" headerText="Apellido" styleClass="tabla"></p:column>
+                        <p:column rowspan="2" headerText="Materia" styleClass="tabla"></p:column>
+                        <p:column colspan="9" headerText="Notas" styleClass="tabla"></p:column>
                         <p:column rowspan="2" ></p:column>
                         <p:column rowspan="2" ></p:column>
                     </p:row>
                     <p:row>
-                        <p:column headerText="Nota1"></p:column>
-                        <p:column headerText="Nota2"></p:column>
-                        <p:column headerText="Nota3"></p:column>
-                        <p:column headerText="Nota4"></p:column>
-                        <p:column headerText="Nota5"></p:column>
-                        <p:column headerText="Nota6"></p:column>
-                        <p:column headerText="Promedio"></p:column>
-                        <p:column headerText="Reposición"></p:column>
-                        <p:column headerText="Nota Final"></p:column>
+                        <p:column headerText="Nota1" styleClass="tabla"></p:column>
+                        <p:column headerText="Nota2" styleClass="tabla"></p:column>
+                        <p:column headerText="Nota3" styleClass="tabla"></p:column>
+                        <p:column headerText="Nota4" styleClass="tabla"></p:column>
+                        <p:column headerText="Nota5" styleClass="tabla"></p:column>
+                        <p:column headerText="Nota6" styleClass="tabla"></p:column>
+                        <p:column headerText="Promedio" styleClass="tabla"></p:column>
+                        <p:column headerText="Reposición" styleClass="tabla"></p:column>
+                        <p:column headerText="Nota Final" styleClass="tabla"></p:column>
                     </p:row>
                 </p:columnGroup>
                 <p:column>
