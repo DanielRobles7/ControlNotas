@@ -26,6 +26,12 @@ and open the template in the editor.
                 /*color: black !important;*/
                 
                 }
+                .Des{
+                    background-color: #333333 !important;
+                color: white !important;
+                text-align: center !important;
+                
+                }
                 form .Ac{
                     background-color: #999999 !important;
                 /*color: black !important;*/
@@ -138,8 +144,8 @@ and open the template in the editor.
             </p:dataTable>
         </h:form>
 
-        <p:dialog id="desplegableNotas" header="Actualizar" widgetVar="wdlgdesplegable">
-            <h:form style="text-align: center;">
+        <p:dialog styleClass="Des" id="desplegableNotas" style="text-align: center" header="Actualizar" widgetVar="wdlgdesplegable">
+            <h:form  styleClass="Des">
                 <h:outputLabel value="Id: " /><p:spacer width="100" height="15" /> <h:outputLabel value="Nie: " /> <br />
                 <p:inputText style="width: 105px" value="#{beanNotas.notas.idNota}" /><p:spacer width="40" height="15" />   <p:inputText style="width: 105px" value="#{beanNotas.notas.nie.nie}"/><br /><br />
 
@@ -161,7 +167,7 @@ and open the template in the editor.
                 <h:outputLabel style="color:red " value="Nota Final: " /> <br />
                 <p:inputText style="width: 45px" value="#{beanNotas.notas.final1}" /><br /><br />
                 <br /><br /><br />
-                <p:commandButton value="Actualizar" actionListener="#{beanNotas.actualizar()}" update=":fo:tableNotas desplegableNotas"/>
+                <p:commandButton value="Actualizar" styleClass="Ac" actionListener="#{beanNotas.actualizar()}" update=":fo:tableNotas desplegableNotas"/>
             </h:form>
         </p:dialog>
     </h:body>
