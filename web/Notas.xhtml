@@ -13,12 +13,29 @@ and open the template in the editor.
         <title>Notas</title>
         <style>
             form .Formu{
-                background-color: aquamarine !important;
+                background-color: #333333 !important;
+                color: white !important;
                 font-family: 'Eras Bold ITC' !important;
             }
             form .tabla{
-                font-size: 14px !important;
+                font-size: 13px !important;
             }
+            form .btnBo{
+                background-color: #999999 !important;
+                /*color: black !important;*/
+                
+                }
+                form .Ac{
+                    background-color: #999999 !important;
+                /*color: black !important;*/
+                
+                }
+            .ui-datatable .ui-paginator {
+                background-color: #000000;
+            }
+            .ui-datatable .ui-paginator-page{
+                background-color: #ccffff !important;   
+      }
         </style>
     </h:head>
     <h:body style="box-decoration-break: initial">
@@ -26,13 +43,13 @@ and open the template in the editor.
             <center>
                 <p:panel styleClass="Formu" style="background: #61a6fa;border: #b3d5f5;margin-bottom:20px" id="horizontal" header="" toggleable="true" toggleOrientation="horizontal">
                 <center>
-                    <h:outputLabel style="color: black" value="NIE: " /> 
+                    <h:outputLabel style="color: #ffffff" value="NIE: " /> 
                     <h:selectOneMenu  value="#{beanNotas.notas.nie.nie}" style="width:225px" >
                         <f:selectItem itemValue="" itemLabel="Seleccione" />
                         <f:selectItems value="#{beanNotas.listNie}" var="listNie" itemValue="#{listNie.nie}" itemLabel="#{listNie.nombre} #{listNie.apellido}" />
                     </h:selectOneMenu>
                     <p:spacer width="180" height="15" />
-                    <h:outputLabel style="color: black" value="Materia: " /> 
+                    <h:outputLabel style="color: #ffffff" value="Materia: " /> 
                     <h:selectOneMenu  value="#{beanNotas.notas.nombreMateria.nombreMateria}" style="width:225px" >
                         <f:selectItem itemValue="" itemLabel="Seleccione" />
                         <f:selectItems value="#{beanNotas.listM}" var="listM" itemValue="#{listM.nombreMateria}" itemLabel="#{listM.nombreMateria}" />
@@ -56,6 +73,7 @@ and open the template in the editor.
                         <p:column rowspan="2" headerText="Apellido"></p:column>
                         <p:column rowspan="2" headerText="Materia"></p:column>
                         <p:column colspan="9" headerText="Notas"></p:column>
+                        <p:column rowspan="2" ></p:column>
                         <p:column rowspan="2" ></p:column>
                     </p:row>
                     <p:row>
@@ -110,10 +128,10 @@ and open the template in the editor.
                     <h:outputText value="#{listNo.final1}"></h:outputText>
                 </p:column>
                 <p:column>
-                    <p:commandButton value="Delete" actionListener="#{beanNotas.eliminar(listNo)}" ajax="false" icon="ui-icon-close" update="tableNotas" />
+                    <p:commandButton value="Borrar" styleClass="btnBo" actionListener="#{beanNotas.eliminar(listNo)}" ajax="false" icon="ui-icon-close" update="tableNotas" />
                 </p:column>
                 <p:column>
-                    <p:commandButton value="Edit" icon="ui-icon-pencil" actionListener="#{beanNotas.modificar(listNo)}" oncomplete="PF('wdlgdesplegable').show();" update=":desplegableNotas"/>
+                    <p:commandButton value="Editar" styleClass="Ac" icon="ui-icon-pencil" actionListener="#{beanNotas.modificar(listNo)}" oncomplete="PF('wdlgdesplegable').show();" update=":desplegableNotas"/>
                 </p:column>
             </p:dataTable>
         </h:form>
