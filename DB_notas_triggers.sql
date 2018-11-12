@@ -13,15 +13,15 @@ DELIMITER \\
 DROP TRIGGER IF EXISTS esc_new_grados \\
 CREATE TRIGGER esc_new_grados AFTER INSERT ON escuelas FOR EACH ROW
 BEGIN
-INSERT INTO nivel VALUES (CONCAT('1° Grado - ', NEW.codigo_escuela), NEW.codigo_escuela, 'activo', NULL);
-INSERT INTO nivel VALUES (CONCAT('2° Grado - ', NEW.codigo_escuela), NEW.codigo_escuela, 'activo', NULL);
-INSERT INTO nivel VALUES (CONCAT('3° Grado - ', NEW.codigo_escuela), NEW.codigo_escuela, 'activo', NULL);
-INSERT INTO nivel VALUES (CONCAT('4° Grado - ', NEW.codigo_escuela), NEW.codigo_escuela, 'activo', NULL);
-INSERT INTO nivel VALUES (CONCAT('5° Grado - ', NEW.codigo_escuela), NEW.codigo_escuela, 'activo', NULL);
-INSERT INTO nivel VALUES (CONCAT('6° Grado - ', NEW.codigo_escuela), NEW.codigo_escuela, 'activo', NULL);
-INSERT INTO nivel VALUES (CONCAT('7° Grado - ', NEW.codigo_escuela), NEW.codigo_escuela, 'activo', NULL);
-INSERT INTO nivel VALUES (CONCAT('8° Grado - ', NEW.codigo_escuela), NEW.codigo_escuela, 'activo', NULL);
-INSERT INTO nivel VALUES (CONCAT('9° Grado - ', NEW.codigo_escuela), NEW.codigo_escuela, 'activo', NULL);
+INSERT INTO nivel VALUES (CONCAT(NEW.codigo_escuela, ' - 1° Grado'), NEW.codigo_escuela, 'activo', NULL);
+INSERT INTO nivel VALUES (CONCAT(NEW.codigo_escuela, ' - 2° Grado'), NEW.codigo_escuela, 'activo', NULL);
+INSERT INTO nivel VALUES (CONCAT(NEW.codigo_escuela, ' - 3° Grado'), NEW.codigo_escuela, 'activo', NULL);
+INSERT INTO nivel VALUES (CONCAT(NEW.codigo_escuela, ' - 4° Grado'), NEW.codigo_escuela, 'activo', NULL);
+INSERT INTO nivel VALUES (CONCAT(NEW.codigo_escuela, ' - 5° Grado'), NEW.codigo_escuela, 'activo', NULL);
+INSERT INTO nivel VALUES (CONCAT(NEW.codigo_escuela, ' - 6° Grado'), NEW.codigo_escuela, 'activo', NULL);
+INSERT INTO nivel VALUES (CONCAT(NEW.codigo_escuela, ' - 7° Grado'), NEW.codigo_escuela, 'activo', NULL);
+INSERT INTO nivel VALUES (CONCAT(NEW.codigo_escuela, ' - 8° Grado'), NEW.codigo_escuela, 'activo', NULL);
+INSERT INTO nivel VALUES (CONCAT(NEW.codigo_escuela, ' - 9° Grado'), NEW.codigo_escuela, 'activo', NULL);
 END \\
 DELIMITER ;
 
@@ -74,7 +74,7 @@ DELIMITER ;
 		el numero real (convierte en entero de la cantidad de digitos ingresados)
 		
 **	NOTA 1: al ingresar escuela considerar clave foranea de id_acceso
-**	NOTA 2: al ingresar alumno considerar clave foranea de id_acceso y codigo de escuela y grado.
+**	NOTA 2: al ingresar alumno considerar clave foranea de id_acceso, codigo de escuela y grado.
 		
 */
 SET @randcod = NULL;
