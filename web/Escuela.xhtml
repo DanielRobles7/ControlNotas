@@ -18,7 +18,7 @@ and open the template in the editor.
             <center>
                 <p:panel style="background:#4f84ff ;border: #ffffff;" id="horizontal" header="Agregar" toggleable="true" toggleOrientation="horizontal">
                     <center>
-                        <h:outputLabel style="color: #000000" value="Codigo: " /><p:spacer width="7" height="15"/><p:inputText value="#{beanEscuela.escuela.codigoEscuela}"  ><p:keyFilter regEx="	/[\d\-\.]/"/></p:inputText><p:spacer width="20" height="15"/>
+                        <h:outputLabel style="color: #000000" value="Codigo: " /><p:spacer width="7" height="15"/><p:inputText value="#{beanEscuela.escuela.codigoEscuela}"  ><p:keyFilter regEx="/[\d\-\.]/"/></p:inputText><p:spacer width="20" height="15"/>
                         <h:outputLabel style="color: #000000" value="Nombre: " /><p:spacer width="7" height="15"/><p:inputText value="#{beanEscuela.escuela.nombreEscuela}" ><p:keyFilter regEx="/ [a-z _] / i"/></p:inputText><p:spacer width="20" height="15"/>
                         <h:outputLabel style="color: #000000" value="Telefono: " /><p:spacer width="7" height="15"/><p:inputMask value="#{beanEscuela.escuela.telefono}" mask="(999)9999-9999" /><br /><br />
                         <h:outputLabel style="color: #000000" value="Correo: " /><p:spacer width="7" height="15"/><p:inputText value="#{beanEscuela.escuela.correo}" ><p:keyFilter regEx="/[a-z0-9_\.\-@◆/i"/></p:inputText><p:spacer width="20" height="15"/>
@@ -66,16 +66,14 @@ and open the template in the editor.
         <p:dialog id="desplegable" style="text-align: center" header="Actualizar" widgetVar="wdlgdesplegable">
             <h:form>
                 <center>
-                        <h:outputLabel style="color: #000000" value="Codigo: " /><p:spacer width="7" height="15"/><p:inputText value=""  ><p:keyFilter regEx="	/[\d\-\.]/"/></p:inputText><p:spacer width="20" height="15"/>
-                        <h:outputLabel style="color: #000000" value="Nombre: " /><p:spacer width="7" height="15"/><p:inputText value="" ><p:keyFilter regEx="/ [a-z _] / i"/></p:inputText><p:spacer width="20" height="15"/>
-                        <h:outputLabel style="color: #000000" value="Telefono: " /><p:spacer width="7" height="15"/><p:inputMask value="" mask="(999)9999-9999" /><br /><br />
-                        <h:outputLabel style="color: #000000" value="Correo: " /><p:spacer width="7" height="15"/><p:inputText value="" ><p:keyFilter regEx="/[a-z0-9_\.\-@◆/i"/></p:inputText><p:spacer width="20" height="15"/>
-                        <h:outputLabel style="color: #000000" value="Municipio: " /><p:spacer width="7" height="15"/><p:inputText value="" ><p:keyFilter regEx="/ [a-z _] / i"/></p:inputText><p:spacer width="20" height="15"/>
-                        <h:outputLabel style="color: #000000" value="Direccion: " /><p:spacer width="7" height="15"/><p:inputTextarea  value="" ><p:keyFilter regEx="/ [a-z _] / i"/></p:inputTextarea><br /><br />
-                        <h:outputLabel style="color: #000000" value="Nombre Director: " /><p:spacer width="7" height="15"/><p:inputText style="width: 300px;"  value="" ><p:keyFilter regEx="/ [a-z _] / i"/></p:inputText><br /><br />
-                        <h:outputLabel style="color: #000000" value="Longitud: " /><p:spacer width="7" height="15"/><p:inputText value="" ><p:keyFilter regEx="/ [a-z _] / i"/></p:inputText><p:spacer width="20" height="15"/>
-                        <h:outputLabel style="color: #000000" value="latitud " /><p:spacer width="7" height="15"/><p:inputText value="" ><p:keyFilter regEx="/ [a-z _] / i"/></p:inputText><p:spacer width="20" height="15"/>
-                        <p:commandButton value="Agregar" actionListener="#{beanEscuela.actualizar()}" update=":form:Tabla desplegable"/>
+                        <h:outputLabel style="color: #000000" value="Codigo: " /><p:spacer width="7" height="15"/><p:inputText value="#{beanEscuela.escuela.codigoEscuela}" /><p:spacer width="20" height="15"/>
+                        <h:outputLabel style="color: #000000" value="Nombre: " /><p:spacer width="7" height="15"/><p:inputText value="#{beanEscuela.escuela.nombreEscuela}" /><p:spacer width="20" height="15"/>
+                        <h:outputLabel style="color: #000000" value="Telefono: " /><p:spacer width="7" height="15"/><p:inputText value="#{beanEscuela.escuela.telefono}"/><br /><br />
+                        <h:outputLabel style="color: #000000" value="Correo: " /><p:spacer width="7" height="15"/><p:inputText value="#{beanEscuela.escuela.correo}"/><p:spacer width="20" height="15"/>
+                        <h:outputLabel style="color: #000000" value="Municipio: " /><p:spacer width="7" height="15"/><p:inputText value="#{beanEscuela.escuela.municipio}" /><p:spacer width="20" height="15"/>
+                        <h:outputLabel style="color: #000000" value="Direccion: " /><p:spacer width="7" height="15"/><p:inputTextarea  value="#{beanEscuela.escuela.direccion}" /><br /><br />
+                        <h:outputLabel style="color: #000000" value="Nombre Director: " /><p:spacer width="7" height="15"/><p:inputText style="width: 300px;"  value="#{beanEscuela.escuela.nombreDirector}"/><br /><br />
+                        <p:commandButton value="Actualizar" actionListener="#{beanEscuela.actualizar()}" update=":form:Tabla desplegable"/>
                     </center>
             </h:form>
         </p:dialog>

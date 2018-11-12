@@ -24,6 +24,13 @@ public class BeanEscuela {
     private Escuelas escuela=new Escuelas();
     private List<Escuelas> listE=new ArrayList();
 
+    public static void main(String[] args) {
+        int numeroAleatorio = (int) (Math.random()*999+100);
+        System.out.println(numeroAleatorio);
+//        String nom="hola a todos";
+//        System.out.println(nom.substring(0, 7));
+    }
+    
     @PostConstruct
     public void init() {
 
@@ -54,6 +61,7 @@ public class BeanEscuela {
         MantenimientoEscuela me=new MantenimientoEscuela();
         me.guardar(escuela);
         listE=me.consultar();
+        
     }
     public void modificar(Escuelas escuela){
         MantenimientoEscuela me=new MantenimientoEscuela();
