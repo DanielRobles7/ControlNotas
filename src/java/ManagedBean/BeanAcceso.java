@@ -8,12 +8,16 @@ package ManagedBean;
 import Mantenimiento.MantenimientoAcceso;
 import Persistencia.Acceso;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 /**
  *
  * @author eliseo.garciausam
  */
+@ManagedBean
+@RequestScoped
 public class BeanAcceso {
 
     private Integer idAcceso;

@@ -17,7 +17,7 @@ public class NewClass {
         String usuario="";
         String password="";
         usuario = nombre.substring(0,6);
-        int numeroAleatorio = (int) (Math.random()*999+100);
+        int numeroAleatorio = (int) (Math.random()*998)+100;
         password= usuario+numeroAleatorio;
         System.out.println(numeroAleatorio);
         System.out.println("Nombre Usuario: "+usuario);

@@ -5,7 +5,9 @@
  */
 package ManagedBean;
 
+import Mantenimiento.MantenimientoAcceso;
 import Mantenimiento.MantenimientoEscuela;
+import Persistencia.Acceso;
 import Persistencia.Escuelas;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +59,36 @@ public class BeanEscuela {
     }
     
     public void agregar(){
-        System.out.println("Estas son las escuelas "+escuela);
+        //Agregar Acceso
+        Acceso acceso=new Acceso();
+        
+        String nombre=escuela.getNombreDirector();
+        String usuario;
+        String password;
+        Integer idMax;
+        usuario = nombre.substring(0,6);
+        
+        int numeroAleatorio = (int) (Math.random()*999)+100;
+        password= usuario+numeroAleatorio;
+        
+        acceso.setContrasena(password);
+        acceso.setEstado("Activo");
+        acceso.setIdAcceso(0);
+        acceso.setUsuario(usuario);
+        acceso.setNivelAcceso("Director");
+        
+        MantenimientoAcceso ma=new MantenimientoAcceso();
+        ma.guardarAcesso(acceso);
+        
+        //idMaximo de acceso
+        idMax=ma.consultarMaxAcceso();
+        Acceso acces=new Acceso();
+        acces.setIdAcceso(idMax);
+        
+        escuela.setIdAcceso(acces);
+        escuela.setEstado("Activo");
+    
+        //Agregar Escuela
         MantenimientoEscuela me=new MantenimientoEscuela();
         me.guardar(escuela);
         listE=me.consultar();
@@ -76,11 +107,25 @@ public class BeanEscuela {
         listE=me.consultar();
     }
     public void actualizar(){
-        System.out.println("Actualizar "+escuela);
+        System.out.println("Actualizar "+escuela.getCodigoEscuela());
+        System.out.println("Actualizar "+escuela.getNombreEscuela());
+        System.out.println("Actualizar "+escuela.getTelefono());
+        System.out.println("Actualizar "+escuela.getCorreo());
+        System.out.println("Actualizar "+escuela.getMunicipio());
+        System.out.println("Actualizar "+escuela.getDireccion());
+        System.out.println("Actualizar "+escuela.getNombreDirector());
+        System.out.println("Actualizar "+escuela.getIdAcceso());
+        System.out.println("Actualizar "+escuela.getEstado());
+        System.out.println("Actualizar "+escuela.getLatitud());
+        System.out.println("Actualizar "+escuela.getLongitud());
         MantenimientoEscuela me=new MantenimientoEscuela();
+        Integer idMax;
+        idMax=escuela.getIdAcceso().getIdAcceso();
+        Acceso acces=new Acceso();
+        acces.setIdAcceso(idMax);
+        escuela.setIdAcceso(acces);
         me.Actualizar(escuela);
         System.out.println(me.Actualizar(escuela));
         listE=me.consultar();
-        System.out.println("esta es de actualizar "+escuela);
     }
 }

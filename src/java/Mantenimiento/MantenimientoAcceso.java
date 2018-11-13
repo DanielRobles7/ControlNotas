@@ -17,19 +17,20 @@ import javax.persistence.Query;
 public class MantenimientoAcceso {
     public static void main(String[] args) {
         MantenimientoAcceso man = new MantenimientoAcceso();
-        Acceso acce = new Acceso();
-        acce.setIdAcceso(0);
-        acce.setUsuario("cheyo");
-        acce.setContrasena("123456");
-        acce.setNivelAcceso("profesor");
-        acce.setEstado("activo");
-        acce.setCampo("gdgdgdgdg");
-        if(man.guardarAcesso(acce)==1){
-            System.out.println("exito");
-        }else{
-            System.out.println("fallo");
-        }
-        System.exit(0);
+//        Acceso acce = new Acceso();
+//        acce.setIdAcceso(0);
+//        acce.setUsuario("cheyo");
+//        acce.setContrasena("123456");
+//        acce.setNivelAcceso("profesor");
+//        acce.setEstado("activo");
+//        acce.setCampo("gdgdgdgdg");
+//        if(man.guardarAcesso(acce)==1){
+//            System.out.println("exito");
+//        }else{
+//            System.out.println("fallo");
+//        }
+//        System.exit(0);
+         System.out.println("ID MAXIMO: "+man.consultarMaxAcceso());
     }
    
     public int guardarAcesso(Acceso acceso){
