@@ -24,10 +24,12 @@ public class MantenimientoMaterias {
            em.persist(materias);
            em.getTransaction().commit();
            flag=1;
+           System.out.println("exito,guardarMaterias,mantenimientoMaterias");
        }catch(Exception e){
            System.out.println(e.getMessage());
            em.getTransaction().rollback();
            flag=0;
+           System.out.println("error.guardarMaterias,mantenimientoMaterias"+e);
        }finally{
            em.close();
        }
@@ -41,8 +43,10 @@ public class MantenimientoMaterias {
         try{
             materias=em.find(Materias.class, nombreMateria);
             em.getTransaction().commit();
+            System.out.println("exito,consultarMaterias,mantenimientoMaterias");
         }catch(Exception e){
             em.getTransaction().rollback();
+            System.out.println("error,consultarMaterias,mantenimientoMaterias"+e);
         }finally{
             em.close();
         }
@@ -89,9 +93,11 @@ public class MantenimientoMaterias {
           
           em.getTransaction().commit();
           flag=1;
+           System.out.println("exito,actualizarMaterias,mantenimientoMaterias");
        }catch(Exception e){
            em.getTransaction().rollback();
            flag=0;
+           System.out.println("error,actualizarMaterias,mantenimientoMaterias"+e);
        }finally{
            em.close();
        }
@@ -108,9 +114,11 @@ public class MantenimientoMaterias {
             em.remove(mat);
             em.getTransaction().commit();
             flag=1;
+            System.out.println("exito,eliminarMaterias,mantenimientoMaterias");
         }catch(Exception e){
             em.getTransaction().rollback();
             flag=0;
+            System.out.println("error,eliminarMaterias,mantenimientoMaterias"+e);
         }finally{
             em.close();
         }

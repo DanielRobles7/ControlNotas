@@ -40,6 +40,7 @@ public class MantenimientoAcceso {
            em.persist(acceso);
            em.getTransaction().commit();
            flag=1;
+            System.out.println("guardarAcceso,mantenimientoAcceso,exito");
         }catch(Exception e){
             System.out.println(e.getMessage());
             em.getTransaction().rollback();
@@ -60,6 +61,7 @@ public class MantenimientoAcceso {
             System.out.println(acceso);
         }catch(Exception e){
             em.getTransaction().rollback();
+            System.out.println("consultarAcceso,mantenimentoAcceso,Error"+e);
         }finally{
             em.close();
         }
@@ -76,6 +78,7 @@ public class MantenimientoAcceso {
            listaAcceso=query.getResultList();
         }catch(Exception e){
             em.getTransaction().rollback();
+            System.out.println("Error,consultarAcceso,MantenimientoAcceso"+e);
         }finally{
             em.close();
         }
@@ -91,7 +94,7 @@ public class MantenimientoAcceso {
             em.remove(acceso);
             em.getTransaction().commit();
          }catch(Exception e){
-             System.out.println("error"+e);
+             System.out.println("error eliminarAcceso,mantenimientoAcceso"+e);
              em.getTransaction().rollback();
          }finally{
              em.close();
@@ -102,7 +105,7 @@ public class MantenimientoAcceso {
     public int actualizarAcceso(Acceso acceso){
         
         EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
-        Acceso acces=null;
+        Acceso acces;
         em.getTransaction().begin();
         int flag=0;
         System.out.println(acceso);
@@ -116,8 +119,9 @@ public class MantenimientoAcceso {
            acces.setCampo(acceso.getCampo());
            em.getTransaction().commit();
            flag=1;
+            System.out.println("ActualizarAcceso, MantenimientoAcces, Correcto ");
         }catch(Exception e){
-            System.out.println("error"+e);
+            System.out.println("Error, ActualizarAcceso, MantenimientoAcceso "+e);
             em.getTransaction().rollback();
         }finally{
             em.close();
@@ -133,8 +137,10 @@ public class MantenimientoAcceso {
         try{
            idMax = Integer.parseInt(em.createQuery(sql).getSingleResult().toString());
            em.getTransaction().commit();
-        }catch(Exception e){
+            System.out.println("consultar max, mantenimientoAcceso, Correcto ");
+        }catch(NumberFormatException e){
             em.getTransaction().rollback();
+            System.out.println("error en consultar max, mantenimientoAcceso "+e);
         }finally{
             em.close();
         }

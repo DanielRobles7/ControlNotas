@@ -38,9 +38,11 @@ public class MantenimientoEscuela {
             em.persist(escuelas);
             em.getTransaction().commit();
             flag=1;
+            System.out.println("exito,guardarEscuelas,mantenimientoEscuelas");
         }catch(Exception e){
             em.getTransaction().rollback();
             flag=0;
+            System.out.println("error,guardarEscuelas,mantenimientoEscuelas"+e);
         }finally{
             em.close();
         }
@@ -54,10 +56,10 @@ public class MantenimientoEscuela {
           try{
              escuel=em.find(Escuelas.class, codigoEscuela);
               em.getTransaction().commit();
-              
+              System.out.println("exito,consultaridEscuela,mantenimientoEscuela");
           }catch(Exception e){
               em.getTransaction().rollback();
-              
+              System.out.println("error,consultaridEscuela,mantenimientoEscuela"+e);
           }finally{
               em.close();
           }
@@ -106,10 +108,12 @@ public class MantenimientoEscuela {
                       
               em.getTransaction().commit();
                flag=1;
+               System.out.println("exito,ActualizarEscuelas,mantenimientoEscuelas");
           }catch(Exception e){
             
               em.getTransaction().rollback();
             flag=0; 
+              System.out.println("error,ActiualizarEscuelas,mantenimientoEscuelas"+e);
           }finally{
               em.close();
           }
@@ -132,10 +136,12 @@ public class MantenimientoEscuela {
                       
               em.getTransaction().commit();
                flag=1;
+               System.out.println("exito,eliminarEscuelas,mantenimientoEscuelas");
           }catch(Exception e){
             
               em.getTransaction().rollback();
             flag=0; 
+              System.out.println("error,eliminarEscuelas,mantenimientoEscuelas"+e);
           }finally{
               em.close();
           }

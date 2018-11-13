@@ -24,10 +24,12 @@ public class MantenimientoAlumnos {
           em.persist(alumnos);
           em.getTransaction().commit();
           flag=1;
+            System.out.println("exito,guardarAlumnos,mantenimientoAlumnos");
         }catch(Exception e){
             System.out.println(e.getMessage());
             em.getTransaction().rollback();
             flag=0;
+            System.out.println("error guardarAlumnos,mantenimientoAlumnos"+e);
         }finally{
             em.close();
         }
@@ -41,8 +43,10 @@ public class MantenimientoAlumnos {
        try{
            alumnos=em.find(Alumnos.class, nie);
            em.getTransaction().commit();
+           System.out.println("exito,consultarAlumnos,mantenimientoAlumnos");
        }catch(Exception e){
            em.getTransaction().rollback();
+           System.out.println("error,consultarAlumnos,mantenimientoAlumnos"+e);
        }finally{
            em.close();
        }
@@ -91,9 +95,11 @@ public class MantenimientoAlumnos {
               
               em.getTransaction().commit();
               flag=1;
+              System.out.println("exito,ActualizarAlumnos,mantenimientoAlumnos");
           }catch(Exception e){
               em.getTransaction().rollback();
               flag=0;
+              System.out.println("error,ActualizarAlumnos,mantenimientoAlumnos"+e);
           }finally{
               em.close();
           }
@@ -113,6 +119,7 @@ public class MantenimientoAlumnos {
          }catch(Exception e){
              em.getTransaction().rollback();
              flag=0;
+             System.out.println("error eliminarAlumnos,mantenimientoAlumnos"+e);
          }finally{
              em.close();
          }
