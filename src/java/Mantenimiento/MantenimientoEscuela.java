@@ -108,12 +108,12 @@ public class MantenimientoEscuela {
                       
               em.getTransaction().commit();
                flag=1;
-               System.out.println("exito,ActualizarEscuelas,mantenimientoEscuelas");
+               System.out.println("EXITOSO");
           }catch(Exception e){
             
               em.getTransaction().rollback();
             flag=0; 
-              System.out.println("error,ActiualizarEscuelas,mantenimientoEscuelas"+e);
+              System.out.println("ERROR. "+e);
           }finally{
               em.close();
           }

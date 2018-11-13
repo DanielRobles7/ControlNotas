@@ -12,6 +12,16 @@ and open the template in the editor.
     <h:head>
         <title>Escuela</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            
+            .ui-datatable .ui-paginator {
+                background-color: #000026;
+            }
+            .ui-datatable .ui-paginator-page{
+                background-color: #1a6ba2 !important;  
+                color: white !important;
+      }
+        </style>
     </h:head>
     <h:body>
         <h:form id="form">
@@ -66,17 +76,30 @@ and open the template in the editor.
         <p:dialog id="desplegable" style="text-align: center" header="Actualizar" widgetVar="wdlgdesplegable">
             <h:form>
                 <center>
-                        <h:outputLabel style="color: #000000" value="Codigo: " /><p:spacer width="7" height="15"/><p:inputText value="#{beanEscuela.escuela.codigoEscuela}" /><p:spacer width="20" height="15"/>
-                        <h:outputLabel style="color: #000000" value="Nombre: " /><p:spacer width="7" height="15"/><p:inputText value="#{beanEscuela.escuela.nombreEscuela}" /><p:spacer width="20" height="15"/>
-                        <h:outputLabel style="color: #000000" value="Telefono: " /><p:spacer width="7" height="15"/><p:inputText value="#{beanEscuela.escuela.telefono}"/><br /><br />
-                        <h:outputLabel style="color: #000000" value="Correo: " /><p:spacer width="7" height="15"/><p:inputText value="#{beanEscuela.escuela.correo}"/><p:spacer width="20" height="15"/>
-                        <h:outputLabel style="color: #000000" value="Municipio: " /><p:spacer width="7" height="15"/><p:inputText value="#{beanEscuela.escuela.municipio}" /><p:spacer width="20" height="15"/>
-                        <h:outputLabel style="color: #000000" value="Direccion: " /><p:spacer width="7" height="15"/><p:inputTextarea  value="#{beanEscuela.escuela.direccion}" /><br /><br />
-                        <h:outputLabel style="color: #000000" value="Nombre Director: " /><p:spacer width="7" height="15"/><p:inputText style="width: 300px;"  value="#{beanEscuela.escuela.nombreDirector}"/><br /><br />
-                        <h:outputLabel style="color: #000000" value="Id Acceso: " /><p:spacer width="7" height="15"/><p:inputText style="width: 50px;"  value="#{beanEscuela.escuela.idAcceso.idAcceso}" readonly="true"/><br /><br />
-                        <h:outputLabel style="color: #000000" value="Estado: " /><p:spacer width="7" height="15"/><p:inputText style="width: 50px;"  value="#{beanEscuela.escuela.estado}" readonly="true"/><br /><br />
-                        <p:commandButton value="Actualizar" actionListener="#{beanEscuela.actualizar()}" update=":form:Tabla desplegable"/>
-                    </center>
+                    <h:outputLabel style="color: #000000" value="Codigo: " /><p:spacer width="7" height="15"/>
+                    <p:inputText value="#{beanEscuela.escuela.codigoEscuela}" /><p:spacer width="20" height="15"/>
+                    <h:outputLabel style="color: #000000" value="Nombre: " /><p:spacer width="7" height="15"/>
+                    <p:inputText value="#{beanEscuela.escuela.nombreEscuela}" /><p:spacer width="20" height="15"/>
+                    <h:outputLabel style="color: #000000" value="Telefono: " /><p:spacer width="7" height="15"/>
+                    <p:inputText value="#{beanEscuela.escuela.telefono}"/><br /><br />
+                    <h:outputLabel style="color: #000000" value="Correo: " /><p:spacer width="7" height="15"/>
+                    <p:inputText value="#{beanEscuela.escuela.correo}"/><p:spacer width="20" height="15"/>
+                    <h:outputLabel style="color: #000000" value="Municipio: " /><p:spacer width="7" height="15"/>
+                    <p:inputText value="#{beanEscuela.escuela.municipio}" /><p:spacer width="20" height="15"/>
+                    <h:outputLabel style="color: #000000" value="Direccion: " /><p:spacer width="7" height="15"/>
+                    <p:inputTextarea  value="#{beanEscuela.escuela.direccion}" /><br /><br />
+                    <h:outputLabel style="color: #000000" value="Nombre Director: " /><p:spacer width="7" height="15"/>
+                    <p:inputText style="width: 300px;"  value="#{beanEscuela.escuela.nombreDirector}"/><br /><br />
+                    <h:outputLabel style="color: #000000" value="Id Acceso: " /><p:spacer width="7" height="15"/>
+                    <p:inputText style="width: 50px;"  value="#{beanEscuela.escuela.idAcceso.idAcceso}" readonly="true"/><br /><br />
+                    <h:outputLabel style="color: #000000" value="Estado: " /><p:spacer width="7" height="15"/>
+                    <p:inputText style="width: 50px;"  value="#{beanEscuela.escuela.estado}" readonly="true"/><br /><br />
+                    <h:outputLabel style="color: #000000" value="Latitud: " /><p:spacer width="7" height="15"/>
+                    <p:inputText style="width: 50px;"  value="#{beanEscuela.escuela.latitud}" readonly="true"/>
+                    <h:outputLabel style="color: #000000" value="Longitud: " /><p:spacer width="7" height="15"/>
+                    <p:inputText style="width: 50px;"  value="#{beanEscuela.escuela.longitud}" readonly="true"/><br /><br />
+                    <p:commandButton value="Actualizar" actionListener="#{beanEscuela.actualizar()}" update=":form:Tabla desplegable"/>
+                </center>
             </h:form>
         </p:dialog>
     </h:body>

@@ -26,12 +26,6 @@ public class BeanEscuela {
     private Escuelas escuela=new Escuelas();
     private List<Escuelas> listE=new ArrayList();
 
-    public static void main(String[] args) {
-        int numeroAleatorio = (int) (Math.random()*999+100);
-        System.out.println(numeroAleatorio);
-//        String nom="hola a todos";
-//        System.out.println(nom.substring(0, 7));
-    }
     
     @PostConstruct
     public void init() {
@@ -96,10 +90,8 @@ public class BeanEscuela {
     }
     public void modificar(Escuelas escuela){
         MantenimientoEscuela me=new MantenimientoEscuela();
-        System.out.println("Modificaremos "+escuela.getCodigoEscuela());
         escuela=me.consultarid(escuela.getCodigoEscuela());
         this.escuela=escuela;
-        System.out.println("Modificar: "+escuela);
     }
     public void eliminar(Escuelas escuela){
         MantenimientoEscuela me=new MantenimientoEscuela();
@@ -107,25 +99,12 @@ public class BeanEscuela {
         listE=me.consultar();
     }
     public void actualizar(){
-        System.out.println("Actualizar "+escuela.getCodigoEscuela());
-        System.out.println("Actualizar "+escuela.getNombreEscuela());
-        System.out.println("Actualizar "+escuela.getTelefono());
-        System.out.println("Actualizar "+escuela.getCorreo());
-        System.out.println("Actualizar "+escuela.getMunicipio());
-        System.out.println("Actualizar "+escuela.getDireccion());
-        System.out.println("Actualizar "+escuela.getNombreDirector());
-        System.out.println("Actualizar "+escuela.getIdAcceso());
-        System.out.println("Actualizar "+escuela.getEstado());
-        System.out.println("Actualizar "+escuela.getLatitud());
-        System.out.println("Actualizar "+escuela.getLongitud());
-        MantenimientoEscuela me=new MantenimientoEscuela();
-        Integer idMax;
-        idMax=escuela.getIdAcceso().getIdAcceso();
-        Acceso acces=new Acceso();
-        acces.setIdAcceso(idMax);
-        escuela.setIdAcceso(acces);
+        MantenimientoEscuela me= new MantenimientoEscuela();
         me.Actualizar(escuela);
-        System.out.println(me.Actualizar(escuela));
+        System.out.println("Actualizar: "+escuela);
+        
         listE=me.consultar();
+        
+        System.out.println("esta se va actualizar: "+me.Actualizar(escuela));
     }
 }
