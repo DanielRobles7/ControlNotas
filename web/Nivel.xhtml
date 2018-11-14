@@ -75,7 +75,7 @@ and open the template in the editor.
         <p:dialog id="desplegable" header="Actualizar" widgetVar="wdlgdesplegable">
             <h:form style="text-align: center;">
                 <h:outputLabel value="Grado: " /> <br />
-                <p:inputText value="#{beanNivel.nivel.grado}" /><br /><br />
+                <p:inputText value="#{beanNivel.nivel.grado}" readonly="#{not facesContext.postback or facesContext.renderResponse}" /><br /><br />
                 <h:outputLabel value="Escuela: " /> <br />
                 <p:inputText value="#{beanNivel.nivel.codigoEscuela.codigoEscuela}" label="#{beanNivel.nivel.codigoEscuela.nombreEscuela}"/><br />
                 <br /><br /><br />

@@ -39,6 +39,10 @@ and open the template in the editor.
                 /*color: black !important;*/
 
             }
+            .ui-panel-titlebar /*Para el titulo de panel */
+            { 
+                background-color: #3B73B9;  
+            } 
             .ui-datatable .ui-paginator {
                 background-color: rgba(  93, 173, 226 ,0.05) !important;
             }
@@ -156,7 +160,7 @@ and open the template in the editor.
         <p:dialog styleClass="Des" id="desplegableNotas" style="text-align: center" header="Actualizar" widgetVar="wdlgdesplegable">
             <h:form  styleClass="Des">
                 <h:outputLabel value="Id: " /><p:spacer width="100" height="15" /> <h:outputLabel value="Nie: " /> <br />
-                <p:inputText style="width: 105px" value="#{beanNotas.notas.idNota}" /><p:spacer width="40" height="15" />   <p:inputText style="width: 105px" value="#{beanNotas.notas.nie.nie}"/><br /><br />
+                <p:inputText style="width: 105px" value="#{beanNotas.notas.idNota}" readonly="#{not facesContext.postback or facesContext.renderResponse}" /><p:spacer width="40" height="15" />   <p:inputText style="width: 105px" value="#{beanNotas.notas.nie.nie}"/><br /><br />
 
                 <h:outputLabel value="Materia: " /> <br />
                 <p:inputText style="width: 105px" value="#{beanNotas.notas.nombreMateria.nombreMateria}" /><br /><br />
