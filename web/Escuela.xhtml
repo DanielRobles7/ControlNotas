@@ -97,7 +97,7 @@ and open the template in the editor.
                     <h:outputLabel style="color: #000000" value="latitud " /><p:spacer width="7" height="15"/>
                     <p:inputText value="#{beanEscuela.escuela.latitud}" /><p:spacer width="20" height="15"/><br /><br />
                     <h:outputLabel style="color: #000000" value="Estado: " /><p:spacer width="7" height="15"/>
-                    <p:inputText style="width: 300px;"  value="#{beanEscuela.escuela.estado}"/><br /><br />
+                    <p:inputText style="width: 300px;"  value="#{beanEscuela.escuela.estado}" /><br /><br />
                     <p:commandButton value="Actualizar" actionListener="#{beanEscuela.actualizar()}" update=":form:Tabla desplegable"/>
                 </center>
             </h:form>

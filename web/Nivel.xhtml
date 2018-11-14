@@ -47,11 +47,18 @@ and open the template in the editor.
 
 
             <p:dataTable  id="table" styleClass="tabla" value="#{beanNivel.lista}" var="lista" paginator="true" rows="10" >
-
-                <p:column headerText="Grado">
+                <p:columnGroup type="header">
+                    <p:row>
+                        <p:column headerText="Grado" />
+                        <p:column headerText="Escuela"/>
+                        <p:column/>
+                        <p:column/>
+                    </p:row>
+                </p:columnGroup>
+                <p:column >
                     <p:outputLabel value="#{lista.grado}" />
                 </p:column>
-                <p:column headerText="Escuela">
+                <p:column>
                     <p:outputLabel value="#{lista.codigoEscuela.nombreEscuela}" />
                 </p:column>
                 <p:column>
