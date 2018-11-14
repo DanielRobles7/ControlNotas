@@ -1,0 +1,22 @@
+ <p:dataTable  id="table" styleClass="tabla" value="#{beanNivel.lista}" var="lista" paginator="true" rows="10" >
+                <p:columnGroup type="header">
+                    <p:row>
+                        <p:column headerText="Grado" />
+                        <p:column headerText="Escuela"/>
+                        <p:column/>
+                        <p:column/>
+                    </p:row>
+                </p:columnGroup>
+                <p:column >
+                    <p:outputLabel value="#{lista.grado}" />
+                </p:column>
+                <p:column>
+                    <p:outputLabel value="#{lista.codigoEscuela.nombreEscuela}" />
+                </p:column>
+                <p:column>
+                    <p:commandButton value="Editar" icon="ui-icon-pencil" actionListener="#{beanNivel.modificar(lista)}" oncomplete="PF('wdlgdesplegable').show();" update=":desplegable"/>
+                </p:column>
+                <p:column >
+                    <p:commandButton value="Eliminar" actionListener="#{beanNivel.eliminar(lista)}" icon="ui-icon-close" update="table" />
+                </p:column>
+            </p:dataTable>
