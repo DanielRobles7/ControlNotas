@@ -14,86 +14,95 @@ and open the template in the editor.
         <style>
             form .Formu{
                 background-color: #333333 !important;
+                background-image:url(imagenes/fondos/fondo4.jpg);
                 color: white !important;
                 font-family: 'Eras Bold ITC' !important;
             }
             form .tabla{
-                font-size: 13px !important;
-                color: darkslateblue !important;
+                background-image:url(imagenes/fondos/fondo4.jpg);
+                font-size: 13px;
+                color: black;
             }
             form .btnBo{
                 background-color: #999999 !important;
                 /*color: black !important;*/
-                
-                }
-                .Des{
-                    background-color: #333333 !important;
+
+            }
+            .Des{
+                background-color: #333333 !important;
                 color: white !important;
                 text-align: center !important;
-                
-                }
-                form .Ac{
-                    background-color: #999999 !important;
+
+            }
+            form .Ac{
+                background-color: #999999 !important;
                 /*color: black !important;*/
-                
-                }
+
+            }
             .ui-datatable .ui-paginator {
-                background-color: #000000;
+                background-color: rgba(  93, 173, 226 ,0.05) !important;
             }
             .ui-datatable .ui-paginator-page{
                 background-color: #333333 !important;  
                 color: white !important;
-      }
+            }
+            body{
+                background-image:url(imagenes/fondos/fondo2.jpg);  
+            }
+            form .columna{
+                background-color: rgba(  93, 173, 226 ,0.05) !important;
+               color: black;
+            }
         </style>
     </h:head>
     <h:body style="box-decoration-break: initial">
         <h:form id="fo">
             <center>
-                <p:panel styleClass="Formu" style="background: #61a6fa;border: #b3d5f5;margin-bottom:20px" id="horizontal" header="" toggleable="true" toggleOrientation="horizontal" collapsed="true">
-                <center>
-                    <h:outputLabel style="color: #ffffff" value="NIE: " /> 
-                    <h:selectOneMenu  value="#{beanNotas.notas.nie.nie}" style="width:225px" >
-                        <f:selectItem itemValue="" itemLabel="Seleccione" />
-                        <f:selectItems value="#{beanNotas.listNie}" var="listNie" itemValue="#{listNie.nie}" itemLabel="#{listNie.nombre} #{listNie.apellido}" />
-                    </h:selectOneMenu>
-                    <p:spacer width="180" height="15" />
-                    <h:outputLabel style="color: #ffffff" value="Materia: " /> 
-                    <h:selectOneMenu  value="#{beanNotas.notas.nombreMateria.nombreMateria}" style="width:225px" >
-                        <f:selectItem itemValue="" itemLabel="Seleccione" />
-                        <f:selectItems value="#{beanNotas.listM}" var="listM" itemValue="#{listM.nombreMateria}" itemLabel="#{listM.nombreMateria}" />
-                    </h:selectOneMenu>
-                </center>
-                <br />
-                <center>
+                <p:panel styleClass="Formu"  style="background-image: url(imagenes/fondos/fondo4.jpg);border: #b3d5f5;margin-bottom:20px" id="horizontal" header="" toggleable="true" toggleOrientation="horizontal" collapsed="true">
+                    <center>
+                        <h:outputLabel style="color:black" value="NIE: " /> 
+                        <h:selectOneMenu  value="#{beanNotas.notas.nie.nie}" style="width:225px" >
+                            <f:selectItem itemValue="" itemLabel="Seleccione" />
+                            <f:selectItems value="#{beanNotas.listNie}" var="listNie" itemValue="#{listNie.nie}" itemLabel="#{listNie.nombre} #{listNie.apellido}" />
+                        </h:selectOneMenu>
+                        <p:spacer width="180" height="15" />
+                        <h:outputLabel style="color: black" value="Materia: " /> 
+                        <h:selectOneMenu  value="#{beanNotas.notas.nombreMateria.nombreMateria}" style="width:225px" >
+                            <f:selectItem itemValue="" itemLabel="Seleccione" />
+                            <f:selectItems value="#{beanNotas.listM}" var="listM" itemValue="#{listM.nombreMateria}" itemLabel="#{listM.nombreMateria}" />
+                        </h:selectOneMenu>
+                    </center>
                     <br />
-                    <br />
-                    <p:commandButton  value="Guardar" styleClass="Ac" actionListener="#{beanNotas.agregar()}" update="tableNotas,fo" />
-                </center>
-            </p:panel>
+                    <center>
+                        <br />
+                        <br />
+                        <p:commandButton  value="Guardar" styleClass="Ac" actionListener="#{beanNotas.agregar()}" update="tableNotas,fo" />
+                    </center>
+                </p:panel>
             </center>
             <br />
             <br />
-            <p:dataTable styleClass="tabla" style="text-align: center"  id="tableNotas" value="#{beanNotas.listNo}" var="listNo" paginator="true" rows="10">
-                <p:columnGroup type="header">
-                    <p:row>
-                        <p:column rowspan="2" headerText="Id" styleClass="tabla"></p:column>
-                        <p:column rowspan="2" headerText="Nombre" styleClass="tabla"></p:column>
-                        <p:column rowspan="2" headerText="Apellido" styleClass="tabla"></p:column>
-                        <p:column rowspan="2" headerText="Materia" styleClass="tabla"></p:column>
-                        <p:column colspan="9" headerText="Notas" styleClass="tabla"></p:column>
-                        <p:column rowspan="2" ></p:column>
-                        <p:column rowspan="2" ></p:column>
+            <p:dataTable  rowStyleClass="tabla" style="text-align: center"  id="tableNotas" value="#{beanNotas.listNo}" var="listNo"  paginatorPosition="bottom" paginator="true" rows="10">
+                <p:columnGroup type="header"  >
+                    <p:row >
+                        <p:column rowspan="2" headerText="Id" styleClass="columna"></p:column>
+                        <p:column rowspan="2" headerText="Nombre" styleClass="columna"></p:column>
+                        <p:column rowspan="2" headerText="Apellido" styleClass="columna"></p:column>
+                        <p:column rowspan="2" headerText="Materia" styleClass="columna"></p:column>
+                        <p:column colspan="9" headerText="Notas" styleClass="columna"></p:column>
+                        <p:column rowspan="2" styleClass="columna"> </p:column>
+                        <p:column rowspan="2" styleClass="columna"> </p:column>
                     </p:row>
                     <p:row>
-                        <p:column headerText="Nota1" styleClass="tabla"></p:column>
-                        <p:column headerText="Nota2" styleClass="tabla"></p:column>
-                        <p:column headerText="Nota3" styleClass="tabla"></p:column>
-                        <p:column headerText="Nota4" styleClass="tabla"></p:column>
-                        <p:column headerText="Nota5" styleClass="tabla"></p:column>
-                        <p:column headerText="Nota6" styleClass="tabla"></p:column>
-                        <p:column headerText="Promedio" styleClass="tabla"></p:column>
-                        <p:column headerText="Reposición" styleClass="tabla"></p:column>
-                        <p:column headerText="Nota Final" styleClass="tabla"></p:column>
+                        <p:column headerText="Nota1" styleClass="columna"></p:column>
+                        <p:column headerText="Nota2" styleClass="columna"></p:column>
+                        <p:column headerText="Nota3" styleClass="columna"></p:column>
+                        <p:column headerText="Nota4" styleClass="columna"></p:column>
+                        <p:column headerText="Nota5" styleClass="columna"></p:column>
+                        <p:column headerText="Nota6" styleClass="columna"></p:column>
+                        <p:column headerText="Promedio" styleClass="columna"></p:column>
+                        <p:column headerText="Reposición" styleClass="columna"></p:column>
+                        <p:column headerText="Nota Final" styleClass="columna"></p:column>
                     </p:row>
                 </p:columnGroup>
                 <p:column>
@@ -151,7 +160,7 @@ and open the template in the editor.
 
                 <h:outputLabel value="Materia: " /> <br />
                 <p:inputText style="width: 105px" value="#{beanNotas.notas.nombreMateria.nombreMateria}" /><br /><br />
-                
+
                 <h:outputLabel value="Nota1: " /><p:spacer width="10" height="15" /> <p:inputText style="width: 45px" value="#{beanNotas.notas.nota1}"/><p:spacer width="20" height="15" />
                 <h:outputLabel value="Nota2: " /><p:spacer width="10" height="15" /><p:inputText style="width: 45px" value="#{beanNotas.notas.nota2}" /><p:spacer width="20" height="15" />
                 <h:outputLabel value="Nota3: " /><p:spacer width="10" height="15" /><p:inputText style="width: 45px" value="#{beanNotas.notas.nota3}" /><br /><br />

@@ -17,12 +17,21 @@ and open the template in the editor.
             }
             form .panelBlue{
                 background-color: #66ccff !important;
-                font-family: fantasy !important;
+                background-image:url(imagenes/fondos/fondo4.jpg);
+                font-family: 'Berlin Sans FB Demi' !important;
             }
             form .tabla{
                 background-color: #00cc99 !important;
+                background-image:url(imagenes/fondos/fondo4.jpg);
                 font-family: 'Berlin Sans FB Demi' !important;
                 font-size: 18px !important;
+            }
+            form .columna{
+                background-color: #4f84ff !important;
+               
+            }
+            body{
+              background-image:url(imagenes/fondos/fondo2.jpg);  
             }
         </style>
         <title>Nivel</title>
@@ -32,24 +41,24 @@ and open the template in the editor.
         <h:form id="fo">
             <p:panel id="horizontal" styleClass="panelBlue" header="" style="text-align: center" toggleable="true" toggleOrientation="horizontal" collapsed="true">
                 <p:spacer width="170" height="15" />
-                <h:outputLabel value="Grado: " /> <p:inputText value="#{beanNivel.nivel.grado}" ><p:keyFilter regEx="/[a-z_]/i" /></p:inputText>
+                <h:outputLabel  style="color:black" value="Grado: " /> <p:inputText value="#{beanNivel.nivel.grado}" ><p:keyFilter regEx="/[a-z_]/i" /></p:inputText>
                 <p:spacer width="90" height="15" />
-                <h:outputLabel value="Escuela: " /> 
+                <h:outputLabel  style="color:black" value="Escuela: " /> 
                 <h:selectOneMenu  value="#{beanNivel.nivel.codigoEscuela.codigoEscuela}" style="width:225px" >
                     <f:selectItem itemValue="" itemLabel="Escoger Escuela" />
                     <f:selectItems value="#{beanNivel.listaE}" var="listaE" itemLabel="#{listaE.nombreEscuela}" itemValue="#{listaE.codigoEscuela}" />
                 </h:selectOneMenu>
                 <p:spacer width="120" height="15" />
-                <p:commandButton value="Guardar"  styleClass="styleGreen" actionListener="#{beanNivel.agregar()}" update="table,fo"/>
+                <p:commandButton value="Guardar"  styleClass="" actionListener="#{beanNivel.agregar()}" update="table,fo"/>
             </p:panel>
             <br></br>
             <br></br>
 
 
-            <p:dataTable  id="table" styleClass="tabla" value="#{beanNivel.lista}" var="lista" paginator="true" rows="10" >
+            <p:dataTable  id="table" rowStyleClass="tabla" value="#{beanNivel.lista}" var="lista" paginator="true" rows="10" >
 
-                <p:column headerText="Grado">
-                    <p:outputLabel value="#{lista.grado}" />
+                <p:column  styleClass="" headerText="Grado" >
+                    <p:outputLabel  value="#{lista.grado}" />
                 </p:column>
                 <p:column headerText="Escuela">
                     <p:outputLabel value="#{lista.codigoEscuela.nombreEscuela}" />
