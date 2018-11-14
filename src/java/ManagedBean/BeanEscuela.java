@@ -29,7 +29,7 @@ public class BeanEscuela {
     
     @PostConstruct
     public void init() {
-
+         escuela.setIdAcceso(new Acceso());
         MantenimientoEscuela mae = new MantenimientoEscuela();
 //        notas.setNie(new Alumnos());
         listE = mae.consultar();
@@ -51,7 +51,6 @@ public class BeanEscuela {
     public void setListE(List<Escuelas> listE) {
         this.listE = listE;
     }
-    
     public void agregar(){
         //Agregar Acceso
         Acceso acceso=new Acceso();

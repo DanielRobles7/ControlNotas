@@ -101,7 +101,7 @@ public class MantenimientoEscuela {
              esc.setCorreo(escuela.getCorreo());
              esc.setLongitud(escuela.getLongitud());
              esc.setLatitud(escuela.getLatitud());
-             esc.setNombreDirector(escuela.getNombreEscuela());
+             esc.setNombreDirector(escuela.getNombreDirector());
              esc.setIdAcceso(escuela.getIdAcceso());
              esc.setEstado(escuela.getEstado());
              esc.setCampo(escuela.getCampo());
