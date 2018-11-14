@@ -29,7 +29,7 @@ public class BeanEscuela {
     
     @PostConstruct
     public void init() {
-
+         escuela.setIdAcceso(new Acceso());
         MantenimientoEscuela mae = new MantenimientoEscuela();
 //        notas.setNie(new Alumnos());
         listE = mae.consultar();
@@ -92,6 +92,7 @@ public class BeanEscuela {
         MantenimientoEscuela me=new MantenimientoEscuela();
         escuela=me.consultarid(escuela.getCodigoEscuela());
         this.escuela=escuela;
+        System.out.println("id acceso"+escuela.getIdAcceso());
     }
     public void eliminar(Escuelas escuela){
         MantenimientoEscuela me=new MantenimientoEscuela();
@@ -100,6 +101,18 @@ public class BeanEscuela {
     }
     public void actualizar(){
         MantenimientoEscuela me= new MantenimientoEscuela();
+        System.out.println("codigo: "+escuela.getCodigoEscuela());
+        System.out.println("escuela: "+escuela.getNombreEscuela());
+        System.out.println("estado: "+escuela.getEstado());
+        System.out.println("longitud: "+escuela.getLongitud());
+        System.out.println("latitud: "+escuela.getLatitud());
+        System.out.println("telefono: "+escuela.getTelefono());
+        System.out.println("correo: "+escuela.getCorreo());
+        System.out.println("municipio: "+escuela.getMunicipio());
+        System.out.println("direccion: "+escuela.getDireccion());
+        System.out.println("director: "+escuela.getNombreDirector());
+        System.out.println("id acceso: "+escuela.getIdAcceso().getIdAcceso());
+        System.out.println("Hola");
         me.Actualizar(escuela);
         System.out.println("Actualizar: "+escuela);
         

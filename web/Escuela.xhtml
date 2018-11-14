@@ -90,14 +90,8 @@ and open the template in the editor.
                     <p:inputTextarea  value="#{beanEscuela.escuela.direccion}" /><br /><br />
                     <h:outputLabel style="color: #000000" value="Nombre Director: " /><p:spacer width="7" height="15"/>
                     <p:inputText style="width: 300px;"  value="#{beanEscuela.escuela.nombreDirector}"/><br /><br />
-                    <h:outputLabel style="color: #000000" value="Id Acceso: " /><p:spacer width="7" height="15"/>
-                    <p:inputText style="width: 50px;"  value="#{beanEscuela.escuela.idAcceso.idAcceso}" readonly="true"/><br /><br />
-                    <h:outputLabel style="color: #000000" value="Estado: " /><p:spacer width="7" height="15"/>
-                    <p:inputText style="width: 50px;"  value="#{beanEscuela.escuela.estado}" readonly="true"/><br /><br />
-                    <h:outputLabel style="color: #000000" value="Latitud: " /><p:spacer width="7" height="15"/>
-                    <p:inputText style="width: 50px;"  value="#{beanEscuela.escuela.latitud}" readonly="true"/>
-                    <h:outputLabel style="color: #000000" value="Longitud: " /><p:spacer width="7" height="15"/>
-                    <p:inputText style="width: 50px;"  value="#{beanEscuela.escuela.longitud}" readonly="true"/><br /><br />
+                    <h:outputLabel style="color: #000000" value="ID Acceso: " /><p:spacer width="7" height="15"/>
+                    <p:inputText style="width: 300px;"  value="#{beanEscuela.escuela.idAcceso.idAcceso}"/><br /><br />
                     <p:commandButton value="Actualizar" actionListener="#{beanEscuela.actualizar()}" update=":form:Tabla desplegable"/>
                 </center>
             </h:form>

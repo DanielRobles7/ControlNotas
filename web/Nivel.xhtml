@@ -68,7 +68,9 @@ and open the template in the editor.
                 <h:outputLabel value="Grado: " /> <br />
                 <p:inputText value="#{beanNivel.nivel.grado}" /><br /><br />
                 <h:outputLabel value="Escuela: " /> <br />
-                <p:inputText value="#{beanNivel.nivel.codigoEscuela.codigoEscuela}" label="#{beanNivel.nivel.codigoEscuela.nombreEscuela}"/><br />
+                <h:selectOneMenu  value="#{beanNivel.nivel.codigoEscuela.codigoEscuela}" style="width:225px" >
+                    <f:selectItems value="#{beanNivel.listaE}" var="listaE" itemLabel="#{listaE.nombreEscuela}" itemValue="#{listaE.codigoEscuela}" />
+                </h:selectOneMenu><br />
                 <br /><br /><br />
                 <p:commandButton value="Actualizar" actionListener="#{beanNivel.actualizar()}" update=":fo:table desplegable"/>
             </h:form>
