@@ -29,8 +29,14 @@ public class MantenimientoAcceso {
 //        }else{
 //            System.out.println("fallo");
 //        }
-//        System.exit(0);
-         System.out.println("ID MAXIMO: "+man.consultarMaxAcceso());
+//         System.out.println("ID MAXIMO: "+man.consultarMaxAcceso());
+//        Acceso acceso = man.loginAcceso("", "");
+//        if (acceso != null) {
+//            System.out.println(acceso.toString());
+//        }else{
+//            System.out.println("Usuario o contraseña incorecta o no existe");
+//        }
+        System.exit(0);
     }
    
     public int guardarAcesso(Acceso acceso){
@@ -147,5 +153,24 @@ public class MantenimientoAcceso {
         }
         return idMax;
     }
-    
+     
+     public Acceso loginAcceso (String user, String password){
+         
+         EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+         int id_lg_acceso = 0;
+         Acceso acceso = null;
+         String sql = "SELECT a.idAcceso FROM Acceso a WHERE usuario = " + user + " AND contrasena = " + password + " AND estado = 'activo';";
+         
+         try {
+             em.getTransaction().begin();
+             id_lg_acceso = Integer.parseInt(em.createQuery(sql).getSingleResult().toString());
+             em.getTransaction().commit();
+             acceso = this.consultarAcceso(id_lg_acceso);
+         } catch (NumberFormatException e) {
+             em.getTransaction().rollback();
+         } finally {
+             em.close();
+         }         
+          return acceso;
+     }
 }
