@@ -39,6 +39,7 @@ and open the template in the editor.
     <h:body>
 
         <h:form id="fo">
+            <center>
             <p:panel id="horizontal" styleClass="panelBlue" header="" style="text-align: center" toggleable="true" toggleOrientation="horizontal" collapsed="true">
                 <p:spacer width="170" height="15" />
                 <h:outputLabel  style="color:black" value="Grado: " /> <p:inputText value="#{beanNivel.nivel.grado}" ><p:keyFilter regEx="/[a-z_]/i" /></p:inputText>
@@ -51,11 +52,12 @@ and open the template in the editor.
                 <p:spacer width="120" height="15" />
                 <p:commandButton value="Guardar"  styleClass="" actionListener="#{beanNivel.agregar()}" update="table,fo"/>
             </p:panel>
+            </center>
             <br></br>
             <br></br>
 
 
-            <p:dataTable  id="table" rowStyleClass="tabla" value="#{beanNivel.lista}" var="lista" paginator="true" rows="10" >
+            <p:dataTable  id="table" rowStyleClass="tabla" paginatorPosition="bottom" value="#{beanNivel.lista}" var="lista" paginator="true" rows="10" >
 
                 <p:column  styleClass="" headerText="Grado" >
                     <p:outputLabel  value="#{lista.grado}" />
