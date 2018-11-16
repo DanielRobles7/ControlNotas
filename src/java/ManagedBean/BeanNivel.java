@@ -38,12 +38,12 @@ public class BeanNivel implements Serializable {
         nivel.setCodigoEscuela(new Escuelas());
         listaE = mae.consultar();
         lista = man.consultarTodosNivel();
-      
-  for(Escuelas e: listaE){
-      System.out.println(e.getCodigoEscuela());
-       System.out.println(e.getNombreEscuela());
-  }
-      
+
+        for (Escuelas e : listaE) {
+            System.out.println(e.getCodigoEscuela());
+            System.out.println(e.getNombreEscuela());
+        }
+
     }
 
     public Nivel getNivel() {
@@ -69,7 +69,8 @@ public class BeanNivel implements Serializable {
     public void setListaE(List<Escuelas> listaE) {
         this.listaE = listaE;
     }
- public void agregar() {
+
+    public void agregar() {
 
         System.out.println("esto son las nivel" + nivel);
         MantenimientoNivel man = new MantenimientoNivel();
@@ -78,14 +79,12 @@ public class BeanNivel implements Serializable {
         nivel.setCodigoEscuela(new Escuelas());
         nivel = new Nivel();
         String advertencia = "";
-        if (lista != null) {
-
-        } else {
+        
             if (man.guardarNivel(nivel) == 1) {
                 advertencia = "Guardado correctamente";
             } else {
                 advertencia = "No se ha guardado";
-            }
+            
         }
         FacesMessage msg = new FacesMessage(advertencia);
         FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -120,15 +119,13 @@ public class BeanNivel implements Serializable {
         MantenimientoNivel manf = new MantenimientoNivel();
         manf.eliminarNivel(nivel);
         lista = manf.consultarTodosNivel();
-        String advertencia="";
-        if (lista!=null) {
-            
-        } else {
-            if (manf.eliminarNivel(nivel)==1) {
-                advertencia="Se ha eliminado correctamente";
+        String advertencia = "";
+        
+            if (manf.eliminarNivel(nivel) == 1) {
+                advertencia = "Se ha eliminado correctamente";
             } else {
-                advertencia="No se ha podido eliminar";
-            }
+                advertencia = "No se ha podido eliminar";
+            
         }
         FacesMessage msg = new FacesMessage(advertencia);
         FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -143,20 +140,17 @@ public class BeanNivel implements Serializable {
         lista = man.consultarTodosNivel();
 
         System.out.println("esta es actualizar" + nivel);
-        
-        String advertencia = "";
-        if (lista != null) {
 
-        } else {
+        String advertencia = "";
+        
             if (man.ActualizarNivel(nivel) == 1) {
                 advertencia = "Actualizado correctamente";
             } else {
                 advertencia = "No se ha actualizado";
             }
-        }
+        
         FacesMessage msg = new FacesMessage(advertencia);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
 }
-
