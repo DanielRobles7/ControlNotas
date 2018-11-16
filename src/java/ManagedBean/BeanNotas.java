@@ -14,8 +14,10 @@ import Persistencia.Notas;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -91,11 +93,21 @@ public class BeanNotas {
         notas.setPromerio(0.0);
         notas.setReposicion(0.0);
         notas.setFinal1(0.0);
+        notas.setEstadoAlumno("activo");
+        notas.setEstadoNotas("activo");
         man.guardar(notas);
         listNo = man.consultar();
         notas.setNie(new Alumnos());
         notas.setNombreMateria(new Materias());
-        notas=new Notas();
+        notas = new Notas();
+        String adv = "";
+        if (man.guardar(notas) == 1) {
+            adv = "Guardado correctamente";
+        } else {
+            adv = "No se ha Guardado correctamente";
+        }
+        FacesMessage msg = new FacesMessage(adv);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
     public void modificar(Notas notas) {
@@ -106,12 +118,28 @@ public class BeanNotas {
 
         System.out.println("este de modificar" + notas);
 
+        String adv = "";
+        if (notas != null) {
+            adv = "Consulta exitosa";
+        } else {
+            adv = "No se pudo realizar la consulta";
+        }
+        FacesMessage msg = new FacesMessage(adv);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
     public void eliminar(Notas notas) {
         MantenimientoNotas man = new MantenimientoNotas();
         man.eliminar(notas);
         listNo = man.consultar();
+        String adv = "";
+        if (man.eliminar(notas) == 1) {
+            adv = "Se elimino correctamente";
+        } else {
+            adv = "No se ha podido eliminar";
+        }
+        FacesMessage msg = new FacesMessage(adv);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
     public void actualizar() {
@@ -121,8 +149,15 @@ public class BeanNotas {
         System.out.println(man.Actualizar(notas));
 
         listNo = man.consultar();
-
+        String adv = "";
         System.out.println("esta es actualizar" + notas);
+        if (man.Actualizar(notas) == 1) {
+            adv = "Se ha Actualizado Correctamente";
+        } else {
+            adv = "No se ha podido actualizar";
+        }
+        FacesMessage msg = new FacesMessage(adv);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
 }

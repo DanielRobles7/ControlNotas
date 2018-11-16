@@ -61,6 +61,7 @@ and open the template in the editor.
         </style>
     </h:head>
     <h:body style="box-decoration-break: initial">
+        <p:growl id="msg" showDetail="true"/>
         <h:form id="fo">
             <center>
                 <p:panel styleClass="Formu"  style="background-image: url(imagenes/fondos/fondo4.jpg);border: #b3d5f5;margin-bottom:20px" id="horizontal" header="" toggleable="true" toggleOrientation="horizontal" collapsed="true">
@@ -81,7 +82,7 @@ and open the template in the editor.
                     <center>
                         <br />
                         <br />
-                        <p:commandButton  value="Guardar" styleClass="Ac" actionListener="#{beanNotas.agregar()}" update="tableNotas,fo" />
+                        <p:commandButton  value="Guardar" styleClass="Ac" actionListener="#{beanNotas.agregar()}" update="msg,tableNotas,fo" />
                     </center>
                 </p:panel>
             </center>
@@ -150,10 +151,10 @@ and open the template in the editor.
                     <h:outputText value="#{listNo.final1}"></h:outputText>
                 </p:column>
                 <p:column>
-                    <p:commandButton value="Borrar" styleClass="btnBo" actionListener="#{beanNotas.eliminar(listNo)}" ajax="false" icon="ui-icon-close" update="tableNotas" />
+                    <p:commandButton value="Borrar" styleClass="btnBo" actionListener="#{beanNotas.eliminar(listNo)}" ajax="false" icon="ui-icon-close" update="msg,tableNotas" />
                 </p:column>
                 <p:column>
-                    <p:commandButton value="Editar" styleClass="Ac" icon="ui-icon-pencil" actionListener="#{beanNotas.modificar(listNo)}" oncomplete="PF('wdlgdesplegable').show();" update=":desplegableNotas"/>
+                    <p:commandButton value="Editar" styleClass="Ac" icon="ui-icon-pencil" actionListener="#{beanNotas.modificar(listNo)}" oncomplete="PF('wdlgdesplegable').show();" update=":desplegableNotas msg"/>
                 </p:column>
             </p:dataTable>
         </h:form>
@@ -180,8 +181,12 @@ and open the template in the editor.
                 <p:inputText style="width: 45px" value="#{beanNotas.notas.reposicion}" /><br /><br />
                 <h:outputLabel style="color:red " value="Nota Final: " /> <br />
                 <p:inputText style="width: 45px" value="#{beanNotas.notas.final1}" /><br /><br />
+                <h:outputLabel value="Estado Alumno: " /> <br />
+                <p:inputText style="width: 45px" value="#{beanNotas.notas.estadoAlumno}" /><br /><br />
+                <h:outputLabel style="color:red " value="Estado Notas: " /> <br />
+                <p:inputText style="width: 45px" value="#{beanNotas.notas.estadoNotas}" /><br /><br />
                 <br /><br /><br />
-                <p:commandButton value="Actualizar" styleClass="Ac" actionListener="#{beanNotas.actualizar()}" update=":fo:tableNotas desplegableNotas"/>
+                <p:commandButton value="Actualizar" styleClass="Ac" actionListener="#{beanNotas.actualizar()}" update=":fo:tableNotas desplegableNotas,msg"/>
             </h:form>
         </p:dialog>
     </h:body>

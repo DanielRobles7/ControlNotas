@@ -12,8 +12,10 @@ import Persistencia.Escuelas;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -85,17 +87,40 @@ public class BeanEscuela {
         MantenimientoEscuela me=new MantenimientoEscuela();
         me.guardar(escuela);
         listE=me.consultar();
-        
+        String adv="";
+        if (me.guardar(escuela)==1) {
+            adv="Guardado exitosamente";
+        } else {
+            adv="Error al guardar";
+        }
+        FacesMessage msg = new FacesMessage(adv);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     public void modificar(Escuelas escuela){
         MantenimientoEscuela me=new MantenimientoEscuela();
         escuela=me.consultarid(escuela.getCodigoEscuela());
         this.escuela=escuela;
+        String adv="";
+        if (escuela!=null) {
+            adv="Consulta exitosa";
+        } else {
+            adv="Error al consultar";
+        }
+        FacesMessage msg = new FacesMessage(adv);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     public void eliminar(Escuelas escuela){
         MantenimientoEscuela me=new MantenimientoEscuela();
         me.eliminar(escuela);
         listE=me.consultar();
+        String adv="";
+        if (me.eliminar(escuela)==1) {
+            adv="Se ha eliminado exitosamente";
+        } else {
+            adv="Error al eliminar";
+        }
+        FacesMessage msg = new FacesMessage(adv);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     public void actualizar(){
         MantenimientoEscuela me= new MantenimientoEscuela();
@@ -105,5 +130,13 @@ public class BeanEscuela {
         listE=me.consultar();
         
         System.out.println("esta se va actualizar: "+me.Actualizar(escuela));
+        String adv="";
+        if (me.Actualizar(escuela)==1) {
+            adv="Se ha actualizado Correctamente";
+        } else {
+            adv="Error al actualizar";
+        }
+        FacesMessage msg = new FacesMessage(adv);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 }
