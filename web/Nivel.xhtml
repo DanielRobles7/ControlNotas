@@ -74,7 +74,7 @@ and open the template in the editor.
         </p:dataTable>
     </h:form>
 
-    <p:dialog id="desplegable" header="Actualizar" widgetVar="wdlgdesplegable">
+        <p:dialog id="desplegable" style="background-image: url(imagenes/fondos/fondo4.jpg);text-align: center;" header="Actualizar" widgetVar="wdlgdesplegable">
         <h:form style="text-align: center;">
             <h:outputLabel value="Grado: " /> <br />
             <p:inputText value="#{beanNivel.nivel.grado}" readonly="#{not facesContext.postback or facesContext.renderResponse}" /><br /><br />

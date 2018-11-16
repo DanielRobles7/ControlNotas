@@ -35,8 +35,12 @@ and open the template in the editor.
             }
              .ui-panel-titlebar /*Para el titulo de panel */
             { 
-                background-color: #3B73B9;  
+                background: #3B73B9;  
             } 
+            .ui-dialog-titlebar{/*Para el Titulo del formulario Desplegable */
+                background-image:url(imagenes/fondos/fondo2.jpg);  
+                color: #999999 !important;
+            }
         </style>
     </h:head>
     <h:body>
@@ -90,7 +94,7 @@ and open the template in the editor.
                 </p:dataTable>
             </center>
         </h:form>
-        <p:dialog id="desplegable" style="text-align: center" header="Actualizar" widgetVar="wdlgdesplegable">
+        <p:dialog id="desplegable" style="text-align: center;background-image: url(imagenes/fondos/fondo4.jpg)" header="Actualizar" widgetVar="wdlgdesplegable">
             <h:form>
                 <center>
                     <h:outputLabel style="color: #000000" value="Codigo: " /><p:spacer width="7" height="15"/>
