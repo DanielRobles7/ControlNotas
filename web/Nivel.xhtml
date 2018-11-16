@@ -28,61 +28,61 @@ and open the template in the editor.
             }
             form .columna{
                 background-color: #4f84ff !important;
-               
+
             }
             body{
-              background-image:url(imagenes/fondos/fondo2.jpg);  
+                background-image:url(imagenes/fondos/fondo2.jpg);  
             }
         </style>
         <title>Nivel</title>
     </h:head>
     <h:body>
-
+        <p:growl id="msg" showDetail="true"/>
         <h:form id="fo">
             <center>
-            <p:panel id="horizontal" styleClass="panelBlue" header="" style="text-align: center" toggleable="true" toggleOrientation="horizontal" collapsed="true">
-                <p:spacer width="170" height="15" />
-                <h:outputLabel  style="color:black" value="Grado: " /> <p:inputText value="#{beanNivel.nivel.grado}" ><p:keyFilter regEx="/[a-z_]/i" /></p:inputText>
-                <p:spacer width="90" height="15" />
-                <h:outputLabel  style="color:black" value="Escuela: " /> 
-                <h:selectOneMenu  value="#{beanNivel.nivel.codigoEscuela.codigoEscuela}" style="width:225px" >
-                    <f:selectItem itemValue="" itemLabel="Escoger Escuela" />
-                    <f:selectItems value="#{beanNivel.listaE}" var="listaE" itemLabel="#{listaE.nombreEscuela}" itemValue="#{listaE.codigoEscuela}" />
-                </h:selectOneMenu>
-                <p:spacer width="120" height="15" />
-                <p:commandButton value="Guardar"  styleClass="" actionListener="#{beanNivel.agregar()}" update="table,fo"/>
+                <p:panel id="horizontal" styleClass="panelBlue" header="" style="text-align: center" toggleable="true" toggleOrientation="horizontal" collapsed="true">
+                    <p:spacer width="170" height="15" />
+                    <h:outputLabel  style="color:black" value="Grado: " /> <p:inputText value="#{beanNivel.nivel.grado}" ><p:keyFilter regEx="/[a-z_]/i" /></p:inputText>
+                    <p:spacer width="90" height="15" />
+                    <h:outputLabel  style="color:black" value="Escuela: " /> 
+                    <h:selectOneMenu  value="#{beanNivel.nivel.codigoEscuela.codigoEscuela}" style="width:225px" >
+                        <f:selectItem itemValue="" itemLabel="Escoger Escuela" />
+                        <f:selectItems value="#{beanNivel.listaE}" var="listaE" itemLabel="#{listaE.nombreEscuela}" itemValue="#{listaE.codigoEscuela}" />
+                    </h:selectOneMenu>
+                    <p:spacer width="120" height="15" />
+                    <p:commandButton value="Guardar"  styleClass="" actionListener="#{beanNivel.agregar()}" update="msg,table,fo"/>
             </p:panel>
-            </center>
-            <br></br>
-            <br></br>
+        </center>
+        <br></br>
+        <br></br>
 
 
-            <p:dataTable  id="table" rowStyleClass="tabla" paginatorPosition="bottom" value="#{beanNivel.lista}" var="lista" paginator="true" rows="10" >
+        <p:dataTable  id="table" rowStyleClass="tabla" paginatorPosition="bottom" value="#{beanNivel.lista}" var="lista" paginator="true" rows="10" >
 
-                <p:column  styleClass="" headerText="Grado" >
-                    <p:outputLabel  value="#{lista.grado}" />
-                </p:column>
-                <p:column headerText="Escuela">
-                    <p:outputLabel value="#{lista.codigoEscuela.nombreEscuela}" />
-                </p:column>
-                <p:column>
-                    <p:commandButton value="Editar" icon="ui-icon-pencil" actionListener="#{beanNivel.modificar(lista)}" oncomplete="PF('wdlgdesplegable').show();" update=":desplegable"/>
-                </p:column>
-                <p:column >
-                    <p:commandButton value="Eliminar" actionListener="#{beanNivel.eliminar(lista)}" icon="ui-icon-close" update="table" />
-                </p:column>
-            </p:dataTable>
+            <p:column  styleClass="" headerText="Grado" >
+                <p:outputLabel  value="#{lista.grado}" />
+            </p:column>
+            <p:column headerText="Escuela">
+                <p:outputLabel value="#{lista.codigoEscuela.nombreEscuela}" />
+            </p:column>
+            <p:column>
+                <p:commandButton value="Editar" icon="ui-icon-pencil" actionListener="#{beanNivel.modificar(lista)}" oncomplete="PF('wdlgdesplegable').show();" update=":desplegable msg"/>
+            </p:column>
+            <p:column >
+                <p:commandButton value="Eliminar" actionListener="#{beanNivel.eliminar(lista)}" icon="ui-icon-close" update=" msg,table" />
+            </p:column>
+        </p:dataTable>
+    </h:form>
+
+    <p:dialog id="desplegable" header="Actualizar" widgetVar="wdlgdesplegable">
+        <h:form style="text-align: center;">
+            <h:outputLabel value="Grado: " /> <br />
+            <p:inputText value="#{beanNivel.nivel.grado}" readonly="#{not facesContext.postback or facesContext.renderResponse}" /><br /><br />
+            <h:outputLabel value="Escuela: " /> <br />
+            <p:inputText value="#{beanNivel.nivel.codigoEscuela.codigoEscuela}" label="#{beanNivel.nivel.codigoEscuela.nombreEscuela}"/><br />
+            <br /><br /><br />
+            <p:commandButton value="Actualizar" actionListener="#{beanNivel.actualizar()}" update=":fo:table desplegable,msg"/>
         </h:form>
-
-        <p:dialog id="desplegable" header="Actualizar" widgetVar="wdlgdesplegable">
-            <h:form style="text-align: center;">
-                <h:outputLabel value="Grado: " /> <br />
-                <p:inputText value="#{beanNivel.nivel.grado}" readonly="#{not facesContext.postback or facesContext.renderResponse}" /><br /><br />
-                <h:outputLabel value="Escuela: " /> <br />
-                <p:inputText value="#{beanNivel.nivel.codigoEscuela.codigoEscuela}" label="#{beanNivel.nivel.codigoEscuela.nombreEscuela}"/><br />
-                <br /><br /><br />
-                <p:commandButton value="Actualizar" actionListener="#{beanNivel.actualizar()}" update=":fo:table desplegable"/>
-            </h:form>
-        </p:dialog>
-    </h:body>
+    </p:dialog>
+</h:body>
 </html>

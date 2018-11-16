@@ -13,8 +13,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -67,15 +69,26 @@ public class BeanNivel implements Serializable {
     public void setListaE(List<Escuelas> listaE) {
         this.listaE = listaE;
     }
-
-    public void agregar() {
+ public void agregar() {
 
         System.out.println("esto son las nivel" + nivel);
         MantenimientoNivel man = new MantenimientoNivel();
         man.guardarNivel(nivel);
         lista = man.consultarTodosNivel();
         nivel.setCodigoEscuela(new Escuelas());
-        nivel=new Nivel();
+        nivel = new Nivel();
+        String advertencia = "";
+        if (lista != null) {
+
+        } else {
+            if (man.guardarNivel(nivel) == 1) {
+                advertencia = "Guardado correctamente";
+            } else {
+                advertencia = "No se ha guardado";
+            }
+        }
+        FacesMessage msg = new FacesMessage(advertencia);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 //    
 //    public void eliminar(Nivel nivel){
@@ -86,11 +99,20 @@ public class BeanNivel implements Serializable {
 
     public void modificar(Nivel nivel) {
         MantenimientoNivel man = new MantenimientoNivel();
-        System.out.println("Modificaremos "+nivel.getGrado());
+        System.out.println("Modificaremos " + nivel.getGrado());
         nivel = man.consultarNivel(nivel.getGrado());
-        this.nivel = nivel;
+
+        String advertencia = "";
+        if (nivel != null) {
+            this.nivel = nivel;
+            advertencia = "Datos Consultados correctamente";
+        } else {
+            advertencia = "Consulta no realizada";
+        }
 
         System.out.println("este de modificar" + nivel);
+        FacesMessage msg = new FacesMessage(advertencia);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
 
     }
 
@@ -98,18 +120,43 @@ public class BeanNivel implements Serializable {
         MantenimientoNivel manf = new MantenimientoNivel();
         manf.eliminarNivel(nivel);
         lista = manf.consultarTodosNivel();
+        String advertencia="";
+        if (lista!=null) {
+            
+        } else {
+            if (manf.eliminarNivel(nivel)==1) {
+                advertencia="Se ha eliminado correctamente";
+            } else {
+                advertencia="No se ha podido eliminar";
+            }
+        }
+        FacesMessage msg = new FacesMessage(advertencia);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
     public void actualizar() {
-        System.out.println("este es de actualizar"+nivel);
-          MantenimientoNivel man = new MantenimientoNivel();
-          man.ActualizarNivel(nivel);
-         System.out.println(man.ActualizarNivel(nivel)); 
-       
-         lista= man.consultarTodosNivel();
-         
-         System.out.println("esta es actualizar"+ nivel);
+        System.out.println("este es de actualizar" + nivel);
+        MantenimientoNivel man = new MantenimientoNivel();
+        man.ActualizarNivel(nivel);
+        System.out.println(man.ActualizarNivel(nivel));
 
+        lista = man.consultarTodosNivel();
+
+        System.out.println("esta es actualizar" + nivel);
+        
+        String advertencia = "";
+        if (lista != null) {
+
+        } else {
+            if (man.ActualizarNivel(nivel) == 1) {
+                advertencia = "Actualizado correctamente";
+            } else {
+                advertencia = "No se ha actualizado";
+            }
+        }
+        FacesMessage msg = new FacesMessage(advertencia);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
 }
+
