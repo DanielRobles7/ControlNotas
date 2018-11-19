@@ -18,7 +18,7 @@ and open the template in the editor.
                 font-family: 'Eras Bold ITC' ;
                 text-align: center;
             }
-            body{
+             .contenido{
                 background-image: url(imagenes/fondos/escuela.jpg);
                 background-size: cover;
             }
@@ -33,8 +33,8 @@ and open the template in the editor.
             }
         </style>
     </h:head>
-    <h:body >
-        <p:sidebar id="menu" widgetVar="sidebar1" baseZIndex="10000">
+    <h:body styleClass="contenido">
+        <p:sidebar widgetVar="sidebar1" baseZIndex="10000">
             <h1 style="text-align: center">Notas</h1>
             <p:button href="Notas.xhtml" styleClass="Btn" style="width: 100%" value="Notas" icon=" ui-icon-folder-open" />
         </p:sidebar>

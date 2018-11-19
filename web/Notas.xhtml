@@ -55,12 +55,19 @@ and open the template in the editor.
                 background-color: rgba(  93, 173, 226 ,0.05) !important;
                 color: black;
             }
-             .ui-dialog-titlebar{/*Para el Titulo del formulario Desplegable */
+            .ui-dialog-titlebar{/*Para el Titulo del formulario Desplegable */
                 background-color: #3B73B9 !important;  
             }
-        </style>
+        </style> 
+        <script type="text/javascript">
+            $(function () {
+                // menu.html
+                $("#incluirPagina").load("menu.xhtml");
+            });
+        </script> 
     </h:head>
     <h:body style="box-decoration-break: initial">
+        <div id="incluirPagina"></div> 
         <p:growl id="msg" showDetail="true"/>
         <h:form id="fo">
             <center>
