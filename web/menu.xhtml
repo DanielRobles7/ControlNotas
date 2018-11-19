@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+            .ui-sidebar{
+                color: #ffcccc !important;
+                background-color: #000000 ;
+                font-family: 'Eras Bold ITC' ;
+                text-align: center;
+            }
+            body{
+                background-image: url(imagenes/fondos/escuela.jpg);
+                background-size: cover;
+            }
+            .Btn{
+                color: #000000 !important;
+                font-family: 'Bahnschrift SemiBold' !important;
+                size: 12px;
+                background: #ffcccc !important;
+            }
+            .Main{
+                background-color: #3366ff;
+            }
+        </style>
+    </h:head>
+    <h:body >
+        <p:sidebar id="menu" widgetVar="sidebar1" baseZIndex="10000">
+            <h1 style="text-align: center">Notas</h1>
+            <p:button href="Notas.xhtml" styleClass="Btn" style="width: 100%" value="Notas" icon=" ui-icon-folder-open" />
+        </p:sidebar>
+        <p:commandButton id="menu" icon="	ui-icon-circle-plus" styleClass="Main" oncomplete="PF('sidebar1').show()" />
+    </h:body>
+</html>
