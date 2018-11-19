@@ -27,11 +27,18 @@ and open the template in the editor.
                 font-size: 18px !important;
             }
             form .columna{
-                background-color: #4f84ff !important;
-
+                background-color: rgba(  93, 173, 226 ,0.05) !important;
+                color: black;
             }
             body{
                 background-image:url(imagenes/fondos/fondo2.jpg);  
+            }
+            .ui-datatable .ui-paginator {
+                 background-color: rgba(  93, 173, 226 ,0.05) !important;
+            }
+            .ui-panel-titlebar /*Para el titulo de panel */
+            { 
+                background: #3B73B9;  
             }
         </style>
         <title>Nivel</title>
@@ -59,16 +66,16 @@ and open the template in the editor.
 
         <p:dataTable  id="table" rowStyleClass="tabla" paginatorPosition="bottom" value="#{beanNivel.lista}" var="lista" paginator="true" rows="10" >
 
-            <p:column  styleClass="" headerText="Grado" >
+            <p:column  styleClass="columna" headerText="Grado" >
                 <p:outputLabel  value="#{lista.grado}" />
             </p:column>
-            <p:column headerText="Escuela">
+            <p:column  styleClass="columna" headerText="Escuela">
                 <p:outputLabel value="#{lista.codigoEscuela.nombreEscuela}" />
             </p:column>
-            <p:column>
+            <p:column styleClass="columna">
                 <p:commandButton value="Editar" icon="ui-icon-pencil" actionListener="#{beanNivel.modificar(lista)}" oncomplete="PF('wdlgdesplegable').show();" update=":desplegable msg"/>
             </p:column>
-            <p:column >
+            <p:column  styleClass="columna">
                 <p:commandButton value="Eliminar" actionListener="#{beanNivel.eliminar(lista)}" icon="ui-icon-close" update=" msg,table" />
             </p:column>
         </p:dataTable>
