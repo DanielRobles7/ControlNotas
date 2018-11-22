@@ -168,4 +168,8 @@ public class Acceso implements Serializable {
         return "Persistencia.Acceso[ idAcceso=" + idAcceso + " ]";
     }
     
+    public String accesoInfo(){
+        return "Informacion de acceso: [ID="+idAcceso+", Usuario="+usuario+", Contraseña"+contrasena+", Nivel acceso="+nivelAcceso+", Estado usuario="+estado+"]";
+    }
+    
 }

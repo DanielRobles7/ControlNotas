@@ -6,6 +6,7 @@
 package Mantenimiento;
 
 import Persistencia.Acceso;
+import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -36,7 +37,7 @@ public class MantenimientoAcceso {
 //        }else{
 //            System.out.println("Usuario o contraseña incorecta o no existe");
 //        }
-        System.exit(0);
+//        System.exit(0);
     }
    
     public int guardarAcesso(Acceso acceso){
@@ -154,23 +155,26 @@ public class MantenimientoAcceso {
         return idMax;
     }
      
-     public Acceso loginAcceso (String user, String password){
+     public  Acceso loginAcceso (String  user, String password){
          
          EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
-         int id_lg_acceso = 0;
-         Acceso acceso = null;
-         String sql = "SELECT a.idAcceso FROM Acceso a WHERE usuario = " + user + " AND contrasena = " + password + " AND estado = 'activo';";
+         Acceso acceso = new Acceso();
+         int id_acceso = 0;
          
          try {
              em.getTransaction().begin();
-             id_lg_acceso = Integer.parseInt(em.createQuery(sql).getSingleResult().toString());
+             id_acceso = Integer.parseInt(em.createNativeQuery("SELECT id_acceso FROM Acceso WHERE usuario = '"+user+"' AND contrasena = '"+password+"' AND estado = 'activo';").getSingleResult().toString());
              em.getTransaction().commit();
-             acceso = this.consultarAcceso(id_lg_acceso);
-         } catch (NumberFormatException e) {
+             System.out.println("Consulta correcta, el ID es: '"+id_acceso+"'");
+             acceso = this.consultarAcceso(id_acceso);
+         } catch (Exception e) {
              em.getTransaction().rollback();
+             acceso = null;
+             System.out.println("No se pudo llevar a cabo la consulta\nError: "+e);
          } finally {
              em.close();
-         }         
-          return acceso;
+         }
+         return acceso;
      }
+     
 }
