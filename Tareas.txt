@@ -1,0 +1,39 @@
+actividades:
+
+
+eliminar:  
+cambiar los mantenimientos eliminar,
+para que en vez de eliminar, generen un "update"
+y cambie el estado de "activo" a "inactivo".
+
+agregar consultas:
+agregar en todos los mantenimientos consultas
+que permitan buscar "todos", siempre y cuando 
+los resultados tengan estado "activo"
+llamar los metodos 
+"buscar(nombre del mantenimiento)Activos"
+
+
+Limitar Campos.
+revisar campo por campo de cada vista ya finalizada y que posee estilo
+e ir agregando el limite de caracteres a ingresar 
+utilizando la etiqueta <p:inputText maxlength=""/>
+el tamaño debe colocarse de acorde al tamaño que dice la base de datos.
+
+Menú Inicio:
+hacer 3 menú inicio. 
+1. Estudiantes.
+	-dirigirá unicamente a la tabla de notas.
+2. Profesores.
+	dirigiriá a tabla, 
+		-notas
+		-nivel
+		-alumnos
+3. Directores
+	-dirigirá a todas las tablas
+
+
+preguntar a Dany para mayor aclaracion
+
+
+	
