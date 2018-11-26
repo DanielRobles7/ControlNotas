@@ -155,7 +155,7 @@ public class MantenimientoAcceso {
         return idMax;
     }
      
-     public  Acceso loginAcceso (String  user, String password){
+     public Acceso loginAcceso (String  user, String password){
          
          EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
          Acceso acceso = new Acceso();
@@ -177,4 +177,31 @@ public class MantenimientoAcceso {
          return acceso;
      }
      
+     public String nombreBienvenida(int idAcceso, String nivelAcceso){
+         EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+         String nombre = null;
+         
+         try {
+             em.getTransaction().begin();
+             switch (nivelAcceso){
+                 case "director":
+                     nombre = em.createNativeQuery("SELECT nombre_director FROM escuelas WHERE id_acceso = "+idAcceso+";").getSingleResult().toString();
+                     em.getTransaction().commit();
+                     break;
+                 case "profesor":
+                     nombre = em.createNativeQuery("SELECT nombre FROM profesores WHERE id_acceso = "+idAcceso+";").getSingleResult().toString();
+                     em.getTransaction().commit();
+                     break;
+                 case "estudiante":
+                     nombre = em.createNativeQuery("SELECT nombre FROM alumnos WHERE id_acceso = "+idAcceso+";").getSingleResult().toString();
+                     em.getTransaction().commit();
+                     break;
+             }
+         } catch (Exception e) {
+             System.out.println("No se pudo consultar de consulta\nError: "+e);
+         } finally {
+             em.close();
+         }
+         return nombre;
+     }
 }
