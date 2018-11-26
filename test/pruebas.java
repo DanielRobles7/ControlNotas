@@ -26,7 +26,8 @@ public class pruebas {
         Acceso acceso = ma.loginAcceso("EST3697", "3697");
         
         if (acceso != null) {
-            System.out.println(acceso.accesoInfo());
+            System.out.println("Usuario correcto\n"+acceso.accesoInfo());
+            System.out.println("Bienvenido '"+ma.nombreBienvenida(acceso.getIdAcceso(), acceso.getNivelAcceso())+"'");
         } else {
             System.out.println("Usuario o contraseña incorecta o no existe");
         }
