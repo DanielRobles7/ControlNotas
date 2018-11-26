@@ -48,8 +48,8 @@ and open the template in the editor.
         <h:form id="fo">
             <center>
                 <p:panel id="horizontal" styleClass="panelBlue" header="" style="text-align: center" toggleable="true" toggleOrientation="horizontal" collapsed="true">
-                    <p:spacer width="170" height="15" />
-                    <h:outputLabel  style="color:black" value="Grado: " /> <p:inputText value="#{beanNivel.nivel.grado}" ><p:keyFilter regEx="/[a-z_]/i" /></p:inputText>
+                    
+                    <h:outputLabel  style="color:black" value="Grado: " /> <p:inputText maxlength="15" value="#{beanNivel.nivel.grado}" ><p:keyFilter regEx="/[a-z_]/i" /></p:inputText>
                     <p:spacer width="90" height="15" />
                     <h:outputLabel  style="color:black" value="Escuela: " /> 
                     <h:selectOneMenu  value="#{beanNivel.nivel.codigoEscuela.codigoEscuela}" style="width:225px" >
