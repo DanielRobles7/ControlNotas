@@ -58,7 +58,7 @@ public class MantenimientoMaterias {
        EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
        em.getTransaction().begin();
        try{
-           Query query=em.createQuery("Select m from Materias m");
+           Query query=em.createQuery("Select m from Materias m where m.estado='activo'");
            em.getTransaction().commit();
            listaMaterias=query.getResultList();
            System.out.println(listaMaterias);

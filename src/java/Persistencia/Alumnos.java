@@ -228,9 +228,13 @@ public class Alumnos implements Serializable {
         return true;
     }
 
+//    @Override
+//    public String toString() {
+//        return "Persistencia.Alumnos[ nie=" + nie + " ]";
+//    }
     @Override
     public String toString() {
-        return "Persistencia.Alumnos[ nie=" + nie + " ]";
+        return "Alumnos{" + "nie=" + nie + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ", direccion=" + direccion + ", edad=" + edad + ", telefono=" + telefono + ", fechaNacimiento=" + fechaNacimiento + ", fechaRegistro=" + fechaRegistro + ", estado=" + estado + ", campo=" + campo + '}';
     }
     
 }

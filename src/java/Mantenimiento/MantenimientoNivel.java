@@ -77,7 +77,7 @@ public class MantenimientoNivel {
           EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
           em.getTransaction().begin();
           try{
-              Query query=em.createQuery("SELECT n FROM Nivel n");
+              Query query=em.createQuery("SELECT n FROM Nivel n where n.estado='activo'");
               
               em.getTransaction().commit();
               listaNivel=query.getResultList();

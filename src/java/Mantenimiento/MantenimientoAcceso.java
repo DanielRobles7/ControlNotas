@@ -16,6 +16,7 @@ import javax.persistence.Query;
  * @author eliseo.garciausam
  */
 public class MantenimientoAcceso {
+
     public static void main(String[] args) {
         MantenimientoAcceso man = new MantenimientoAcceso();
 //        Acceso acce = new Acceso();
@@ -39,169 +40,192 @@ public class MantenimientoAcceso {
 //        }
 //        System.exit(0);
     }
-   
-    public int guardarAcesso(Acceso acceso){
-        EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
-        int flag=0;
+
+    public int guardarAcesso(Acceso acceso) {
+        EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+        int flag = 0;
         em.getTransaction().begin();
-        try{
-           em.persist(acceso);
-           em.getTransaction().commit();
-           flag=1;
+        try {
+            em.persist(acceso);
+            em.getTransaction().commit();
+            flag = 1;
             System.out.println("guardarAcceso,mantenimientoAcceso,exito");
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             em.getTransaction().rollback();
-        }finally{
+        } finally {
             em.close();
         }
         return flag;
     }
-    
-    public Acceso consultarAcceso(int idAcceso){
-        EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
-        Acceso acceso=null;
+
+    public Acceso consultarAcceso(int idAcceso) {
+        EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+        Acceso acceso = null;
         em.getTransaction().begin();
-        try{
-           acceso=em.find(Acceso.class, idAcceso);
-           em.getTransaction().commit();
-           
+        try {
+            acceso = em.find(Acceso.class, idAcceso);
+            em.getTransaction().commit();
+
             System.out.println(acceso);
-        }catch(Exception e){
+        } catch (Exception e) {
             em.getTransaction().rollback();
-            System.out.println("consultarAcceso,mantenimentoAcceso,Error"+e);
-        }finally{
+            System.out.println("consultarAcceso,mantenimentoAcceso,Error" + e);
+        } finally {
             em.close();
         }
         return acceso;
     }
-    
-    public List consultarTodosAcceso(){
-        List<Acceso>listaAcceso=null;
-        EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
+
+    public List consultarTodosAcceso() {
+        List<Acceso> listaAcceso = null;
+        EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
         em.getTransaction().begin();
-        try{
-           Query query=em.createQuery("Select a from Acceso a");
-           em.getTransaction().commit();
-           listaAcceso=query.getResultList();
-        }catch(Exception e){
+        try {
+            Query query = em.createQuery("Select a from Acceso a where a.estado='activo'");
+            em.getTransaction().commit();
+            listaAcceso = query.getResultList();
+        } catch (Exception e) {
             em.getTransaction().rollback();
-            System.out.println("Error,consultarAcceso,MantenimientoAcceso"+e);
-        }finally{
+            System.out.println("Error,consultarAcceso,MantenimientoAcceso" + e);
+        } finally {
             em.close();
         }
         return listaAcceso;
     }
-    
-    public Acceso eliminarAcceso(int idAcceso){
-         EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
-         Acceso acceso=null;
-         em.getTransaction().begin();
-         try{
-            acceso=em.find(Acceso.class, idAcceso);
-            em.remove(acceso);
-            em.getTransaction().commit();
-         }catch(Exception e){
-             System.out.println("error eliminarAcceso,mantenimientoAcceso"+e);
-             em.getTransaction().rollback();
-         }finally{
-             em.close();
-         }
-         return acceso;
-    }
-    
-    public int actualizarAcceso(Acceso acceso){
-        
-        EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
+
+//    public Acceso eliminarAcceso(int idAcceso) {
+//        EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+//        Acceso acceso = null;
+//        em.getTransaction().begin();
+//        try {
+//            acceso = em.find(Acceso.class, idAcceso);
+//            em.remove(acceso);
+//            em.getTransaction().commit();
+//        } catch (Exception e) {
+//            System.out.println("error eliminarAcceso,mantenimientoAcceso" + e);
+//            em.getTransaction().rollback();
+//        } finally {
+//            em.close();
+//        }
+//        return acceso;
+//    }
+
+    public int actualizarAcceso(Acceso acceso) {
+
+        EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
         Acceso acces;
-        em.getTransaction().begin();
-        int flag=0;
+        int flag = 0;
         System.out.println(acceso);
-        try{
-           acces=em.find(Acceso.class,acceso.getIdAcceso());
-           acces.setIdAcceso(acceso.getIdAcceso());
-           acces.setUsuario(acceso.getUsuario());
-           acces.setContrasena(acceso.getContrasena());
-           acces.setNivelAcceso(acceso.getNivelAcceso());
-           acces.setEstado(acceso.getEstado());
-           acces.setCampo(acceso.getCampo());
-           em.getTransaction().commit();
-           flag=1;
+        try {
+            em.getTransaction().begin();
+            acces = em.find(Acceso.class, acceso.getIdAcceso());
+            acces.setIdAcceso(acceso.getIdAcceso());
+            acces.setUsuario(acceso.getUsuario());
+            acces.setContrasena(acceso.getContrasena());
+            acces.setNivelAcceso(acceso.getNivelAcceso());
+            acces.setEstado(acceso.getEstado());
+            acces.setCampo(acceso.getCampo());
+            em.getTransaction().commit();
+            flag = 1;
             System.out.println("ActualizarAcceso, MantenimientoAcces, Correcto ");
-        }catch(Exception e){
-            System.out.println("Error, ActualizarAcceso, MantenimientoAcceso "+e);
+        } catch (Exception e) {
+            System.out.println("Error, ActualizarAcceso, MantenimientoAcceso " + e);
             em.getTransaction().rollback();
-        }finally{
+        } finally {
             em.close();
         }
         return flag;
     }
     
-     public Integer consultarMaxAcceso(){
-        int idMax=0;
-        String sql="select max(a.idAcceso) from Acceso a";
-        EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();
-        em.getTransaction().begin();
-        try{
-           idMax = Integer.parseInt(em.createQuery(sql).getSingleResult().toString());
-           em.getTransaction().commit();
-            System.out.println("consultar max, mantenimientoAcceso, Correcto ");
-        }catch(NumberFormatException e){
+    public int eliminarAcceso(Acceso acceso) {
+        EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+        Acceso acces = null;        
+        try {
+            em.getTransaction().begin();
+            acces = em.find(Acceso.class, acceso.getIdAcceso());
+            acces.setIdAcceso(acceso.getIdAcceso());
+            acces.setUsuario(acceso.getUsuario());
+            acces.setContrasena(acceso.getContrasena());
+            acces.setNivelAcceso(acceso.getNivelAcceso());
+            acces.setEstado("inactivo");
+            acces.setCampo(acceso.getCampo());
+            em.getTransaction().commit();
+            return 1;
+        } catch (Exception e) {
+            System.out.println("error eliminarAcceso,mantenimientoAcceso" + e);
             em.getTransaction().rollback();
-            System.out.println("error en consultar max, mantenimientoAcceso "+e);
-        }finally{
+            return 0;
+        } finally {
+            em.close();
+        }
+    }
+
+    public Integer consultarMaxAcceso() {
+        int idMax = 0;
+        String sql = "select max(a.idAcceso) from Acceso a";
+        EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+        em.getTransaction().begin();
+        try {
+            idMax = Integer.parseInt(em.createQuery(sql).getSingleResult().toString());
+            em.getTransaction().commit();
+            System.out.println("consultar max, mantenimientoAcceso, Correcto ");
+        } catch (NumberFormatException e) {
+            em.getTransaction().rollback();
+            System.out.println("error en consultar max, mantenimientoAcceso " + e);
+        } finally {
             em.close();
         }
         return idMax;
     }
-     
-     public Acceso loginAcceso (String  user, String password){
-         
-         EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
-         Acceso acceso = new Acceso();
-         int id_acceso = 0;
-         
-         try {
-             em.getTransaction().begin();
-             id_acceso = Integer.parseInt(em.createNativeQuery("SELECT id_acceso FROM Acceso WHERE usuario = '"+user+"' AND contrasena = '"+password+"' AND estado = 'activo';").getSingleResult().toString());
-             em.getTransaction().commit();
-             System.out.println("Consulta correcta, el ID es: '"+id_acceso+"'");
-             acceso = this.consultarAcceso(id_acceso);
-         } catch (Exception e) {
-             em.getTransaction().rollback();
-             acceso = null;
-             System.out.println("No se pudo llevar a cabo la consulta\nError: "+e);
-         } finally {
-             em.close();
-         }
-         return acceso;
-     }
-     
-     public String nombreBienvenida(int idAcceso, String nivelAcceso){
-         EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
-         String nombre = null;
-         
-         try {
-             em.getTransaction().begin();
-             switch (nivelAcceso){
-                 case "director":
-                     nombre = em.createNativeQuery("SELECT nombre_director FROM escuelas WHERE id_acceso = "+idAcceso+";").getSingleResult().toString();
-                     em.getTransaction().commit();
-                     break;
-                 case "profesor":
-                     nombre = em.createNativeQuery("SELECT nombre FROM profesores WHERE id_acceso = "+idAcceso+";").getSingleResult().toString();
-                     em.getTransaction().commit();
-                     break;
-                 case "estudiante":
-                     nombre = em.createNativeQuery("SELECT nombre FROM alumnos WHERE id_acceso = "+idAcceso+";").getSingleResult().toString();
-                     em.getTransaction().commit();
-                     break;
-             }
-         } catch (Exception e) {
-             System.out.println("No se pudo consultar de consulta\nError: "+e);
-         } finally {
-             em.close();
-         }
-         return nombre;
-     }
+
+    public Acceso loginAcceso(String user, String password) {
+
+        EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+        Acceso acceso = new Acceso();
+        int id_acceso = 0;
+
+        try {
+            em.getTransaction().begin();
+            id_acceso = Integer.parseInt(em.createNativeQuery("SELECT id_acceso FROM Acceso WHERE usuario = '" + user + "' AND contrasena = '" + password + "' AND estado = 'activo';").getSingleResult().toString());
+            em.getTransaction().commit();
+            System.out.println("Consulta correcta, el ID es: '" + id_acceso + "'");
+            acceso = this.consultarAcceso(id_acceso);
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            acceso = null;
+            System.out.println("No se pudo llevar a cabo la consulta\nError: " + e);
+        } finally {
+            em.close();
+        }
+        return acceso;
+    }
+
+    public String nombreBienvenida(int idAcceso, String nivelAcceso) {
+        EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+        String nombre = null;
+
+        try {
+            em.getTransaction().begin();
+            switch (nivelAcceso) {
+                case "director":
+                    nombre = em.createNativeQuery("SELECT nombre_director FROM escuelas WHERE id_acceso = " + idAcceso + ";").getSingleResult().toString();
+                    em.getTransaction().commit();
+                    break;
+                case "profesor":
+                    nombre = em.createNativeQuery("SELECT nombre FROM profesores WHERE id_acceso = " + idAcceso + ";").getSingleResult().toString();
+                    em.getTransaction().commit();
+                    break;
+                case "estudiante":
+                    nombre = em.createNativeQuery("SELECT nombre FROM alumnos WHERE id_acceso = " + idAcceso + ";").getSingleResult().toString();
+                    em.getTransaction().commit();
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println("No se pudo consultar de consulta\nError: " + e);
+        } finally {
+            em.close();
+        }
+        return nombre;
+    }
 }

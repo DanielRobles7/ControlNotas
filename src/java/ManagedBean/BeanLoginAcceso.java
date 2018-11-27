@@ -50,46 +50,27 @@ public class BeanLoginAcceso {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public static int getIdAcceso() {
         return idAcceso;
-    }
-
-    public static void setIdAcceso(int idAcceso) {
-        BeanLoginAcceso.idAcceso = idAcceso;
     }
 
     public static String getUsuario() {
         return usuario;
     }
 
-    public static void setUsuario(String usuario) {
-        BeanLoginAcceso.usuario = usuario;
-    }
-
     public static String getContrasena() {
         return contrasena;
-    }
-
-    public static void setContrasena(String contrasena) {
-        BeanLoginAcceso.contrasena = contrasena;
     }
 
     public static String getNivelAcceso() {
         return nivelAcceso;
     }
 
-    public static void setNivelAcceso(String nivelAcceso) {
-        BeanLoginAcceso.nivelAcceso = nivelAcceso;
-    }
-
     public static String getEstado() {
         return estado;
     }
-
-    public static void setEstado(String estado) {
-        BeanLoginAcceso.estado = estado;
-    }
+    
     
     public void loginInicioSesion(){
         MantenimientoAcceso mantenimiento = new MantenimientoAcceso();
