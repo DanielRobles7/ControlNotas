@@ -51,7 +51,7 @@ public class MantenimientoAcceso {
             flag = 1;
             System.out.println("guardarAcceso,mantenimientoAcceso,exito");
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("error, acceso no se ha guardado" +e.getMessage());
             em.getTransaction().rollback();
         } finally {
             em.close();

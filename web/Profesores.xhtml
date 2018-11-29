@@ -57,8 +57,13 @@ and open the template in the editor.
                         <h:outputLabel style="color: #000000" value="Edad: " /><p:spacer width="7" height="15"/><p:inputText maxlength="3" value="#{beanProfesores.profesores.edad}" ><p:keyFilter regEx="/[\d\-\.]/"/></p:inputText><p:spacer width="20" height="15"/>
                         <h:outputLabel style="color: #000000" value="Direccion: " /><p:spacer width="7" height="15"/><p:inputTextarea maxlength="125" value="#{beanProfesores.profesores.direccion}" ><p:keyFilter regEx="/ [a-z _] / i"/></p:inputTextarea><br /><br />
                         <h:outputLabel style="color: #000000" value="Fecha de Nacimiento: " /><p:spacer width="7" height="15"/><p:inputText maxlength="50" style="width: 300px;"  value="#{beanProfesores.profesores.fechaNacimiento}" ><p:keyFilter regEx="/ [a-z _] / i"/></p:inputText><br /><br />
-                        <h:outputLabel style="color: #000000" value="Grado: " /><p:spacer width="7" height="15"/><p:inputText style="width: 170px;" maxlength="10" value="#{beanProfesores.profesores.grado}" ><p:keyFilter regEx="/ [a-z _] / i"/></p:inputText><br /><br />
-                        <p:commandButton value="Agregar" actionListener="#{beanProfesores.agregar(profesores)}" update="msg,form,Tabla"/>
+                        <h:outputLabel style="color: #000000" value="Grado: " />
+                        <h:selectOneMenu value="#{beanProfesores.nivel.grado}" style="width:225px">
+                            <f:selectItem itemValue="" itemLabel="Seleccione un Grado"></f:selectItem>
+                            <f:selectItems value="#{beanProfesores.listN}" var="listaN" itemLabel="#{listaN.grado}" itemValue="#{listaN.grado}"></f:selectItems>
+                        </h:selectOneMenu>
+                        <br /><br />
+                        <p:commandButton value="Agregar" actionListener="#{beanProfesores.agregar()}" update="msg,form,Tabla"/>
                     </center>
                 </p:panel>
                 <br />

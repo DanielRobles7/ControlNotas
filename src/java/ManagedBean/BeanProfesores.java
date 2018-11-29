@@ -6,10 +6,11 @@
 package ManagedBean;
 
 import Mantenimiento.MantenimientoAcceso;
-import Mantenimiento.MantenimientoEscuela;
+import Mantenimiento.MantenimientoNivel;
 import Mantenimiento.MantenimientoProfesores;
 import Persistencia.Acceso;
 import Persistencia.Escuelas;
+import Persistencia.Nivel;
 import Persistencia.Profesores;
 import estaticas.SessionIniciada;
 import java.text.SimpleDateFormat;
@@ -22,24 +23,25 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-/**
- *
- * @author ruth.ramosusam
- */
+
 @ManagedBean
 @RequestScoped
 public class BeanProfesores {
 
     private Profesores profesores=new Profesores();
     private final Escuelas escuelas=new Escuelas();
+    private Nivel nivel=new Nivel();
     private List<Profesores> listP=new ArrayList();
+    private List<Nivel> listN=new ArrayList();
     MantenimientoProfesores map = new MantenimientoProfesores();
+    MantenimientoNivel man = new MantenimientoNivel();
     SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
     
     @PostConstruct
     public void init() {
-         profesores.setIdAcceso(new Acceso());
+         // profesores.setIdAcceso(new Acceso());
 //        notas.setNie(new Alumnos());
+        listN = man.consultarTodosNivel();
         listP = map.consultarTodosProfesores();
 
     }
@@ -52,6 +54,14 @@ public class BeanProfesores {
         this.profesores = profesores;
     }
 
+    public Nivel getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(Nivel nivel) {
+        this.nivel = nivel;
+    }
+    
     public List<Profesores> getListP() {
         return listP;
     }
@@ -59,9 +69,19 @@ public class BeanProfesores {
     public void setListP(List<Profesores> listP) {
         this.listP = listP;
     }
+
+    public List<Nivel> getListN() {
+        return listN;
+    }
+
+    public void setListN(List<Nivel> listN) {
+        this.listN = listN;
+    }
     
     
-    public void agregar(Profesores profesores){
+    
+    
+    public void agregar(){
         //Agregar Acceso
         Acceso acceso=new Acceso();
         
@@ -72,7 +92,7 @@ public class BeanProfesores {
         Integer idMax;
         usuario = nombre.substring(0,3) + apellido.substring(0,3);
         
-        int numeroAleatorio = (int) (Math.random()*999)+100;
+        int numeroAleatorio = (int) (Math.random()*899)+100;
         password= usuario+numeroAleatorio;
         
         acceso.setContrasena(password);
@@ -81,6 +101,14 @@ public class BeanProfesores {
         acceso.setUsuario(usuario);
         acceso.setNivelAcceso("Profesor");
         
+        
+        
+        System.out.println("1 "+ acceso.getIdAcceso());
+        System.out.println("2 "+ acceso.getUsuario());
+        System.out.println("3 "+ acceso.getContrasena());
+        System.out.println("4 "+ acceso.getEstado());
+        System.out.println("5 "+ acceso.getCampo());
+
         MantenimientoAcceso ma=new MantenimientoAcceso();
         ma.guardarAcesso(acceso);
         
