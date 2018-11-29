@@ -179,7 +179,7 @@ public class MantenimientoAcceso {
         return idMax;
     }
 
-    public Acceso loginAcceso(String user, String password) {
+    public Acceso loginAcceso(String username, String password) {
 
         EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
         Acceso acceso = new Acceso();
@@ -187,7 +187,7 @@ public class MantenimientoAcceso {
 
         try {
             em.getTransaction().begin();
-            id_acceso = Integer.parseInt(em.createNativeQuery("SELECT id_acceso FROM Acceso WHERE usuario = '" + user + "' AND contrasena = '" + password + "' AND estado = 'activo';").getSingleResult().toString());
+            id_acceso = Integer.parseInt(em.createNativeQuery("SELECT id_acceso FROM Acceso WHERE usuario = '" + username + "' AND contrasena = '" + password + "' AND estado = 'activo';").getSingleResult().toString());
             em.getTransaction().commit();
             System.out.println("Consulta correcta, el ID es: '" + id_acceso + "'");
             acceso = this.consultarAcceso(id_acceso);
