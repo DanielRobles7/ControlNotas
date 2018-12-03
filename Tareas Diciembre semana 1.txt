@@ -1,0 +1,75 @@
+1. que no permita numeros de telefono,
+
+2. si se crea un registro con el mismo nombre de uno que esté inactivo
+	hay que enviar un mensaje diciendo que ya está activo y si 
+	desea reactivar ?
+
+3. antes de dar al boton borrar debe de abrirse un "modal" 
+	preguntando si, ¿desea borrar el registro? y al puchar en
+	"confirmar" se elimina, sino debe dar en cancelar para que
+	no se elimine y regrese todo normal.
+
+4. ninguna vista debe permitir modificar el usuario de "Acceso" eso es fijo.
+
+
+5. los modificar de los campos con llave foranea deben ser campos seleccionar.
+	y debe aparecer por defecto seleccionado el campo que posee el registro 
+	en la base de datos.
+6. cuando se guarda uno con el mismo nombre o el mismo id foranea
+	hay que validar que ya existe el registro.
+
+
+________________________________________________________________________________
+Escuela.
+--------------------------------------------------------------------------------
+1. cuando guarda no actualiza la lista. y no limpia el formulario
+2. el estado no debe ser modificable. (se cambia cuando se da eliminar)
+3. el id acceso no debe mostrarse para modificar
+4. no está actualizando al eliminar
+
+________________________________________________________________________________
+Nivel.
+--------------------------------------------------------------------------------
+1. cuando guarda no actualiza la lista. y no limpia el formulario
+
+2. el nivel debe no ser modificado, (no tiene sentido modificar	solo la escuela 
+	para el grado tal) asi que quitar las opciones de modificar en 
+	el mantenimiento y vista de nivel.
+
+________________________________________________________________________________
+Materia.
+--------------------------------------------------------------------------------
+1. no hay vista para materia.
+
+2. corregir el error que aparece en el beam.
+
+________________________________________________________________________________
+Profesores
+--------------------------------------------------------------------------------
+1. cuando guarda no actualiza la lista. y no limpia el formulario
+
+2. no envia las foraneas al modificar. favor revisar
+
+3. hacer que el numero de telefono se vea en un solo reglón, 
+	pruebe asignando ancho fijo solo a ese campo
+4. profesores se elimina del todo, falta modificar metodo para que cambie de estado.
+
+________________________________________________________________________________
+Alumno
+--------------------------------------------------------------------------------
+1. no hay vista ni beam para alumno.
+
+________________________________________________________________________________
+Notas
+--------------------------------------------------------------------------------
+1. si se guarda y no se ha seleccionado nada, debe decir que seleccione algo.
+2. la lista nos se actualiza al guardar
+3. notas se elimina del todo, falta modificar metodo para que cambie de estado.
+4. el estado del alumno no debería ser modificado ni el estado de la nota.
+
+________________________________________________________________________________
+Menú
+--------------------------------------------------------------------------------
+1. Agregar una redireccion a todos los mantenimientos.
+
+
