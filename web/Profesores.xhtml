@@ -94,10 +94,10 @@ and open the template in the editor.
                         <h:outputText value="#{listP.direccion}"></h:outputText>
                     </p:column>
                     <p:column headerText="Escuela" styleClass="columna">
-                        <h:outputText value="#{listP.codigoEscuela}"></h:outputText>
+                        <h:outputText value="#{listP.codigoEscuela.nombreEscuela}"></h:outputText>
                     </p:column>
                     <p:column headerText="Grado:" styleClass="columna">
-                        <h:outputText value="#{listP.grado}"></h:outputText>
+                        <h:outputText value="#{listP.grado.grado}"></h:outputText>
                     </p:column>
                     <p:column  headerText="Fecha de Registro" styleClass="columna">
                         <h:outputText value="#{listP.fechaRegistro}"></h:outputText>
@@ -130,11 +130,16 @@ and open the template in the editor.
                     <p:inputTextarea  value="#{beanProfesores.profesores.direccion}" /><br /><br />
                     <h:outputLabel style="color: #000000" value="Fecha de Nacimiento: " /><p:spacer width="7" height="15"/>
                     <p:inputText style="width: 300px;"  value="#{beanProfesores.profesores.fechaNacimiento}"/><br /><br />
-                    <h:outputLabel style="color: #000000" value="ID Acceso: " /><p:spacer width="7" height="15"/>
-                    <p:inputText style="width: 300px;"  value="#{beanProfesores.profesores.idAcceso.idAcceso}" readonly="#{not facesContext.postback or facesContext.renderResponse}"/><br /><br />
-                    <h:outputLabel style="color: #000000" value="Estado: " /><p:spacer width="7" height="15"/>
-                    <p:inputText style="width: 300px;"  value="#{beanProfesores.profesores.estado}" readonly="#{not facesContext.postback or facesContext.renderResponse}"/><br /><br />
-                    <p:commandButton value="Actualizar" actionListener="#{beanProfesores.actualizar(profesores)}" update=":form:Tabla msg,desplegable"/>
+                    
+                    <p:inputText value="#{beanProfesores.profesores.fechaRegistro}"/><br /><br />
+
+                    <p:inputText value="#{beanProfesores.profesores.codigoEscuela.codigoEscuela}" label="#{beanNivel.nivel.codigoEscuela.nombreEscuela}"/><br /><br />
+                    <p:inputText value="#{beanProfesores.profesores.grado.grado}" label="#{beanProfesores.profesores.grado.grado}"/><br /><br />
+                    
+
+                    
+         
+                    <p:commandButton value="Actualizar" actionListener="#{beanProfesores.actualizar()}" update=":form:Tabla msg,desplegable"/>
                 </center>
             </h:form>
         </p:dialog>
