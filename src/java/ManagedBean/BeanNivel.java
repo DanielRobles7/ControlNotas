@@ -74,6 +74,7 @@ public class BeanNivel implements Serializable {
 
         System.out.println("esto son las nivel" + nivel);
         MantenimientoNivel man = new MantenimientoNivel();
+        nivel.setEstado("activo");
         man.guardarNivel(nivel);
         lista = man.consultarTodosNivel();
         nivel.setCodigoEscuela(new Escuelas());
