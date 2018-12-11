@@ -7,6 +7,7 @@ package ManagedBean;
 
 import Mantenimiento.MantenimientoAcceso;
 import Mantenimiento.MantenimientoMaterias;
+import Mantenimiento.MantenimientoNivel;
 import Persistencia.Acceso;
 import Persistencia.Materias;
 import Persistencia.Nivel;
@@ -28,11 +29,14 @@ public class BeanMaterias {
 
     private Materias materia = new Materias();
     private List<Materias> listM = new ArrayList();
+    private List<Nivel> listN = new ArrayList();
 
     public void init() {
-        materia.setIdAcceso(new Acceso());
+        materia.setGrado(new Nivel());
         MantenimientoMaterias mam = new MantenimientoMaterias();
+        MantenimientoNivel man = new MantenimientoNivel();
         listM = mam.consultartodasMaterias();
+        listN = man.consultarTodosNivel();
     }
 
     public Materias getMateria() {
@@ -51,6 +55,14 @@ public class BeanMaterias {
         this.listM = listM;
     }
 
+    public List<Nivel> getListN() {
+        return listN;
+    }
+
+    public void setListN(List<Nivel> listN) {
+        this.listN = listN;
+    }
+
     public void agregar() {
         System.out.println("Estas son las materias" + materia);
         MantenimientoMaterias mm = new MantenimientoMaterias();
@@ -63,10 +75,10 @@ public class BeanMaterias {
         materia.setPonderacion5(0.0);
         materia.setPonderacion6(0.0);
         materia.setPeriodo("");
-        mm.guardarMaterias(materia);
-        listM = mm.consultartodasMaterias();
+//        mm.guardarMaterias(materia);
         String adv = "";
         if (mm.guardarMaterias(materia) == 1) {
+            listM = mm.consultartodasMaterias();
             adv = "Guardado exitosamente";
         } else {
             adv = "Error al guardar";
@@ -92,12 +104,13 @@ public class BeanMaterias {
         FacesMessage msg = new FacesMessage(adv);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-        public void eliminar(Materias materia) {
-         MantenimientoMaterias mm = new MantenimientoMaterias();
-        mm.eliminarMaterias(materia);
-        listM = mm.consultartodasMaterias();
+
+    public void eliminar(Materias materia) {
+        MantenimientoMaterias mm = new MantenimientoMaterias();
+//        mm.eliminarMaterias(materia);
         String adv = "";
         if (mm.eliminarMaterias(materia) == 1) {
+            listM = mm.consultartodasMaterias();
             adv = "Se elimino correctamente";
         } else {
             adv = "No se ha podido eliminar";
@@ -105,23 +118,23 @@ public class BeanMaterias {
         FacesMessage msg = new FacesMessage(adv);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-        public void actualizar() {
+
+    public void actualizar() {
         System.out.println("este es de actualizar" + materia);
-         MantenimientoMaterias mm = new MantenimientoMaterias();
-        mm.ActualizarMaterias(materia);
+        MantenimientoMaterias mm = new MantenimientoMaterias();
+//        mm.ActualizarMaterias(materia);
         System.out.println(mm.ActualizarMaterias(materia));
 
-        listM = mm.consultartodasMaterias();
         String adv = "";
         System.out.println("esta es actualizar" + materia);
         if (mm.ActualizarMaterias(materia) == 1) {
+            listM = mm.consultartodasMaterias();
             adv = "Se ha Actualizado Correctamente";
         } else {
             adv = "No se ha podido actualizar";
         }
         FacesMessage msg = new FacesMessage(adv);
         FacesContext.getCurrentInstance().addMessage(null, msg);
-    } 
-    
+    }
 
 }
