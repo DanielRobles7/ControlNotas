@@ -45,12 +45,12 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <p:growl id="msg" showDetail="true"/>
-        <h:form id="form">
-            <center>
+        <h:form id="fm">
+            
                 <p:panel style="background-image: url(imagenes/fondos/fondo4.jpg) ;border:#b3d5f5;" id="horizontal" header="Agregar" toggleable="true" toggleOrientation="horizontal">
-                    <center>
+                    
                         <h:outputLabel style="color: #000000" value="Codigo: " /><p:spacer width="7" height="15"/><p:inputText maxlength="9" value="#{beanEscuela.escuela.codigoEscuela}"  ><p:keyFilter regEx="/[\d\-\.]/"/></p:inputText><p:spacer width="20" height="15"/>
-                        <h:outputLabel style="color: #000000" value="Nombre: " /><p:spacer width="7" height="15"/><p:inputText maxlength="35" value="#{beanEscuela.escuela.nombreEscuela}" ><p:keyFilter regEx="/ [a-z _] / i"/></p:inputText><p:spacer width="20" height="15"/>
+                        <h:outputLabel style="color: #000000" value="Nombre: " /><p:spacer width="7" height="15"/><p:inputText maxlength="35" value="#{beanEscuela.escuela.nombreEscuela}" ><p:keyFilter regEx="/[a-z_]/i"/></p:inputText><p:spacer width="20" height="15"/>
                         <h:outputLabel style="color: #000000" value="Telefono: " /><p:spacer width="7" height="15"/><p:inputMask value="#{beanEscuela.escuela.telefono}" mask="(503)9999-9999" /><br /><br />
                         <h:outputLabel style="color: #000000" value="Correo: " /><p:spacer width="7" height="15"/><p:inputText maxlength="60" value="#{beanEscuela.escuela.correo}" ><p:keyFilter regEx="/[a-z0-9_\.\-@◆/i"/></p:inputText><p:spacer width="20" height="15"/>
                         <h:outputLabel style="color: #000000" value="Municipio: " /><p:spacer width="7" height="15"/><p:inputText maxlength="26" value="#{beanEscuela.escuela.municipio}" ><p:keyFilter regEx="/ [a-z _] / i"/></p:inputText><p:spacer width="20" height="15"/>
@@ -58,12 +58,13 @@ and open the template in the editor.
                         <h:outputLabel style="color: #000000" value="Nombre Director: " /><p:spacer width="7" height="15"/><p:inputText maxlength="50" value="#{beanEscuela.escuela.nombreDirector}" ><p:keyFilter regEx="/ [a-z _] / i"/></p:inputText><br /><br />
                         <h:outputLabel style="color: #000000" value="Longitud: " /><p:spacer width="7" height="15"/><p:inputText maxlength="10" value="#{beanEscuela.escuela.longitud}" ><p:keyFilter regEx="/ [a-z _] / i"/></p:inputText><p:spacer width="20" height="15"/>
                         <h:outputLabel style="color: #000000" value="latitud " /><p:spacer width="7" height="15"/><p:inputText maxlength="10" value="#{beanEscuela.escuela.latitud}" ><p:keyFilter regEx="/ [a-z _] / i"/></p:inputText><p:spacer width="20" height="15"/>
-                        <p:commandButton value="Agregar" actionListener="#{beanEscuela.agregar()}" update="msg,form,Tabla"/>
-                    </center>
+                       
+                     
+                     <p:commandButton value="Agregar" actionListener="#{beanEscuela.agregar()}"  update="msg,Tablita,horizontal"  />
                 </p:panel>
-                <br />
-                <br />
-                <p:dataTable  rowStyleClass="tabla" id="Tabla" value="#{beanEscuela.listE}" var="listE" paginatorPosition="bottom" paginator="true" rows="10">
+                 
+               
+                   <p:dataTable  rowStyleClass="tabla" id="Tablita" value="#{beanEscuela.listE}" var="listE" paginatorPosition="bottom" paginator="true" rows="10">
                     <p:column  headerText="Codigo" styleClass="columna">
                         <h:outputText value="#{listE.codigoEscuela}"></h:outputText>
                     </p:column>
@@ -86,13 +87,13 @@ and open the template in the editor.
                         <h:outputText value="#{listE.municipio}"></h:outputText>
                     </p:column>
                     <p:column styleClass="columna" >
-                        <p:commandButton value="Borrar" styleClass="btnBo" actionListener="#{beanEscuela.eliminar(listE)}" ajax="false" icon="ui-icon-close" update="msg,tableNotas" />
+                        <p:commandButton value="Borrar" styleClass="btnBo" actionListener="#{beanEscuela.eliminar(listE)}" ajax="false" icon="ui-icon-close" update="msg,Tablita" />
                     </p:column>
                     <p:column styleClass="columna" >
                         <p:commandButton value="Editar" styleClass="Ac" icon="ui-icon-pencil" actionListener="#{beanEscuela.modificar(listE)}" oncomplete="PF('wdlgdesplegable').show();" update=":desplegable msg"/>
                     </p:column>
                 </p:dataTable>
-            </center>
+           
         </h:form>
         <p:dialog id="desplegable" style="text-align: center;background-image: url(imagenes/fondos/fondo4.jpg)" header="Actualizar" widgetVar="wdlgdesplegable">
             <h:form>
@@ -119,7 +120,7 @@ and open the template in the editor.
                     <p:inputText value="#{beanEscuela.escuela.latitud}" readonly="#{not facesContext.postback or facesContext.renderResponse}" /><p:spacer width="20" height="15"/><br /><br />
                     <h:outputLabel style="color: #000000" value="Estado: " /><p:spacer width="7" height="15"/>
                     <p:inputText style="width: 300px;"  value="#{beanEscuela.escuela.estado}" readonly="#{not facesContext.postback or facesContext.renderResponse}"/><br /><br />
-                    <p:commandButton value="Actualizar" actionListener="#{beanEscuela.actualizar()}" update=":form:Tabla msg,desplegable"/>
+                    <p:commandButton value="Actualizar" actionListener="#{beanEscuela.actualizar()}" update=":form:Tablita msg,desplegable"/>
                 </center>
             </h:form>
         </p:dialog>

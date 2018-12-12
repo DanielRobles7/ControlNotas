@@ -9,6 +9,7 @@ import Mantenimiento.MantenimientoAcceso;
 import Mantenimiento.MantenimientoEscuela;
 import Persistencia.Acceso;
 import Persistencia.Escuelas;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -23,7 +24,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @RequestScoped
-public class BeanEscuela {
+public class BeanEscuela implements Serializable {
 
     private Escuelas escuela=new Escuelas();
     private List<Escuelas> listE=new ArrayList();
@@ -85,16 +86,20 @@ public class BeanEscuela {
     
         //Agregar Escuela
         MantenimientoEscuela me=new MantenimientoEscuela();
-//        me.guardar(escuela);
-        listE=me.consultar();
+        
+        
         String adv="";
         if (me.guardar(escuela)==1) {
             adv="Guardado exitosamente";
+            listE=me.consultar();
         } else {
             adv="Error al guardar";
         }
+        escuela = new Escuelas (); 
         FacesMessage msg = new FacesMessage(adv);
+         
         FacesContext.getCurrentInstance().addMessage(null, msg);
+        
     }
     public void modificar(Escuelas escuela){
         MantenimientoEscuela me=new MantenimientoEscuela();
@@ -111,10 +116,10 @@ public class BeanEscuela {
     }
     public void eliminar(Escuelas escuela){
         MantenimientoEscuela me=new MantenimientoEscuela();
-//        me.eliminar(escuela);
+        me.eliminar(escuela);
+        listE=me.consultar();
         String adv="";
         if (me.eliminar(escuela)==1) {
-        listE=me.consultar();
             adv="Se ha eliminado exitosamente";
         } else {
             adv="Error al eliminar";
@@ -124,14 +129,14 @@ public class BeanEscuela {
     }
     public void actualizar(){
         MantenimientoEscuela me= new MantenimientoEscuela();
-//        me.Actualizar(escuela);
+        me.Actualizar(escuela);
         System.out.println("Actualizar: "+escuela);
         
+        listE=me.consultar();
         
         System.out.println("esta se va actualizar: "+me.Actualizar(escuela));
         String adv="";
         if (me.Actualizar(escuela)==1) {
-        listE=me.consultar();
             adv="Se ha actualizado Correctamente";
         } else {
             adv="Error al actualizar";
