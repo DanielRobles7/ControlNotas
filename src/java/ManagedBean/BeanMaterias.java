@@ -88,6 +88,7 @@ public class BeanMaterias {
         if (mm.guardarMaterias(materia) == 1) {
             listM = mm.consultartodasMaterias();
             materia = new Materias();
+        materia.setGrado(new Nivel());
             adv = "Guardado exitosamente";
         } else {
             adv = "Error al guardar";

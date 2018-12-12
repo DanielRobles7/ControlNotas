@@ -17,7 +17,16 @@ and open the template in the editor.
         <p:growl id="msg" showDetail="true" />
         <h:form id="fo">
             <center>
-                
+                <p:panel id="horizontal" header="Agregar" toggleOrientation="horizontal" toggleable="true" collapsed="true">
+                    <center>
+                        <h:outputLabel value="Nie: " /><p:spacer width="15" />
+                        <p:inputText value="#{beanAlumno.alumnos.nie}">
+                            <p:keyFilter regEx="/[\re\-\.]/" />
+                        </p:inputText>
+                        <br/><br/>
+                        
+                    </center>
+                </p:panel>
             </center>
         </h:form>
     </h:body>

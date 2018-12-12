@@ -76,16 +76,16 @@ public class BeanNivel implements Serializable {
         MantenimientoNivel man = new MantenimientoNivel();
         nivel.setEstado("activo");
 //        man.guardarNivel(nivel);
-        nivel.setCodigoEscuela(new Escuelas());
         String advertencia = "";
-        
-            if (man.guardarNivel(nivel) == 1) {
-        lista = man.consultarTodosNivel();
-        nivel = new Nivel();
-                advertencia = "Guardado correctamente";
-            } else {
-                advertencia = "No se ha guardado";
-            
+
+        if (man.guardarNivel(nivel) == 1) {
+            lista = man.consultarTodosNivel();
+            nivel = new Nivel();
+        nivel.setCodigoEscuela(new Escuelas());
+            advertencia = "Guardado correctamente";
+        } else {
+            advertencia = "No se ha guardado";
+
         }
         FacesMessage msg = new FacesMessage(advertencia);
         FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -120,13 +120,13 @@ public class BeanNivel implements Serializable {
         MantenimientoNivel manf = new MantenimientoNivel();
 //        manf.eliminarNivel(nivel);
         String advertencia = "";
-        
-            if (manf.eliminarNivel(nivel) == 1) {
-        lista = manf.consultarTodosNivel();
-                advertencia = "Se ha eliminado correctamente";
-            } else {
-                advertencia = "No se ha podido eliminar";
-            
+
+        if (manf.eliminarNivel(nivel) == 1) {
+            lista = manf.consultarTodosNivel();
+            advertencia = "Se ha eliminado correctamente";
+        } else {
+            advertencia = "No se ha podido eliminar";
+
         }
         FacesMessage msg = new FacesMessage(advertencia);
         FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -138,18 +138,17 @@ public class BeanNivel implements Serializable {
 //        man.ActualizarNivel(nivel);
         System.out.println(man.ActualizarNivel(nivel));
 
-
         System.out.println("esta es actualizar" + nivel);
 
         String advertencia = "";
-        
-            if (man.ActualizarNivel(nivel) == 1) {
-        lista = man.consultarTodosNivel();
-                advertencia = "Actualizado correctamente";
-            } else {
-                advertencia = "No se ha actualizado";
-            }
-        
+
+        if (man.ActualizarNivel(nivel) == 1) {
+            lista = man.consultarTodosNivel();
+            advertencia = "Actualizado correctamente";
+        } else {
+            advertencia = "No se ha actualizado";
+        }
+
         FacesMessage msg = new FacesMessage(advertencia);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
