@@ -22,15 +22,15 @@
 ________________________________________________________________________________
 Escuela.
 --------------------------------------------------------------------------------
-1. cuando guarda no actualiza la lista. y no limpia el formulario memo
-2. el estado no debe ser modificable. (se cambia cuando se da eliminar)
+1. cuando guarda no actualiza la lista. y no limpia el formulario memo LiSTO
+2. el estado no debe ser modificable. (se cambia cuando se da eliminar)memo LISTO
 3. el id acceso no debe mostrarse para modificar
-4. no está actualizando al eliminar
+4. no está actualizando al eliminar memo LISTO
 
 ________________________________________________________________________________
 Nivel.
 --------------------------------------------------------------------------------
-1. cuando guarda no actualiza la lista. y no limpia el formulario
+1. cuando guarda no actualiza la lista. y no limpia el formulario memo Listo
 
 2. el nivel debe no ser modificado, (no tiene sentido modificar	solo la escuela 
 	para el grado tal) asi que quitar las opciones de modificar en 
