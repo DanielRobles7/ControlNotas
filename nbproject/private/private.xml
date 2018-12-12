@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/guillermo.bermudes/Documents/GitHub/ControlNotas/src/java/ManagedBean/BeanEscuela.java</file>
-            <file>file:/C:/Users/guillermo.bermudes/Documents/GitHub/ControlNotas/web/Escuela.xhtml</file>
+            <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/src/java/ManagedBean/BeanMaterias.java</file>
+            <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/src/java/Mantenimiento/MantenimientoMaterias.java</file>
+            <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/src/java/ManagedBean/BeanEscuela.java</file>
+            <file>file:/C:/Users/ruth.ramosusam/Documents/GitHub/ControlNotas/web/Notas.xhtml</file>
         </group>
     </open-files>
 </project-private>

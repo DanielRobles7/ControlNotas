@@ -120,7 +120,7 @@ and open the template in the editor.
                     <p:inputText value="#{beanEscuela.escuela.latitud}" readonly="#{not facesContext.postback or facesContext.renderResponse}" /><p:spacer width="20" height="15"/><br /><br />
                     <h:outputLabel style="color: #000000" value="Estado: " /><p:spacer width="7" height="15"/>
                     <p:inputText style="width: 300px;"  value="#{beanEscuela.escuela.estado}" readonly="#{not facesContext.postback or facesContext.renderResponse}"/><br /><br />
-                    <p:commandButton value="Actualizar" actionListener="#{beanEscuela.actualizar()}" update=":form:Tablita msg,desplegable"/>
+                    <p:commandButton value="Actualizar" actionListener="#{beanEscuela.actualizar()}" update=":fm:Tablita msg,desplegable"/>
                 </center>
             </h:form>
         </p:dialog>
