@@ -48,9 +48,9 @@ RUTH
 ________________________________________________________________________________
 Profesores
 --------------------------------------------------------------------------------
-1. cuando guarda no actualiza la lista. y no limpia el formulario
+1. cuando guarda no actualiza la lista. y no limpia el formulario cheyo
 
-2. no envia las foraneas al modificar. favor revisar
+2. no envia las foraneas al modificar. favor revisar cheyo
 
 3. hacer que el numero de telefono se vea en un solo reglón, 
 	pruebe asignando ancho fijo solo a ese campo
