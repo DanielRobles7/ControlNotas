@@ -75,13 +75,13 @@ public class BeanNivel implements Serializable {
         System.out.println("esto son las nivel" + nivel);
         MantenimientoNivel man = new MantenimientoNivel();
         nivel.setEstado("activo");
-        man.guardarNivel(nivel);
-        lista = man.consultarTodosNivel();
+//        man.guardarNivel(nivel);
         nivel.setCodigoEscuela(new Escuelas());
-        nivel = new Nivel();
         String advertencia = "";
         
             if (man.guardarNivel(nivel) == 1) {
+        lista = man.consultarTodosNivel();
+        nivel = new Nivel();
                 advertencia = "Guardado correctamente";
             } else {
                 advertencia = "No se ha guardado";
@@ -118,11 +118,11 @@ public class BeanNivel implements Serializable {
 
     public void eliminar(Nivel nivel) {
         MantenimientoNivel manf = new MantenimientoNivel();
-        manf.eliminarNivel(nivel);
-        lista = manf.consultarTodosNivel();
+//        manf.eliminarNivel(nivel);
         String advertencia = "";
         
             if (manf.eliminarNivel(nivel) == 1) {
+        lista = manf.consultarTodosNivel();
                 advertencia = "Se ha eliminado correctamente";
             } else {
                 advertencia = "No se ha podido eliminar";
@@ -135,16 +135,16 @@ public class BeanNivel implements Serializable {
     public void actualizar() {
         System.out.println("este es de actualizar" + nivel);
         MantenimientoNivel man = new MantenimientoNivel();
-        man.ActualizarNivel(nivel);
+//        man.ActualizarNivel(nivel);
         System.out.println(man.ActualizarNivel(nivel));
 
-        lista = man.consultarTodosNivel();
 
         System.out.println("esta es actualizar" + nivel);
 
         String advertencia = "";
         
             if (man.ActualizarNivel(nivel) == 1) {
+        lista = man.consultarTodosNivel();
                 advertencia = "Actualizado correctamente";
             } else {
                 advertencia = "No se ha actualizado";

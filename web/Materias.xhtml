@@ -14,20 +14,109 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-        <p:growl id="msg" showDetail="true" sticky="true"/>
+        <p:growl id="msg" showDetail="true"/>
         <h:form id="form">
             <center>
                 <p:panel id="horizontal" toggleable="true" toggleOrientation="horizontal" header="Agregar">
                     <center>
-                        <h:outputLabel value="Nombre De Materia:"/><p:spacer/>
-                        <p:inputText maxlength="10" value="#{beanMaterias.materia.nombreMateria}">
-                            <p:keyFilter regEx="/[a-z_]/i"/>
-                        </p:inputText>
+                        <h:outputLabel value="Nombre De Materia:"/><p:spacer width="7" height="15"/>
+                        <p:inputText maxlength="10" value="#{beanMaterias.materia.nombreMateria}"/>
+                        <p:spacer height="30" />
+                        <h:outputLabel value="Grado: "/> <p:spacer width="7" height="15"/>
+                        <h:selectOneMenu value="#{beanMaterias.materia.grado.grado}">
+                            <f:selectItem itemValue="" itemLabel="Escoger Grado"/>
+                            <f:selectItems value="#{beanMaterias.listN}" var="n" itemValue="#{n.grado}" itemLabel="#{n.grado}"/>
+                        </h:selectOneMenu>
                         <br/><br/>
-                        <h:outputLabel value="Grado"/>
+                        <p:commandButton value="Guardar" actionListener="#{beanMaterias.agregar()}" update=":form MatTable" />
                     </center>
                 </p:panel>
+                <br/><br/> <br/>
+                <p:dataTable id="MatTable" value="#{beanMaterias.listM}" var="listM" paginatorPosition="bottom" paginator="true" rows="10">
+                    <p:columnGroup type="header">
+                        <p:row>
+                            <p:column headerText="Materia" />
+                            <p:column headerText="Grado" />
+                            <p:column headerText="Ponderacion 1" />
+                            <p:column headerText="Ponderacion 2" />
+                            <p:column headerText="Ponderacion 3" />
+                            <p:column headerText="Ponderacion 4" />
+                            <p:column headerText="Ponderacion 5" />
+                            <p:column headerText="Ponderacion 6" />
+                            <p:column headerText="Periodo" />
+                            <p:column headerText="Actualizar" />
+                            <p:column headerText="Eliminar" />
+                        </p:row>
+                    </p:columnGroup>
+                    <p:column>
+                        <h:outputText value="#{listM.nombreMateria}"/>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{listM.grado.grado}"/>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{listM.ponderacion1}"/>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{listM.ponderacion2}"/>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{listM.ponderacion3}"/>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{listM.ponderacion4}"/>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{listM.ponderacion5}"/>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{listM.ponderacion6}"/>
+                    </p:column>
+                    <p:column>
+                        <h:outputText value="#{listM.periodo}"/>
+                    </p:column>
+                    <p:column>
+                        <p:commandButton value="Editar" actionListener="#{beanMaterias.modificar(listM)}" oncomplete="PF('wdlgdesplegable').show();" update=":desplegable msg" icon="ui-icon-pencil" />
+                    </p:column>
+                    <p:column>
+                        <p:commandButton value="Eliminar" actionListener="#{beanMaterias.eliminar(listM)}" update=":form MatTable" icon="ui-icon-closethick" />
+                    </p:column>
+                </p:dataTable>
             </center>
         </h:form>
+                <p:dialog header="Actualizar" widgetVar="wdlgdesplegable" id="desplegable">
+                    <h:form>
+                         <center>
+                        <h:outputLabel value="Nombre De Materia:"/><p:spacer width="7" height="15"/>
+                        <p:inputText maxlength="10" value="#{beanMaterias.materia.nombreMateria}" readonly="#{not facesContext.postback or facesContext.renderResponse}" />
+                        <p:spacer height="30" />
+                        <h:outputLabel value="Grado: "/> <p:spacer width="7" height="15"/>
+                        <p:inputText value="#{beanMaterias.materia.grado.grado}" readonly="#{not facesContext.postback or facesContext.renderResponse}" /><br/><br/>
+                        <h:outputLabel value="Ponderacion 1:"/><p:spacer width="7" height="15"/>
+                        <p:inputText maxlength="10" style="width: 40px" value="#{beanMaterias.materia.ponderacion1}"/>
+                        <p:spacer height="30" />
+                        <h:outputLabel value="Ponderacion 2:"/><p:spacer width="7" height="15"/>
+                        <p:inputText maxlength="10" style="width: 40px" value="#{beanMaterias.materia.ponderacion2}"/>
+                        <p:spacer height="30" />
+                        <h:outputLabel value="Ponderacion 3:"/><p:spacer width="7" height="15"/>
+                        <p:inputText maxlength="10" style="width: 40px" value="#{beanMaterias.materia.ponderacion3}"/>
+                        <p:spacer height="30" />
+                        <h:outputLabel value="Ponderacion 4:"/><p:spacer width="7" height="15"/>
+                        <p:inputText maxlength="10" style="width: 40px" value="#{beanMaterias.materia.ponderacion4}"/>
+                        <p:spacer height="30" />
+                        <h:outputLabel value="Ponderacion 5:"/><p:spacer width="7" height="15"/>
+                        <p:inputText maxlength="10" style="width: 40px" value="#{beanMaterias.materia.ponderacion5}"/>
+                        <p:spacer height="30" />
+                        <h:outputLabel value="Ponderacion 6:"/><p:spacer width="7" height="15"/>
+                        <p:inputText maxlength="10" style="width: 40px" value="#{beanMaterias.materia.ponderacion6}"/>
+                        <p:spacer height="30" /><br/><br/>
+                        <h:outputLabel value="Periodo:"/><p:spacer width="7" height="15"/>
+                        <p:inputText maxlength="10" value="#{beanMaterias.materia.periodo}"/>
+                        <p:spacer height="30" />
+                        <br/><br/>
+                        <p:commandButton value="Actualizar" actionListener="#{beanMaterias.actualizar()}"  update=":form:MatTable desplegable,msg" />
+                    </center>
+                    </h:form>
+                </p:dialog>
     </h:body>
 </html>

@@ -136,12 +136,12 @@ public class BeanProfesores {
         profesores.setCodigoEscuela(escuelas);
 
         //Agregar Profesores
-        map.guardarProfesores(profesores);
+//        map.guardarProfesores(profesores);
+        String adv;
+        if (map.guardarProfesores(profesores) == 1) {
         listP = map.consultarTodosProfesores();
         profesores.setGrado(new Nivel());
         profesores = new Profesores();
-        String adv;
-        if (map.guardarProfesores(profesores) == 1) {
             adv = "Guardado exitosamente";
             
         } else {
@@ -166,10 +166,10 @@ public class BeanProfesores {
     }
 
     public void eliminar(Profesores profesores) {
-        map.eliminarProfesores(profesores);
-        listP = map.consultarTodosProfesores();
+//        map.eliminarProfesores(profesores);
         String adv;
         if (map.eliminarProfesores(profesores) == 1) {
+        listP = map.consultarTodosProfesores();
             adv = "Se ha eliminado exitosamente";
         } else {
             adv = "Error al eliminar";
@@ -196,14 +196,14 @@ public class BeanProfesores {
         System.out.println("15 "+profesores.getCodigoEscuela());
 
         
-        map.ActualizarProfesores(profesores);
+//        map.ActualizarProfesores(profesores);
         System.out.println("Actualizar: " + profesores);
 
-        listP = map.consultarTodosProfesores();
 
         System.out.println("Se va a actualizar " + map.ActualizarProfesores(profesores));
         String adv;
         if (map.ActualizarProfesores(profesores) == 1) {
+        listP = map.consultarTodosProfesores();
             adv = "Se ha actualizado Correctamente";
         } else {
             adv = "Error al actualizar";

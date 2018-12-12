@@ -95,13 +95,13 @@ public class BeanNotas {
         notas.setFinal1(0.0);
         notas.setEstadoAlumno("activo");
         notas.setEstadoNotas("activo");
-        man.guardar(notas);
+//        man.guardar(notas);
+        String adv = "";
+        if (man.guardar(notas) == 1) {
         listNo = man.consultar();
         notas.setNie(new Alumnos());
         notas.setNombreMateria(new Materias());
         notas = new Notas();
-        String adv = "";
-        if (man.guardar(notas) == 1) {
             adv = "Guardado correctamente";
         } else {
             adv = "No se ha Guardado correctamente";
@@ -130,10 +130,10 @@ public class BeanNotas {
 
     public void eliminar(Notas notas) {
         MantenimientoNotas man = new MantenimientoNotas();
-        man.eliminar(notas);
-        listNo = man.consultar();
+//        man.eliminar(notas);
         String adv = "";
         if (man.eliminar(notas) == 1) {
+        listNo = man.consultar();
             adv = "Se elimino correctamente";
         } else {
             adv = "No se ha podido eliminar";
@@ -145,13 +145,13 @@ public class BeanNotas {
     public void actualizar() {
         System.out.println("este es de actualizar" + notas);
         MantenimientoNotas man = new MantenimientoNotas();
-        man.Actualizar(notas);
+//        man.Actualizar(notas);
         System.out.println(man.Actualizar(notas));
 
-        listNo = man.consultar();
         String adv = "";
         System.out.println("esta es actualizar" + notas);
         if (man.Actualizar(notas) == 1) {
+        listNo = man.consultar();
             adv = "Se ha Actualizado Correctamente";
         } else {
             adv = "No se ha podido actualizar";
