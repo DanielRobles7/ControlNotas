@@ -16,8 +16,10 @@ import Persistencia.Nivel;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -92,8 +94,36 @@ public class BeanAlumno {
     }
     
     public void agregar(){
-        MantenimientoAlumnos ma=new MantenimientoAlumnos();
+        Acceso acceso=new Acceso();
         
+        String nombre=alumnos.getNombre();
+        String usuario;
+        String password;
+        Integer idMax;
+        usuario = nombre.substring(0,6);
+        
+        int numeroAleatorio = (int) (Math.random()*999)+100;
+        password= usuario+numeroAleatorio;
+        
+        acceso.setContrasena(password);
+        acceso.setEstado("Activo");
+        acceso.setIdAcceso(0);
+        acceso.setUsuario(usuario);
+        acceso.setNivelAcceso("Director");
+        
+        MantenimientoAcceso mac=new MantenimientoAcceso();
+        mac.guardarAcesso(acceso);
+        
+        //idMaximo de acceso
+        idMax=mac.consultarMaxAcceso();
+        Acceso acces=new Acceso();
+        acces.setIdAcceso(idMax);
+        
+        alumnos.setIdAcceso(acces);
+        alumnos.setEstado("activo");
+        
+        MantenimientoAlumnos ma=new MantenimientoAlumnos();
+        alumnos.setEstado("activo");
         String adv="";
         if (ma.guardarAlumnos(alumnos)==1) {
             listAl=ma.consultarTodosAlumnos();
@@ -102,5 +132,55 @@ public class BeanAlumno {
         } else {
             adv="Error";
         }
+        alumnos.setCodigoEscuela(new Escuelas());
+        alumnos.setIdAcceso(new Acceso());
+        alumnos.setGrado(new Nivel());
+        
+        FacesMessage msg = new FacesMessage(adv);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
+    
+    public void modificar(Alumnos alumnos){
+        System.out.println("Alumno:"+alumnos.getNie());
+        MantenimientoAlumnos ma=new MantenimientoAlumnos();
+        alumnos= ma.consultarAlumnos(alumnos.getNie());
+        this.alumnos=alumnos;
+        String adv="";
+        if (alumnos!=null) {
+            adv="Consulta Exitosa";
+        } else {
+            adv="Error al consultar";
+        }
+        FacesMessage msg = new FacesMessage(adv);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
+    public void eliminar(Alumnos alumnos){
+        MantenimientoAlumnos ma=new MantenimientoAlumnos();
+         
+        String adv="";
+        if (ma.eliminarAlumnos(alumnos)== 1) {
+            listAl=ma.consultarTodosAlumnos();
+            adv="Eliminado Correctamente";
+        } else {
+            adv="Error al eliminar";
+        }
+        FacesMessage msg = new FacesMessage(adv);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    public void actualizar(){
+        MantenimientoAlumnos ma=new MantenimientoAlumnos();
+        alumnos.setEstado("activo");
+        String adv="";
+        if (ma.ActualizarAlumnos(alumnos)==1) {
+            listAl=ma.consultarTodosAlumnos();
+            alumnos=new Alumnos();
+            adv="Modificado exitosamente";
+        } else {
+            adv="Error al modificar";
+        }
+        FacesMessage msg = new FacesMessage(adv);
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    
 }

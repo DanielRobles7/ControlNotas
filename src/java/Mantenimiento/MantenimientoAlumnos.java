@@ -15,6 +15,12 @@ import javax.persistence.Query;
  * @author eliseo.garciausam
  */
 public class MantenimientoAlumnos {
+    public static void main(String[] args) {
+        MantenimientoAlumnos mal=new MantenimientoAlumnos();
+        
+        System.out.println(mal.consultarAlumnos(2548));
+        
+    }
 
     public int guardarAlumnos(Alumnos alumnos) {
         EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
@@ -38,10 +44,10 @@ public class MantenimientoAlumnos {
 
     public Alumnos consultarAlumnos(int nie) {
         EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
-        Alumnos alumnos = null;
+        Alumnos alumno = null;
         em.getTransaction().begin();
         try {
-            alumnos = em.find(Alumnos.class, nie);
+            alumno = em.find(Alumnos.class, nie);
             em.getTransaction().commit();
             System.out.println("exito,consultarAlumnos,mantenimientoAlumnos");
         } catch (Exception e) {
@@ -50,7 +56,7 @@ public class MantenimientoAlumnos {
         } finally {
             em.close();
         }
-        return alumnos;
+        return alumno;
     }
 
     public List<Alumnos> consultarTodosAlumnos() {
