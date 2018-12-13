@@ -16,7 +16,7 @@ and open the template in the editor.
         <style>
 
             .ui-datatable .ui-paginator {
-                 background-color: rgba(  93, 173, 226 ,0.05) !important;
+                background-color: rgba(  93, 173, 226 ,0.05) !important;
             }
             .ui-datatable .ui-paginator-page{
                 background-color: #333333 !important;  
@@ -34,7 +34,7 @@ and open the template in the editor.
             body{
                 background-image:url(imagenes/fondos/fondo2.jpg);  
             }
-             .ui-panel-titlebar /*Para el titulo de panel */
+            .ui-panel-titlebar /*Para el titulo de panel */
             { 
                 background: #3B73B9;  
             } 
@@ -46,7 +46,7 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <h:form>
-        <ui:include src="menu.xhtml" /><br/>
+            <ui:include src="menu.xhtml" /><br/>
         </h:form>
         <p:growl id="msg" showDetail="true"/>
         <h:form id="form">
@@ -123,7 +123,7 @@ and open the template in the editor.
                     <h:outputLabel style="color: #000000" value="Nombre: " /><p:spacer width="7" height="15"/>
                     <p:inputText value="#{beanProfesores.profesores.nombre}" /><p:spacer width="20" height="15"/>
                     <h:outputLabel style="color: #000000" value="Apellido " /><p:spacer width="7" height="15"/>
-                    <p:inputText value="#{beanProfesores.profesores.apellido}" /><p:spacer width="20" height="15"/>
+                    <p:inputText value="#{beanProfesores.profesores.apellido}" /><br/><br/>
                     <h:outputLabel style="color: #000000" value="Telefono: " /><p:spacer width="7" height="15"/>
                     <p:inputText value="#{beanProfesores.profesores.telefono}"/><br /><br />
                     <h:outputLabel style="color: #000000" value="Correo: " /><p:spacer width="7" height="15"/>
@@ -134,15 +134,14 @@ and open the template in the editor.
                     <p:inputTextarea  value="#{beanProfesores.profesores.direccion}" /><br /><br />
                     <h:outputLabel style="color: #000000" value="Fecha de Nacimiento: " /><p:spacer width="7" height="15"/>
                     <p:inputText style="width: 300px;"  value="#{beanProfesores.profesores.fechaNacimiento}"/><br /><br />
-                    
+                    <h:outputLabel style="color: #000000" value="Fecha de Registro: " /><p:spacer width="7" height="15"/>
                     <p:inputText value="#{beanProfesores.profesores.fechaRegistro}"/><br /><br />
-
-                    <p:inputText value="#{beanProfesores.profesores.codigoEscuela.codigoEscuela}" label="#{beanNivel.nivel.codigoEscuela.nombreEscuela}"/><br /><br />
-                    <p:inputText value="#{beanProfesores.profesores.grado.grado}" label="#{beanProfesores.profesores.grado.grado}"/><br /><br />
-                    
-
-                    
-         
+                    <h:outputLabel style="color: #000000" value="Escuela: " /><p:spacer width="7" height="15"/>
+                    <p:inputText value="#{beanProfesores.profesores.codigoEscuela.codigoEscuela}"/><br /><br />
+                    <h:outputLabel style="color: #000000" value="Grado: " /><p:spacer width="7" height="15"/>
+                    <p:inputText value="#{beanProfesores.profesores.grado.grado}" /><br /><br />
+                    <h:outputLabel style="color: #000000" value="Acceso: " /><p:spacer width="7" height="15"/>
+                    <p:inputText value="#{beanProfesores.profesores.idAcceso.idAcceso}" /><br /><br />
                     <p:commandButton value="Actualizar" actionListener="#{beanProfesores.actualizar()}" update=":form:Tabla msg,desplegable"/>
                 </center>
             </h:form>

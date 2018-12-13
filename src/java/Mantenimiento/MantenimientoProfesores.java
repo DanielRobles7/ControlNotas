@@ -90,9 +90,14 @@ public class MantenimientoProfesores {
             pro.setCampo(profesores.getCampo());
 
             em.getTransaction().commit();
+            System.out.println("Exito Mantenimiento");
             flag = 1;
         } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                
             em.getTransaction().rollback();
+            }
+            System.out.println("Error Mantenimiento... "+e);
             flag = 0;
         } finally {
             em.close();

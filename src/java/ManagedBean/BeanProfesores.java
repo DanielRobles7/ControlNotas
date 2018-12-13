@@ -41,7 +41,9 @@ public class BeanProfesores {
 
     @PostConstruct
     public void init() {
-        // profesores.setIdAcceso(new Acceso());
+         profesores.setIdAcceso(new Acceso());
+         profesores.setGrado(new Nivel());
+         profesores.setCodigoEscuela(new Escuelas());
 //        notas.setNie(new Alumnos());
         listN = man.consultarTodosNivel();
         listP = map.consultarTodosProfesores();
@@ -94,6 +96,38 @@ public class BeanProfesores {
 
     public void setListE(List<Escuelas> listE) {
         this.listE = listE;
+    }
+
+    public MantenimientoProfesores getMap() {
+        return map;
+    }
+
+    public void setMap(MantenimientoProfesores map) {
+        this.map = map;
+    }
+
+    public MantenimientoNivel getMan() {
+        return man;
+    }
+
+    public void setMan(MantenimientoNivel man) {
+        this.man = man;
+    }
+
+    public MantenimientoEscuela getMae() {
+        return mae;
+    }
+
+    public void setMae(MantenimientoEscuela mae) {
+        this.mae = mae;
+    }
+
+    public SimpleDateFormat getFormato() {
+        return formato;
+    }
+
+    public void setFormato(SimpleDateFormat formato) {
+        this.formato = formato;
     }
     
 
@@ -153,6 +187,8 @@ public class BeanProfesores {
 
     public void modificar(Profesores profesores) {
 
+        System.out.println("Escuela: "+profesores.getCodigoEscuela());
+        
         profesores = map.consultarProfesores(profesores.getEscalafon());
         this.profesores = profesores;
         String adv;
@@ -180,31 +216,15 @@ public class BeanProfesores {
 
     public void actualizar() {
         
-        System.out.println("1 "+profesores.getEscalafon());
-        System.out.println("2 "+profesores.getNombre());
-        System.out.println("3 "+profesores.getApellido());
-        System.out.println("4 "+profesores.getEmail());
-        System.out.println("5 "+profesores.getDireccion());
-        System.out.println("6 "+profesores.getEdad());
-        System.out.println("7 "+profesores.getTelefono());
-        System.out.println("8 "+profesores.getFechaRegistro());
-        System.out.println("9 "+profesores.getFechaNacimiento());
-
-        System.out.println("12 "+profesores.getGrado());
-        System.out.println("13 "+profesores.getGrado().getGrado());
-        System.out.println("14 "+profesores.getEstado());
-        System.out.println("15 "+profesores.getCodigoEscuela());
-
+        System.out.println("Escuela: "+profesores.getCodigoEscuela());
         
-//        map.ActualizarProfesores(profesores);
-        System.out.println("Actualizar: " + profesores);
-
-
-        System.out.println("Se va a actualizar " + map.ActualizarProfesores(profesores));
-        String adv;
+        String adv="";
+        
         if (map.ActualizarProfesores(profesores) == 1) {
+            
         listP = map.consultarTodosProfesores();
             adv = "Se ha actualizado Correctamente";
+            
         } else {
             adv = "Error al actualizar";
         }
