@@ -103,7 +103,7 @@ and open the template in the editor.
                         <h:outputText value="#{listP.fechaRegistro}"></h:outputText>
                     </p:column>
                     <p:column styleClass="columna" >
-                        <p:commandButton value="Borrar" styleClass="btnBo" actionListener="#{beanProfesores.eliminar(listP)}" ajax="false" icon="ui-icon-close" update="msg,tableNotas" />
+                        <p:commandButton value="Borrar" styleClass="btnBo" actionListener="#{beanProfesores.eliminar(listP)}" ajax="false" icon="ui-icon-close" update="msg,Tabla" />
                     </p:column>
                     <p:column styleClass="columna" >
                         <p:commandButton value="Editar" styleClass="Ac" icon="ui-icon-pencil" actionListener="#{beanProfesores.modificar(listP)}" oncomplete="PF('wdlgdesplegable').show();" update=":desplegable msg"/>
