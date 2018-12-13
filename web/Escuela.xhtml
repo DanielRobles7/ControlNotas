@@ -8,7 +8,8 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Escuela</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -44,10 +45,14 @@ and open the template in the editor.
         </style>
     </h:head>
     <h:body>
+        <h:form>
+        <ui:include src="menu.xhtml" /><br/>
+        </h:form>
+        <br/>
         <p:growl id="msg" showDetail="true"/>
         <h:form id="fm">
-            
-                <p:panel style="background-image: url(imagenes/fondos/fondo4.jpg) ;border:#b3d5f5;" id="horizontal" header="Agregar" toggleable="true" toggleOrientation="horizontal">
+            <center>
+                <p:panel style="background-image: url(imagenes/fondos/fondo4.jpg);text-align: center ;border:#b3d5f5;" id="horizontal" header="Agregar" toggleable="true" toggleOrientation="horizontal">
                     
                         <h:outputLabel style="color: #000000" value="Codigo: " /><p:spacer width="7" height="15"/><p:inputText maxlength="9" value="#{beanEscuela.escuela.codigoEscuela}"  ><p:keyFilter regEx="/[\d\-\.]/"/></p:inputText><p:spacer width="20" height="15"/>
                         <h:outputLabel style="color: #000000" value="Nombre: " /><p:spacer width="7" height="15"/><p:inputText maxlength="35" value="#{beanEscuela.escuela.nombreEscuela}" ><p:keyFilter regEx="/[a-z_]/i"/></p:inputText><p:spacer width="20" height="15"/>
@@ -62,8 +67,8 @@ and open the template in the editor.
                      
                      <p:commandButton value="Agregar" actionListener="#{beanEscuela.agregar()}"  update="msg,Tablita,horizontal"  />
                 </p:panel>
-                 
-               
+                </center> 
+               <br/><br/>
                    <p:dataTable  rowStyleClass="tabla" id="Tablita" value="#{beanEscuela.listE}" var="listE" paginatorPosition="bottom" paginator="true" rows="10">
                     <p:column  headerText="Codigo" styleClass="columna">
                         <h:outputText value="#{listE.codigoEscuela}"></h:outputText>

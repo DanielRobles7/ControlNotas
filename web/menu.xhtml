@@ -18,10 +18,6 @@ and open the template in the editor.
                 font-family: 'Eras Bold ITC' ;
                 text-align: center;
             }
-             .contenido{
-                background-image: url(imagenes/fondos/escuela.jpg);
-                background-size: cover;
-            }
             .Btn{
                 color: #000000 !important;
                 font-family: 'Bahnschrift SemiBold' !important;
@@ -33,11 +29,31 @@ and open the template in the editor.
             }
         </style>
     </h:head>
-    <h:body styleClass="contenido">
+    <h:body>
         <p:sidebar widgetVar="sidebar1" baseZIndex="10000">
             <h1 style="text-align: center">Notas</h1>
+            <p:button href="Alumno.xhtml" styleClass="Btn" style="width: 100%" value="Alumnos" icon=" ui-icon-person" />
+            <p:separator/>
+            <p:separator/>
+            <p:button href="Escuela.xhtml" styleClass="Btn" style="width: 100%" value="Escuela" icon=" ui-icon-home" />
+            <p:separator/>
+            <p:separator/>
+            <p:button href="Materias.xhtml" styleClass="Btn" style="width: 100%" value="Materias" icon=" ui-icon-document" />
+            <p:separator/>
+            <p:separator/>
+            <p:button href="Nivel.xhtml" styleClass="Btn" style="width: 100%" value="Nivel" icon=" ui-icon-tag" />
+            <p:separator/>
+            <p:separator/>
             <p:button href="Notas.xhtml" styleClass="Btn" style="width: 100%" value="Notas" icon=" ui-icon-folder-open" />
+            <p:separator/>
+            <p:separator/>
+            <p:button href="Profesores.xhtml" styleClass="Btn" style="width: 100%" value="Profesores" icon=" ui-icon-contact" />
+            <p:separator/>
+            <p:separator/>
+            <p:button href="Inicio.xhtml" styleClass="Btn" style="width: 100%" value="Inicio" icon=" ui-icon-home" />
+            <p:separator/>
+            <p:separator/>
         </p:sidebar>
-        <p:commandButton id="menu" icon="	ui-icon-circle-plus" styleClass="Main" oncomplete="PF('sidebar1').show()" />
+        <p:commandButton id="menu" icon="ui-icon-circle-plus" styleClass="Main" oncomplete="PF('sidebar1').show()" />
     </h:body>
 </html>
