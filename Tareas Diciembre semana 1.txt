@@ -1,4 +1,4 @@
-1. que no permita numeros de telefono,
+﻿1. que no permita numeros de telefono,
 
 2. si se crea un registro con el mismo nombre de uno que esté inactivo
 	hay que enviar un mensaje diciendo que ya está activo y si 
@@ -68,7 +68,7 @@ Notas
 --------------------------------------------------------------------------------
 1. si se guarda y no se ha seleccionado nada, debe decir que seleccione algo.
 2. la lista nos se actualiza al guardar
-3. notas se elimina del todo, falta modificar metodo para que cambie de estado.
+3. notas se elimina del todo, falta modificar metodo para que cambie de estado. [Moisés, Listo]
 4. el estado del alumno no debería ser modificado ni el estado de la nota.
 
 ________________________________________________________________________________

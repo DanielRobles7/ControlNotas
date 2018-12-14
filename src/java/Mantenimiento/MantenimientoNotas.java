@@ -121,24 +121,34 @@ public class MantenimientoNotas {
 
     public int eliminar(Notas notas) {
         EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
-        Notas not = null;
-        em.getTransaction().begin();
-        int flag = 0;
+        Notas notasAlum = null;
+        
         try {
-            not = em.find(Notas.class, notas.getIdNota());
-            em.remove(not);
-
+            em.getTransaction().begin();
+            notasAlum = em.find(Notas.class, notas.getNie());
+            notasAlum.setIdNota(notas.getIdNota());
+            notasAlum.setNie(notas.getNie());
+            notasAlum.setNombreMateria(notas.getNombreMateria());
+            notasAlum.setNota1(notas.getNota1());
+            notasAlum.setNota2(notas.getNota2());
+            notasAlum.setNota3(notas.getNota3());
+            notasAlum.setNota4(notas.getNota4());
+            notasAlum.setNota5(notas.getNota5());
+            notasAlum.setNota6(notas.getNota6());
+            notasAlum.setPromerio(notas.getPromerio());
+            notasAlum.setReposicion(notas.getReposicion());
+            notasAlum.setFinal1(notas.getFinal1());
+            notasAlum.setEstadoAlumno("inactivo");
+            notasAlum.setEstadoNotas(notas.getEstadoNotas());
             em.getTransaction().commit();
-            flag = 1;
+            return 1;
         } catch (Exception e) {
-
             em.getTransaction().rollback();
-            flag = 0;
-        } finally {
+            System.out.println("Error: "+e.getMessage());
+            return 0;
+        }finally{
             em.close();
         }
-        return flag;
-
     }
 
     public Integer consultarMaxNotas() {
@@ -156,4 +166,26 @@ public class MantenimientoNotas {
         }
         return idMax;
     }
+
+//    public int eliminar(Notas notas) {
+//        EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+//        Notas not = null;
+//        em.getTransaction().begin();
+//        int flag = 0;
+//        try {
+//            not = em.find(Notas.class, notas.getIdNota());
+//            em.remove(not);
+//
+//            em.getTransaction().commit();
+//            flag = 1;
+//        } catch (Exception e) {
+//
+//            em.getTransaction().rollback();
+//            flag = 0;
+//        } finally {
+//            em.close();
+//        }
+//        return flag;
+//
+//    }
 }
