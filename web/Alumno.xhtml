@@ -13,15 +13,46 @@ and open the template in the editor.
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+
+            .ui-datatable .ui-paginator {
+                background-color: rgba(  93, 173, 226 ,0.05) !important;
+            }
+            .ui-datatable .ui-paginator-page{
+                background-color: #333333 !important;  
+                color: white !important;
+            }
+            form .columna{
+                background-color: rgba(  93, 173, 226 ,0.05) !important;
+                color: black;
+            }
+            form .tabla{
+                background-image:url(imagenes/fondos/fondo4.jpg);
+                font-size: 13px;
+                color: black;
+            } 
+            body{
+                background-image:url(imagenes/fondos/fondo2.jpg);  
+            }
+            .ui-panel-titlebar /*Para el titulo de panel */
+            { 
+                background: #3B73B9;  
+            } 
+            .ui-dialog-titlebar{/*Para el Titulo del formulario Desplegable */
+                background-image:url(imagenes/fondos/fondo2.jpg);  
+                color: #999999 !important;
+            }
+        </style>
     </h:head>
     <h:body>
         <h:form>
         <ui:include src="menu.xhtml" /><br/>
         </h:form>
+        <br/>
         <p:growl id="msg" showDetail="true" />
         <h:form id="fo">
             <center>
-                <p:panel id="horizontal" header="Agregar" toggleOrientation="horizontal" toggleable="true" collapsed="true">
+                <p:panel id="horizontal" style="background-image: url(imagenes/fondos/fondo4.jpg) ;border:#b3d5f5;" header="Agregar" toggleOrientation="horizontal" toggleable="true" collapsed="true">
                     <center>
                         <h:outputLabel value="Nie: " /><p:spacer width="20" height="15"/>
                         <p:inputText value="#{beanAlumno.alumnos.nie}">
@@ -68,59 +99,59 @@ and open the template in the editor.
                     </center>
                 </p:panel>
                 <br/><br/><br/>
-                <p:dataTable id="Tab" style="font-size: 14px;" paginator="true" paginatorPosition="bottom" rows="10" value="#{beanAlumno.listAl}" var="listAl" >
+                <p:dataTable id="Tab" rowStyleClass="tabla" style="font-size: 14px;" paginator="true" paginatorPosition="bottom" rows="10" value="#{beanAlumno.listAl}" var="listAl" >
                     <p:columnGroup type="header">
                         <p:row>
-                            <p:column headerText="Nie" />
-                            <p:column headerText="Alumno" />
-                            <p:column headerText="Email" />
-                            <p:column headerText="Edad" />
-                            <p:column headerText="Fecha de nacimiento" />
-                            <p:column headerText="Fecha de Registro" />
-                            <p:column headerText="Usuario" />
-                            <p:column headerText="Escuela" />
-                            <p:column headerText="Grado" />
-                            <p:column headerText="Editar" />
-                            <p:column headerText="Borrar" />
+                            <p:column headerText="Nie"  styleClass="columna"/>
+                            <p:column headerText="Alumno"  styleClass="columna"/>
+                            <p:column headerText="Email"  styleClass="columna"/>
+                            <p:column headerText="Edad"  styleClass="columna"/>
+                            <p:column headerText="Fecha de nacimiento"  styleClass="columna"/>
+                            <p:column headerText="Fecha de Registro"  styleClass="columna"/>
+                            <p:column headerText="Usuario"  styleClass="columna"/>
+                            <p:column headerText="Escuela"  styleClass="columna"/>
+                            <p:column headerText="Grado"  styleClass="columna"/>
+                            <p:column headerText="Editar"  styleClass="columna"/>
+                            <p:column headerText="Borrar"  styleClass="columna"/>
                         </p:row>
                     </p:columnGroup>
-                    <p:column>
+                    <p:column  styleClass="columna">
                         <h:outputText value="#{listAl.nie}" />
                     </p:column>
-                     <p:column>
+                     <p:column styleClass="columna">
                          <h:outputText value="#{listAl.apellido}, #{listAl.nombre}" />
                     </p:column>
-                     <p:column>
+                     <p:column styleClass="columna">
                          <h:outputText value="#{listAl.email}" />
                     </p:column>
-                     <p:column>
+                     <p:column styleClass="columna">
                          <h:outputText value="#{listAl.edad}" />
                     </p:column>
-                     <p:column>
+                     <p:column styleClass="columna">
                          <h:outputText value="#{listAl.fechaNacimiento}" />
                     </p:column>
-                     <p:column>
+                     <p:column styleClass="columna">
                          <h:outputText value="#{listAl.fechaRegistro}" />
                     </p:column>
-                     <p:column>
+                     <p:column styleClass="columna">
                          <h:outputText value="#{listAl.idAcceso.usuario}" />
                     </p:column>
-                     <p:column>
+                     <p:column styleClass="columna">
                          <h:outputText value="#{listAl.codigoEscuela.nombreEscuela}" />
                     </p:column>
-                     <p:column>
+                     <p:column styleClass="columna">
                          <h:outputText value="#{listAl.grado.grado}" />
                     </p:column>
-                    <p:column>
-                        <p:commandButton value="Editar" icon="ui-icon-pencil" actionListener="#{beanAlumno.modificar(listAl)}" oncomplete="PF('wdlgdesplegable').show();" update=":desplegable msg"/>
+                    <p:column styleClass="columna">
+                        <p:commandButton value="Editar" styleClass="Ac" icon="ui-icon-pencil" actionListener="#{beanAlumno.modificar(listAl)}" oncomplete="PF('wdlgdesplegable').show();" update=":desplegable msg"/>
                     </p:column>
-                    <p:column>
-                        <p:commandButton value="Eliminar" icon="ui-icon-close" actionListener="#{beanAlumno.eliminar(listAl)}" update="Tab,msg"/>
+                    <p:column styleClass="columna">
+                        <p:commandButton value="Eliminar" styleClass="btnBo" icon="ui-icon-close" actionListener="#{beanAlumno.eliminar(listAl)}" update="Tab,msg"/>
                     </p:column>
                 </p:dataTable>
             </center>
         </h:form>
-        <p:dialog id="desplegable" style="text-align: center;" header="Actualizar" widgetVar="wdlgdesplegable">
+        <p:dialog id="desplegable" style="text-align: center;background-image: url(imagenes/fondos/fondo4.jpg)" header="Actualizar" widgetVar="wdlgdesplegable">
             <h:form>
                 <center>
                         <h:outputLabel value="Nie: " /><p:spacer width="20" height="15"/>
