@@ -13,6 +13,47 @@ and open the template in the editor.
     <h:head>
         <title>Materias</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
+
+            .ui-datatable .ui-paginator {
+                background-color: rgba(  93, 173, 226 ,0.05) !important;
+            }
+            .ui-datatable .ui-paginator-page{
+                background-color: #333333 !important;  
+                color: white !important;
+            }
+            form .columna{
+                background-color: rgba(  93, 173, 226 ,0.05) !important;
+                color: black;
+            }
+            form .tabla{
+                background-image:url(imagenes/fondos/fondo4.jpg);
+                font-size: 13px;
+                color: black;
+            } 
+            body{
+                background-image:url(imagenes/fondos/fondo2.jpg);  
+            }
+            .ui-panel-titlebar /*Para el titulo de panel */
+            { 
+                background: #3B73B9;  
+            } 
+            .ui-dialog-titlebar{/*Para el Titulo del formulario Desplegable */
+                background-image:url(imagenes/fondos/fondo2.jpg);  
+                color: #999999 !important;
+            }
+            
+            form .btnBo{
+                background-color: #999999 !important;
+                /*color: black !important;*/
+
+            }
+            form .Ac{
+                background-color: #999999 !important;
+                /*color: black !important;*/
+
+            }
+        </style>
     </h:head>
     <h:body>
         <h:form>
@@ -22,7 +63,7 @@ and open the template in the editor.
         <p:growl id="msg" showDetail="true"/>
         <h:form id="form">
             <center>
-                <p:panel id="horizontal" toggleable="true" toggleOrientation="horizontal" header="Agregar">
+                <p:panel id="horizontal" style="background-image: url(imagenes/fondos/fondo4.jpg) ;border:#b3d5f5;" toggleable="true" toggleOrientation="horizontal" header="Agregar">
                     <center>
                         <h:outputLabel value="Nombre De Materia:"/><p:spacer width="7" height="15"/>
                         <p:inputText maxlength="10" value="#{beanMaterias.materia.nombreMateria}"/>
@@ -37,59 +78,59 @@ and open the template in the editor.
                     </center>
                 </p:panel>
                 <br/><br/> <br/>
-                <p:dataTable id="MatTable" value="#{beanMaterias.listM}" var="listM" paginatorPosition="bottom" paginator="true" rows="10">
+                <p:dataTable id="MatTable" rowStyleClass="tabla" value="#{beanMaterias.listM}" var="listM" paginatorPosition="bottom" paginator="true" rows="10">
                     <p:columnGroup type="header">
                         <p:row>
-                            <p:column headerText="Materia" />
-                            <p:column headerText="Grado" />
-                            <p:column headerText="Ponderacion 1" />
-                            <p:column headerText="Ponderacion 2" />
-                            <p:column headerText="Ponderacion 3" />
-                            <p:column headerText="Ponderacion 4" />
-                            <p:column headerText="Ponderacion 5" />
-                            <p:column headerText="Ponderacion 6" />
-                            <p:column headerText="Periodo" />
-                            <p:column headerText="Actualizar" />
-                            <p:column headerText="Eliminar" />
+                            <p:column headerText="Materia" styleClass="columna"/>
+                            <p:column headerText="Grado" styleClass="columna"/>
+                            <p:column headerText="Ponderacion 1" styleClass="columna" />
+                            <p:column headerText="Ponderacion 2" styleClass="columna" />
+                            <p:column headerText="Ponderacion 3" styleClass="columna" />
+                            <p:column headerText="Ponderacion 4" styleClass="columna" />
+                            <p:column headerText="Ponderacion 5" styleClass="columna" />
+                            <p:column headerText="Ponderacion 6" styleClass="columna" />
+                            <p:column headerText="Periodo" styleClass="columna" />
+                            <p:column headerText="Actualizar" styleClass="columna" />
+                            <p:column headerText="Eliminar" styleClass="columna" />
                         </p:row>
                     </p:columnGroup>
-                    <p:column>
+                    <p:column styleClass="columna">
                         <h:outputText value="#{listM.nombreMateria}"/>
                     </p:column>
-                    <p:column>
+                    <p:column styleClass="columna">
                         <h:outputText value="#{listM.grado.grado}"/>
                     </p:column>
-                    <p:column>
+                    <p:column styleClass="columna">
                         <h:outputText value="#{listM.ponderacion1}"/>
                     </p:column>
-                    <p:column>
+                    <p:column styleClass="columna">
                         <h:outputText value="#{listM.ponderacion2}"/>
                     </p:column>
-                    <p:column>
+                    <p:column styleClass="columna">
                         <h:outputText value="#{listM.ponderacion3}"/>
                     </p:column>
-                    <p:column>
+                    <p:column styleClass="columna">
                         <h:outputText value="#{listM.ponderacion4}"/>
                     </p:column>
-                    <p:column>
+                    <p:column styleClass="columna">
                         <h:outputText value="#{listM.ponderacion5}"/>
                     </p:column>
-                    <p:column>
+                    <p:column styleClass="columna">
                         <h:outputText value="#{listM.ponderacion6}"/>
                     </p:column>
-                    <p:column>
+                    <p:column styleClass="columna">
                         <h:outputText value="#{listM.periodo}"/>
                     </p:column>
-                    <p:column>
-                        <p:commandButton value="Editar" actionListener="#{beanMaterias.modificar(listM)}" oncomplete="PF('wdlgdesplegable').show();" update=":desplegable msg" icon="ui-icon-pencil" />
+                    <p:column styleClass="columna">
+                        <p:commandButton value="Editar" styleClass="Ac" actionListener="#{beanMaterias.modificar(listM)}" oncomplete="PF('wdlgdesplegable').show();" update=":desplegable msg" icon="ui-icon-pencil" />
                     </p:column>
-                    <p:column>
-                        <p:commandButton value="Eliminar" actionListener="#{beanMaterias.eliminar(listM)}" update=":form MatTable" icon="ui-icon-closethick" />
+                    <p:column styleClass="columna">
+                        <p:commandButton value="Eliminar" styleClass="btnBo" actionListener="#{beanMaterias.eliminar(listM)}" update=":form MatTable" icon="ui-icon-closethick" />
                     </p:column>
                 </p:dataTable>
             </center>
         </h:form>
-                <p:dialog header="Actualizar" widgetVar="wdlgdesplegable" id="desplegable">
+                <p:dialog header="Actualizar" style="text-align: center;background-image: url(imagenes/fondos/fondo4.jpg)"  widgetVar="wdlgdesplegable" id="desplegable">
                     <h:form>
                          <center>
                         <h:outputLabel value="Nombre De Materia:"/><p:spacer width="7" height="15"/>
