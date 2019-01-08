@@ -1,0 +1,98 @@
+
+__________________________________________________________
+Nivel. 
+----------------------------------------------------------
+1. no mostrar opcion de editar, debido a que lo unico 
+que se puede editar es la escuela, y el grado de una escuela
+solo pertenece a esa escuela, asi que o se agrega o se borra,
+no debe editarse.
+
+__________________________________________________________
+Materia
+----------------------------------------------------------
+1. El metodo elminar, lo elimina, debe cambiar unicamente el estado.
+
+2. hacer la siguiente validacion.
+	2.1 sumar ponderaciones en una variable llamada, "suma"
+	2.2 validar
+		si (suma == 0 || suma == 100) {
+			no mostrar nada.	
+		} sino {
+			mostrar un mensaje que diga, "la suma de las ponderaciones debe ser igual a 100"
+			}
+	2.3 si la validacion no se cumple no dejar guardar lo editado.
+
+__________________________________________________________
+Profesores
+----------------------------------------------------------
+1. cuando se edita uno se borra el estado que poseia, y no se guarda
+ninguno otro, hay que hacer que mantenga el estado al editar.
+ya que si se borra el estado se quita de la lista.
+
+
+__________________________________________________________
+Alumno
+----------------------------------------------------------
+1. la fecha de registro debe llenarse automaticamente, 
+utilizar metodo de capturar fecha actual, 
+pruebe utilizando
+SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+String fechaRegistro = formato.format(new Date());
+como se utiliza en el bean "Profesores"
+
+__________________________________________________________
+Notas
+----------------------------------------------------------
+1. al editar campos son muy estrechos y no se visualiza la palabra completa
+	-Estado Alumno
+	-Estado Notas
+
+2. se debe hacer lo siguiente para calcular el promedio.
+	   2.1 	nota 1 X ponderacion 1 ( este datos de la materia asociada) guardarlo en varibale "resultado1"
+		nota 2 x ponderacion 2 ......	guardarlo en variable "resultado2"
+		hacer lo mismo para todas las notas.
+	   2.2  sumar todos los resultados, y dividirlos entre 1,000 y guardar ese dato en la variable "promedio"
+
+3. hacer la siguiente validacion.
+	   	si ( reposicion != 0 ) {
+			Nota Final = promedio + reposicion
+		}
+__________________________________________________________
+Menú
+----------------------------------------------------------
+1. poner inicio al inicio xD
+	
+	
+	
+
+
+
+__________________________________________________________
+Adicionales
+----------------------------------------------------------
+
+1. si se crea un registro con el mismo nombre de uno que esté inactivo
+	hay que enviar un mensaje diciendo que ya está activo y si 
+	desea reactivar ?
+
+2. antes de dar al boton borrar debe de abrirse un "modal" 
+	preguntando si, ¿desea borrar el registro? y al puchar en
+	"confirmar" se elimina, sino debe dar en cancelar para que
+	no se elimine y regrese todo normal.
+
+
+3. los modificar de los campos con llave foranea deben ser campos seleccionar.
+	y debe aparecer por defecto seleccionado el campo que posee el registro 
+	en la base de datos.
+
+4. cuando se guarda uno con el mismo nombre o el mismo id foranea
+	hay que validar que ya existe el registro.
+
+
+
+
+
+
+
+
+
