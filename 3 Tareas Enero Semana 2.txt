@@ -51,14 +51,14 @@ Notas
 	   2.1 	nota 1 X ponderacion 1 ( este datos de la materia asociada) guardarlo en varibale "resultado1"
 		nota 2 x ponderacion 2 ......	guardarlo en variable "resultado2"
 		hacer lo mismo para todas las notas.
-	   2.2  sumar todos los resultados, y dividirlos entre 1,000 y guardar ese dato en la variable "promedio"
+	   2.2  sumar todos los resultados, y dividirlos entre 100 y guardar ese dato en la variable "promedio"
 
 3. hacer la siguiente validacion.
 	   	si ( reposicion != 0 ) {
 			Nota Final = promedio + reposicion
 		}
 __________________________________________________________
-Menú
+MenÃº
 ----------------------------------------------------------
 1. poner inicio al inicio xD
 	
@@ -71,12 +71,12 @@ __________________________________________________________
 Adicionales
 ----------------------------------------------------------
 
-1. si se crea un registro con el mismo nombre de uno que esté inactivo
-	hay que enviar un mensaje diciendo que ya está activo y si 
+1. si se crea un registro con el mismo nombre de uno que estÃ© inactivo
+	hay que enviar un mensaje diciendo que ya estÃ¡ activo y si 
 	desea reactivar ?
 
 2. antes de dar al boton borrar debe de abrirse un "modal" 
-	preguntando si, ¿desea borrar el registro? y al puchar en
+	preguntando si, Â¿desea borrar el registro? y al puchar en
 	"confirmar" se elimina, sino debe dar en cancelar para que
 	no se elimine y regrese todo normal.
 
