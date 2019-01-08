@@ -25,11 +25,11 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 @RequestScoped
 public class BeanNivel implements Serializable {
-
+    
     private Nivel nivel;
     private List<Nivel> lista = new ArrayList();
     private List<Escuelas> listaE = new ArrayList();
-
+    
     @PostConstruct
     public void init() {
         nivel = new Nivel();
@@ -38,54 +38,54 @@ public class BeanNivel implements Serializable {
         nivel.setCodigoEscuela(new Escuelas());
         listaE = mae.consultar();
         lista = man.consultarTodosNivel();
-
+        
         for (Escuelas e : listaE) {
             System.out.println(e.getCodigoEscuela());
             System.out.println(e.getNombreEscuela());
         }
-
+        
     }
-
+    
     public Nivel getNivel() {
         return nivel;
     }
-
+    
     public void setNivel(Nivel nivel) {
         this.nivel = nivel;
     }
-
+    
     public List<Nivel> getLista() {
         return lista;
     }
-
+    
     public void setLista(List<Nivel> lista) {
         this.lista = lista;
     }
-
+    
     public List<Escuelas> getListaE() {
         return listaE;
     }
-
+    
     public void setListaE(List<Escuelas> listaE) {
         this.listaE = listaE;
     }
-
+    
     public void agregar() {
-
+        
         System.out.println("esto son las nivel" + nivel);
         MantenimientoNivel man = new MantenimientoNivel();
         nivel.setEstado("activo");
 //        man.guardarNivel(nivel);
         String advertencia = "";
-
+        
         if (man.guardarNivel(nivel) == 1) {
             lista = man.consultarTodosNivel();
             nivel = new Nivel();
-        nivel.setCodigoEscuela(new Escuelas());
+            nivel.setCodigoEscuela(new Escuelas());
             advertencia = "Guardado correctamente";
         } else {
             advertencia = "No se ha guardado";
-
+            
         }
         FacesMessage msg = new FacesMessage(advertencia);
         FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -101,7 +101,7 @@ public class BeanNivel implements Serializable {
         MantenimientoNivel man = new MantenimientoNivel();
         System.out.println("Modificaremos " + nivel.getGrado());
         nivel = man.consultarNivel(nivel.getGrado());
-
+        
         String advertencia = "";
         if (nivel != null) {
             this.nivel = nivel;
@@ -109,48 +109,49 @@ public class BeanNivel implements Serializable {
         } else {
             advertencia = "Consulta no realizada";
         }
-
+        
         System.out.println("este de modificar" + nivel);
         FacesMessage msg = new FacesMessage(advertencia);
         FacesContext.getCurrentInstance().addMessage(null, msg);
-
+        
     }
-
+    
     public void eliminar(Nivel nivel) {
         MantenimientoNivel manf = new MantenimientoNivel();
 //        manf.eliminarNivel(nivel);
         String advertencia = "";
-
+        
         if (manf.eliminarNivel(nivel) == 1) {
             lista = manf.consultarTodosNivel();
             advertencia = "Se ha eliminado correctamente";
         } else {
             advertencia = "No se ha podido eliminar";
-
+            
         }
         FacesMessage msg = new FacesMessage(advertencia);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-
+    
     public void actualizar() {
         System.out.println("este es de actualizar" + nivel);
         MantenimientoNivel man = new MantenimientoNivel();
 //        man.ActualizarNivel(nivel);
         System.out.println(man.ActualizarNivel(nivel));
-
+        
         System.out.println("esta es actualizar" + nivel);
-
+        
         String advertencia = "";
-
+        
+        nivel.setEstado("activo");
         if (man.ActualizarNivel(nivel) == 1) {
             lista = man.consultarTodosNivel();
             advertencia = "Actualizado correctamente";
         } else {
             advertencia = "No se ha actualizado";
         }
-
+        
         FacesMessage msg = new FacesMessage(advertencia);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-
+    
 }

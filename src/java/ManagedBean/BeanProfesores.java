@@ -27,7 +27,7 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 @RequestScoped
 public class BeanProfesores {
-
+    
     private Profesores profesores = new Profesores();
     private Escuelas escuelas = new Escuelas();
     private Nivel nivel = new Nivel();
@@ -38,99 +38,98 @@ public class BeanProfesores {
     MantenimientoNivel man = new MantenimientoNivel();
     MantenimientoEscuela mae = new MantenimientoEscuela();
     SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-
+    
     @PostConstruct
     public void init() {
-         profesores.setIdAcceso(new Acceso());
-         profesores.setGrado(new Nivel());
-         profesores.setCodigoEscuela(new Escuelas());
+        profesores.setIdAcceso(new Acceso());
+        profesores.setGrado(new Nivel());
+        profesores.setCodigoEscuela(new Escuelas());
 //        notas.setNie(new Alumnos());
         listN = man.consultarTodosNivel();
         listP = map.consultarTodosProfesores();
         listE = mae.consultar();
     }
-
+    
     public Profesores getProfesores() {
         return profesores;
     }
-
+    
     public void setProfesores(Profesores profesores) {
         this.profesores = profesores;
     }
-
+    
     public Nivel getNivel() {
         return nivel;
     }
-
+    
     public void setNivel(Nivel nivel) {
         this.nivel = nivel;
     }
-
+    
     public List<Profesores> getListP() {
         return listP;
     }
-
+    
     public void setListP(List<Profesores> listP) {
         this.listP = listP;
     }
-
+    
     public List<Nivel> getListN() {
         return listN;
     }
-
+    
     public void setListN(List<Nivel> listN) {
         this.listN = listN;
     }
-
+    
     public Escuelas getEscuelas() {
         return escuelas;
     }
-
+    
     public void setEscuelas(Escuelas escuelas) {
         this.escuelas = escuelas;
     }
-
+    
     public List<Escuelas> getListE() {
         return listE;
     }
-
+    
     public void setListE(List<Escuelas> listE) {
         this.listE = listE;
     }
-
+    
     public MantenimientoProfesores getMap() {
         return map;
     }
-
+    
     public void setMap(MantenimientoProfesores map) {
         this.map = map;
     }
-
+    
     public MantenimientoNivel getMan() {
         return man;
     }
-
+    
     public void setMan(MantenimientoNivel man) {
         this.man = man;
     }
-
+    
     public MantenimientoEscuela getMae() {
         return mae;
     }
-
+    
     public void setMae(MantenimientoEscuela mae) {
         this.mae = mae;
     }
-
+    
     public SimpleDateFormat getFormato() {
         return formato;
     }
-
+    
     public void setFormato(SimpleDateFormat formato) {
         this.formato = formato;
     }
     
-
     public void agregar() {
         //Agregar Acceso
         Acceso acceso = new Acceso();
@@ -141,17 +140,17 @@ public class BeanProfesores {
         String password;
         Integer idMax;
         usuario = nombre.substring(0, 3) + apellido.substring(0, 3);
-
+        
         int numeroAleatorio = (int) (Math.random() * 899) + 100;
         password = usuario + numeroAleatorio;
-
+        
         acceso.setContrasena(password);
         acceso.setEstado("Activo");
         acceso.setIdAcceso(0);
         acceso.setUsuario(usuario);
         acceso.setNivelAcceso("Profesor");
         acceso.setCampo("");
-
+        
         MantenimientoAcceso ma = new MantenimientoAcceso();
         ma.guardarAcesso(acceso);
 
@@ -159,7 +158,7 @@ public class BeanProfesores {
         idMax = ma.consultarMaxAcceso();
         Acceso acces = new Acceso();
         acces.setIdAcceso(idMax);
-
+        
         profesores.setIdAcceso(acces);
         profesores.setEstado("Activo");
         String fechaRegistro = formato.format(new Date());
@@ -173,9 +172,9 @@ public class BeanProfesores {
 //        map.guardarProfesores(profesores);
         String adv;
         if (map.guardarProfesores(profesores) == 1) {
-        listP = map.consultarTodosProfesores();
-        profesores.setGrado(new Nivel());
-        profesores = new Profesores();
+            listP = map.consultarTodosProfesores();
+            profesores.setGrado(new Nivel());
+            profesores = new Profesores();
             adv = "Guardado exitosamente";
             
         } else {
@@ -184,10 +183,10 @@ public class BeanProfesores {
         FacesMessage msg = new FacesMessage(adv);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-
+    
     public void modificar(Profesores profesores) {
-
-        System.out.println("Escuela: "+profesores.getCodigoEscuela());
+        
+        System.out.println("Escuela: " + profesores.getCodigoEscuela());
         
         profesores = map.consultarProfesores(profesores.getEscalafon());
         this.profesores = profesores;
@@ -200,12 +199,12 @@ public class BeanProfesores {
         FacesMessage msg = new FacesMessage(adv);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-
+    
     public void eliminar(Profesores profesores) {
 //        map.eliminarProfesores(profesores);
         String adv;
         if (map.eliminarProfesores(profesores) == 1) {
-        listP = map.consultarTodosProfesores();
+            listP = map.consultarTodosProfesores();
             adv = "Se ha eliminado exitosamente";
         } else {
             adv = "Error al eliminar";
@@ -213,16 +212,16 @@ public class BeanProfesores {
         FacesMessage msg = new FacesMessage(adv);
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
-
+    
     public void actualizar() {
         
-        System.out.println("Escuela: "+profesores.getCodigoEscuela());
+        System.out.println("Escuela: " + profesores.getCodigoEscuela());
         
-        String adv="";
-        
+        String adv = "";
+        profesores.setEstado("activo");
         if (map.ActualizarProfesores(profesores) == 1) {
             
-        listP = map.consultarTodosProfesores();
+            listP = map.consultarTodosProfesores();
             adv = "Se ha actualizado Correctamente";
             
         } else {

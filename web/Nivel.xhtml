@@ -77,9 +77,6 @@ and open the template in the editor.
             <p:column  styleClass="columna" headerText="Escuela">
                 <p:outputLabel value="#{lista.codigoEscuela.nombreEscuela}" />
             </p:column>
-            <p:column styleClass="columna">
-                <p:commandButton value="Editar" icon="ui-icon-pencil" actionListener="#{beanNivel.modificar(lista)}" oncomplete="PF('wdlgdesplegable').show();" update=":desplegable msg"/>
-            </p:column>
             <p:column  styleClass="columna">
                 <p:commandButton value="Eliminar" actionListener="#{beanNivel.eliminar(lista)}" icon="ui-icon-close" update=" msg,table" />
             </p:column>

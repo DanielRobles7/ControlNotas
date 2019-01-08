@@ -1,4 +1,4 @@
-
+﻿
 __________________________________________________________
 Nivel. 
 ----------------------------------------------------------
@@ -6,6 +6,8 @@ Nivel.
 que se puede editar es la escuela, y el grado de una escuela
 solo pertenece a esa escuela, asi que o se agrega o se borra,
 no debe editarse.
+
+Ruth
 
 __________________________________________________________
 Materia
@@ -29,6 +31,7 @@ Profesores
 ninguno otro, hay que hacer que mantenga el estado al editar.
 ya que si se borra el estado se quita de la lista.
 
+Ruth
 
 __________________________________________________________
 Alumno
@@ -55,7 +58,7 @@ Notas
 
 3. hacer la siguiente validacion.
 	   	si ( reposicion != 0 ) {
-			Nota Final = promedio + reposicion
+			Nota Final = (promedio + reposicion) / 2
 		}
 __________________________________________________________
 Menú
