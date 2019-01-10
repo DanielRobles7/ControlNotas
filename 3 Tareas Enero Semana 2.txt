@@ -43,6 +43,7 @@ SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 String fechaRegistro = formato.format(new Date());
 como se utiliza en el bean "Profesores"
 
+Ruth
 __________________________________________________________
 Notas
 ----------------------------------------------------------

@@ -13,7 +13,9 @@ import Persistencia.Acceso;
 import Persistencia.Alumnos;
 import Persistencia.Escuelas;
 import Persistencia.Nivel;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -34,6 +36,7 @@ public class BeanAlumno {
     private List<Acceso> listAc=new ArrayList();
     private List<Escuelas> listEs=new ArrayList();
     private List<Nivel> listN=new ArrayList();
+    SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
     
     @PostConstruct
     public void init(){
@@ -92,6 +95,16 @@ public class BeanAlumno {
     public void setListN(List<Nivel> listN) {
         this.listN = listN;
     }
+
+    public SimpleDateFormat getFormato() {
+        return formato;
+    }
+
+    public void setFormato(SimpleDateFormat formato) {
+        this.formato = formato;
+    }
+    
+    
     
     public void agregar(){
         Acceso acceso=new Acceso();
@@ -124,6 +137,8 @@ public class BeanAlumno {
         
         MantenimientoAlumnos ma=new MantenimientoAlumnos();
         alumnos.setEstado("activo");
+        String fecha=formato.format(new Date());
+        alumnos.setFechaRegistro(fecha);
         String adv="";
         if (ma.guardarAlumnos(alumnos)==1) {
             listAl=ma.consultarTodosAlumnos();
