@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author eliseo.garciausam
+ * @author ruth.ramosusam
  */
 @Entity
 @Table(name = "acceso")
@@ -54,10 +54,6 @@ public class Acceso implements Serializable {
     private String estado;
     @Column(name = "campo")
     private String campo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idAcceso")
-    private Collection<Profesores> profesoresCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idAcceso")
-    private Collection<Alumnos> alumnosCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idAcceso")
     private Collection<Escuelas> escuelasCollection;
 
@@ -117,24 +113,6 @@ public class Acceso implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Profesores> getProfesoresCollection() {
-        return profesoresCollection;
-    }
-
-    public void setProfesoresCollection(Collection<Profesores> profesoresCollection) {
-        this.profesoresCollection = profesoresCollection;
-    }
-
-    @XmlTransient
-    public Collection<Alumnos> getAlumnosCollection() {
-        return alumnosCollection;
-    }
-
-    public void setAlumnosCollection(Collection<Alumnos> alumnosCollection) {
-        this.alumnosCollection = alumnosCollection;
-    }
-
-    @XmlTransient
     public Collection<Escuelas> getEscuelasCollection() {
         return escuelasCollection;
     }
@@ -166,10 +144,6 @@ public class Acceso implements Serializable {
     @Override
     public String toString() {
         return "Persistencia.Acceso[ idAcceso=" + idAcceso + " ]";
-    }
-    
-    public String accesoInfo(){
-        return "Informacion de acceso: [ID="+idAcceso+", Usuario="+usuario+", Contraseña"+contrasena+", Nivel acceso="+nivelAcceso+", Estado usuario="+estado+"]";
     }
     
 }

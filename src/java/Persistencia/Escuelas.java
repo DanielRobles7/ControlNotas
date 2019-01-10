@@ -6,9 +6,7 @@
 package Persistencia;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,14 +14,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author eliseo.garciausam
+ * @author ruth.ramosusam
  */
 @Entity
 @Table(name = "escuelas")
@@ -58,25 +54,20 @@ public class Escuelas implements Serializable {
     private String telefono;
     @Column(name = "correo")
     private String correo;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "longitud")
-    private String longitud;
+    private Double longitud;
     @Column(name = "latitud")
-    private String latitud;
+    private Double latitud;
     @Column(name = "nombre_director")
     private String nombreDirector;
     @Column(name = "estado")
     private String estado;
     @Column(name = "campo")
     private String campo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codigoEscuela")
-    private Collection<Profesores> profesoresCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codigoEscuela")
-    private Collection<Alumnos> alumnosCollection;
     @JoinColumn(name = "id_acceso", referencedColumnName = "id_acceso")
     @ManyToOne(optional = false)
     private Acceso idAcceso;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codigoEscuela")
-    private Collection<Nivel> nivelCollection;
 
     public Escuelas() {
     }
@@ -133,19 +124,19 @@ public class Escuelas implements Serializable {
         this.correo = correo;
     }
 
-    public String getLongitud() {
+    public Double getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(String longitud) {
+    public void setLongitud(Double longitud) {
         this.longitud = longitud;
     }
 
-    public String getLatitud() {
+    public Double getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(String latitud) {
+    public void setLatitud(Double latitud) {
         this.latitud = latitud;
     }
 
@@ -173,39 +164,12 @@ public class Escuelas implements Serializable {
         this.campo = campo;
     }
 
-    @XmlTransient
-    public Collection<Profesores> getProfesoresCollection() {
-        return profesoresCollection;
-    }
-
-    public void setProfesoresCollection(Collection<Profesores> profesoresCollection) {
-        this.profesoresCollection = profesoresCollection;
-    }
-
-    @XmlTransient
-    public Collection<Alumnos> getAlumnosCollection() {
-        return alumnosCollection;
-    }
-
-    public void setAlumnosCollection(Collection<Alumnos> alumnosCollection) {
-        this.alumnosCollection = alumnosCollection;
-    }
-
     public Acceso getIdAcceso() {
         return idAcceso;
     }
 
     public void setIdAcceso(Acceso idAcceso) {
         this.idAcceso = idAcceso;
-    }
-
-    @XmlTransient
-    public Collection<Nivel> getNivelCollection() {
-        return nivelCollection;
-    }
-
-    public void setNivelCollection(Collection<Nivel> nivelCollection) {
-        this.nivelCollection = nivelCollection;
     }
 
     @Override

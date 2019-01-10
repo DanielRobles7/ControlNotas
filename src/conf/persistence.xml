@@ -3,12 +3,12 @@
   <persistence-unit name="ProyectoEscuelaPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Persistencia.Alumnos</class>
-    <class>Persistencia.Escuelas</class>
     <class>Persistencia.Profesores</class>
-    <class>Persistencia.Acceso</class>
     <class>Persistencia.Notas</class>
     <class>Persistencia.Nivel</class>
     <class>Persistencia.Materias</class>
+    <class>Persistencia.Escuelas</class>
+    <class>Persistencia.Acceso</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/control_notas?zeroDateTimeBehavior=convertToNull"/>
