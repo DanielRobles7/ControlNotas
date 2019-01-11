@@ -5,7 +5,9 @@
  */
 package ManagedBean;
 
+import Mantenimiento.MantenimientoAcceso;
 import Mantenimiento.MantenimientoEscuela;
+import Persistencia.Acceso;
 import Persistencia.Escuelas;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,8 @@ import org.primefaces.model.map.Marker;
 @RequestScoped
 public class AddMarkersView {
 
+    
+    private Escuelas escuela=new Escuelas();
     private MapModel emptyModel;
     private MapModel simpleModel;
     private String title;
@@ -46,6 +50,15 @@ public class AddMarkersView {
         }
     }
 
+    public Escuelas getEscuela() {
+        return escuela;
+    }
+
+    public void setEscuela(Escuelas escuela) {
+        this.escuela = escuela;
+    }
+
+    
     public MapModel getEmptyModel() {
         return emptyModel;
     }
@@ -92,14 +105,61 @@ public class AddMarkersView {
     
     
     
+    public void agregar(){
+        //Agregar Acceso
+        Acceso acceso=new Acceso();
+        
+        String nombre=escuela.getNombreDirector();
+        String usuario;
+        String password;
+        Integer idMax;
+        usuario = nombre.substring(0,6);
+        
+        int numeroAleatorio = (int) (Math.random()*999)+100;
+        password= usuario+numeroAleatorio;
+        
+        acceso.setContrasena(password);
+        acceso.setEstado("Activo");
+        acceso.setIdAcceso(0);
+        acceso.setUsuario(usuario);
+        acceso.setNivelAcceso("Director");
+        
+        MantenimientoAcceso ma=new MantenimientoAcceso();
+        ma.guardarAcesso(acceso);
+        
+        //idMaximo de acceso
+        idMax=ma.consultarMaxAcceso();
+        Acceso acces=new Acceso();
+        acces.setIdAcceso(idMax);
+        
+        escuela.setIdAcceso(acces);
+        escuela.setEstado("Activo");
     
-    
-    public void addMarker() {
+        //Agregar Escuela
+        MantenimientoEscuela me=new MantenimientoEscuela();
+        
+        //Lat. y Long.
         Escuelas esc=new Escuelas();
         Marker marker = new Marker(new LatLng(lat, lng), title);
         emptyModel.addOverlay(marker);
          
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Marker Added", "Lat:" + lat + ", Lng:" + lng));
+        escuela.setNombreEscuela(title);
+        escuela.setLongitud(lng);
+        escuela.setLatitud(lat);
+        
+        String adv="";
+        if (me.guardar(escuela)==1) {
+            adv="Guardado exitosamente";
+            School=me.consultar();
+        } else {
+            adv="Error al guardar";
+        }
+        escuela = new Escuelas (); 
+        FacesMessage msg = new FacesMessage(adv);
+         
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        
     }
     
     

@@ -72,11 +72,18 @@ and open the template in the editor.
         <p:dialog widgetVar="dlg" showEffect="fade">
             <h:form prependId="false">
                 <h:panelGrid columns="2">
-                    <h:outputLabel for="title" value="Title:" />
-                    <p:inputText id="title" value="#{addMarkersView.title}" />
 
+                    <h:outputLabel style="color: #000000" value="Codigo: " /><p:spacer width="7" height="15"/><p:inputText maxlength="9" value="#{addMarkersView.escuela.codigoEscuela}"  ><p:keyFilter regEx="/[\d\-\.]/"/></p:inputText><p:spacer width="20" height="15"/>
+                        <h:outputLabel for="title" value="Nombre Escuela:" /><p:spacer width="7" height="15"/><p:inputText maxlength="35"  id="title" value="#{addMarkersView.title}" ><p:keyFilter regEx="/[a-z_]/i"/></p:inputText><p:spacer width="20" height="15"/>
+                        <h:outputLabel style="color: #000000" value="Telefono: " /><p:spacer width="7" height="15"/><p:inputMask value="#{addMarkersView.escuela.telefono}" mask="(503)9999-9999" /><br /><br />
+                        <h:outputLabel style="color: #000000" value="Correo: " /><p:spacer width="7" height="15"/><p:inputText maxlength="60" value="#{addMarkersView.escuela.correo}" ><p:keyFilter regEx="/[a-z0-9_\.\-@◆/i"/></p:inputText><p:spacer width="20" height="15"/>
+                        <h:outputLabel style="color: #000000" value="Municipio: " /><p:spacer width="7" height="15"/><p:inputText maxlength="26" value="#{addMarkersView.escuela.municipio}" ><p:keyFilter regEx="/ [a-z _] / i"/></p:inputText><p:spacer width="20" height="15"/>
+                        <h:outputLabel style="color: #000000" value="Direccion: " /><p:spacer width="7" height="15"/><p:inputTextarea maxlength="89" value="#{addMarkersView.escuela.direccion}" cols="25" rows="3" ><p:keyFilter regEx="/ [a-z _] / i"/></p:inputTextarea><br /><br />
+                        <h:outputLabel style="color: #000000" value="Nombre Director: " /><p:spacer width="7" height="15"/><p:inputText maxlength="50" value="#{addMarkersView.escuela.nombreDirector}" ><p:keyFilter regEx="/ [a-z _] / i"/></p:inputText><br /><br />
+                        
+                    
                     <f:facet name="footer">
-                        <p:commandButton value="Add" action="#{addMarkersView.addMarker}" update=":messages" oncomplete="markerAddComplete()" />
+                        <p:commandButton value="Agregar" action="#{addMarkersView.agregar()}" update=":messages" oncomplete="markerAddComplete()" />
                         <p:commandButton value="Cancel" onclick="return cancel()" />
                     </f:facet>
                 </h:panelGrid>
