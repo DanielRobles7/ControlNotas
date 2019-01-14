@@ -152,4 +152,29 @@ public class MantenimientoEscuela {
         return flag;
 
     }
+    
+    public String nombreDirector (int id_acceso){
+        EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+        Escuelas escuela = null;
+        int codigo_escuela;
+        String[] nombre = null;
+        String nombreDirector = null;
+        
+        try {
+            em.getTransaction().begin();
+            codigo_escuela = Integer.parseInt(em.createNativeQuery("select codigo_escuela from escuelas where escuelas.id_acceso="+id_acceso+";").getSingleResult().toString());
+            escuela = this.consultarid(codigo_escuela);
+            nombre = escuela.getNombreDirector().split(" ");
+            if (nombre.length>2) {
+                nombreDirector = nombre[0]+nombre[2];
+            }else{
+                nombreDirector = escuela.getNombreDirector();
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Error: "+e.getMessage());
+        }finally{
+            em.close();
+        }        
+        return nombreDirector;
+    }
 }

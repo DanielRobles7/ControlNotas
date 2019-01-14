@@ -145,6 +145,30 @@ public class MantenimientoAlumnos {
         }
         return flag;
     }
+    
+    public String nombreAlumno (int id_acceso){
+        EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
+        Alumnos alumno = null;
+        int nie=25456608;
+        String[] apellido = null;
+        String[] nombre = null;
+        String nombreAlumno = null;
+        
+        try {
+            em.getTransaction().begin();
+            nie = Integer.parseInt(em.createNativeQuery("select nie from alumnos where id_acceso="+id_acceso+";").getSingleResult().toString());
+            alumno = this.consultarAlumnos(nie);
+            apellido = alumno.getApellido().split(" ");
+            nombre = alumno.getNombre().split(" ");
+            nombreAlumno = nombre[0]+" "+apellido[0];
+            System.out.println("f_name: "+nombreAlumno);
+        } catch (NumberFormatException e) {
+            System.out.println("Error: "+e.getMessage());
+        }finally{
+            em.close();
+        }
+        return nombreAlumno;
+    }
 
 //    public int eliminarAlumnos(Alumnos alumnos){
 //         EntityManager em=JpaUtil.getEntityManagerFactory().createEntityManager();

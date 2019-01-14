@@ -42,11 +42,11 @@
         </script>
 
 
-        <h:form>        
-            <img src="imagenes/iconos/BOTON_INICIARSESION.png" style="width: 15%" onclick="PF('dlg').show();" title="Login"/>
 
-            <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+        <img src="imagenes/iconos/BOTON_INICIARSESION.png" style="width: 15%" onclick="PF('dlg').show();" title="Login"/>
 
+        <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+        <h:form>
             <p:dialog header="Login" widgetVar="dlg" resizable="false">
                 <h:panelGrid columns="2" cellpadding="5">
                     <h:outputLabel for="username" value="Usuario:" />
@@ -56,17 +56,18 @@
                     <p:password id="password" value="#{beanLoginAcceso.password}" required="true" label="password" />
 
                     <f:facet name="footer">
-                        <p:commandButton value="Iniciar sesion" update="growl" action="#{beanLoginAcceso.loginInicioSesion()}"
-                                         oncomplete="handleLoginRequest(xhr, status, args)" />
+                        <p:commandButton value="Iniciar sesion" update="growl" action="#{beanLoginAcceso.inicioSesion()}" oncomplete="handleLoginRequest(xhr, status, args)" />    
                     </f:facet>  
                 </h:panelGrid>
-            </p:dialog>    
+            </p:dialog>
         </h:form>
+        <!--
         <p:sidebar widgetVar="sidebar1" baseZIndex="10000">
             <h1 style="text-align: center">Notas</h1>
             <p:button href="Notas.xhtml" styleClass="Btn" style="width: 100%" value="Notas" icon=" ui-icon-folder-open" />
         </p:sidebar>
         <p:commandButton id="menu" icon="ui-icon-circle-plus" styleClass="Main" oncomplete="PF('sidebar1').show()" />
+        -->
     </h:body>
 </html>
 

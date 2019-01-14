@@ -6,11 +6,16 @@
 package ManagedBean;
 
 import Mantenimiento.MantenimientoAcceso;
+import Mantenimiento.MantenimientoAlumnos;
+import Mantenimiento.MantenimientoEscuela;
+import Mantenimiento.MantenimientoProfesores;
 import Persistencia.Acceso;
+import java.io.IOException;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import org.primefaces.PrimeFaces;
 
 /**
@@ -21,19 +26,13 @@ import org.primefaces.PrimeFaces;
 @RequestScoped
 public class BeanLoginAcceso {
 
+    HttpSession session = SessionUtils.getSession();
+
     private String username;
     private String password;
-    private static int idAcceso;
-    private static String usuario;
-    private static String contrasena;
-    private static String nivelAcceso;
-    private static String estado;
-    
-    /**
-     * Creates a new instance of BeanLoginAcceso
-     */
-    public BeanLoginAcceso() {
-    }
+    private int user_id;
+    private String names;
+    private String acces_lvl;
 
     public String getUsername() {
         return username;
@@ -50,49 +49,63 @@ public class BeanLoginAcceso {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public static int getIdAcceso() {
-        return idAcceso;
-    }
-
-    public static String getUsuario() {
-        return usuario;
-    }
-
-    public static String getContrasena() {
-        return contrasena;
-    }
-
-    public static String getNivelAcceso() {
-        return nivelAcceso;
-    }
-
-    public static String getEstado() {
-        return estado;
-    }
     
-    
-    public void loginInicioSesion(){
+    public int getUser_id() {
+        user_id = Integer.parseInt(session.getAttribute("user_id").toString());
+        return user_id;
+    }
+
+    public String getNames() {
+        names = session.getAttribute("names").toString();
+        return names;
+    }
+
+    public String getAcces_lvl() {
+        acces_lvl = session.getAttribute("acces_lvl").toString();
+        return acces_lvl;
+    }
+
+    public String inicioSesion() throws IOException{
         MantenimientoAcceso mantenimiento = new MantenimientoAcceso();
         Acceso acceso = mantenimiento.loginAcceso(username, password);
-        String nombre = mantenimiento.nombreBienvenida(idAcceso, nivelAcceso);
         FacesMessage message = null;
         boolean loggedIn = false;
-        
+
         if (acceso != null) {
-            BeanLoginAcceso.idAcceso = acceso.getIdAcceso();
-            BeanLoginAcceso.usuario = acceso.getUsuario();
-            BeanLoginAcceso.contrasena = acceso.getContrasena();
-            BeanLoginAcceso.nivelAcceso = acceso.getNivelAcceso();
-            BeanLoginAcceso.estado = acceso.getEstado();
+            session.setAttribute("user_id", acceso.getIdAcceso());
+            session.setAttribute("acces_level", acceso.getNivelAcceso());
+
+            switch (acceso.getNivelAcceso()) {
+                case "director":
+                    MantenimientoEscuela mantenimientoEscuela = new MantenimientoEscuela();
+                    session.setAttribute("username", mantenimientoEscuela.nombreDirector(acceso.getIdAcceso()));
+                    break;
+                case "profesor":
+                    MantenimientoProfesores mantenimientoProfesores = new MantenimientoProfesores();
+                    session.setAttribute("username", mantenimientoProfesores.nombreProfesor(acceso.getIdAcceso()));
+                    break;
+                case "estudiante":
+                    MantenimientoAlumnos mantenimientoAlumnos = new MantenimientoAlumnos();
+                    session.setAttribute("username", mantenimientoAlumnos.nombreAlumno(acceso.getIdAcceso()));
+                    break;
+            }
+
             loggedIn = true;
-            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", nombre);
-        }else{
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", session.getAttribute("username").toString());
+            FacesContext.getCurrentInstance().addMessage(null, message);
+            PrimeFaces.current().ajax().addCallbackParam("loggedIn", loggedIn);
+            return "success";
+        } else {
             loggedIn = false;
             message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Loggin Error", "Usuario o contraseña incorrecta");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+            PrimeFaces.current().ajax().addCallbackParam("loggedIn", loggedIn);
+            return "index";
         }
-        
-        FacesContext.getCurrentInstance().addMessage(null, message);
-        PrimeFaces.current().ajax().addCallbackParam("loggedIn", loggedIn);
+    }
+    
+    public String cierreSesion() throws IOException{
+        session.invalidate();
+        return "index";
     }
 }

@@ -191,7 +191,7 @@ public class MantenimientoAcceso {
             em.getTransaction().commit();
             System.out.println("Consulta correcta, el ID es: '" + id_acceso + "'");
             acceso = this.consultarAcceso(id_acceso);
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             em.getTransaction().rollback();
             acceso = null;
             System.out.println("No se pudo llevar a cabo la consulta\nError: " + e);
