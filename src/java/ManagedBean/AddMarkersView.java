@@ -143,7 +143,7 @@ public class AddMarkersView {
         Marker marker = new Marker(new LatLng(lat, lng), title);
         emptyModel.addOverlay(marker);
          
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Marker Added", "Lat:" + lat + ", Lng:" + lng));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Latitud: " + lat , "Longitud: " + lng));
         escuela.setNombreEscuela(title);
         escuela.setLongitud(lng);
         escuela.setLatitud(lat);
