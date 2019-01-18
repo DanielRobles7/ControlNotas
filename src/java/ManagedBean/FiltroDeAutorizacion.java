@@ -24,6 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author julio.benavidesusam
  */
+//comentar anotacion para pruebas continuas para evitar estar loguendo continuamente
 @WebFilter(filterName = "Filtro de Autorizaciones", urlPatterns = {"*.xhtml"})
 public class FiltroDeAutorizacion implements Filter {
 
