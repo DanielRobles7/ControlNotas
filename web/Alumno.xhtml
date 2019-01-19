@@ -56,7 +56,7 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <h:form>
-        <ui:include src="menu.xhtml" /><br/>
+            <ui:include src="menu.xhtml" /><br/>
         </h:form>
         <br/>
         <p:growl id="msg" showDetail="true" />
@@ -69,14 +69,14 @@ and open the template in the editor.
                             <p:keyFilter regEx="/[\d\-]/" />
                         </p:inputText>
                         <br /><br/>
-                        
+
                         <h:outputLabel value="Nombre: "/> <p:spacer width="180" height="15" />
                         <h:outputLabel value="Apellido: " /><br/>
-                        
+
                         <p:inputText value="#{beanAlumno.alumnos.nombre}" /><p:spacer width="30" />
                         <p:inputText value="#{beanAlumno.alumnos.apellido}" />
                         <br/><br/>
-                        
+
                         <h:outputLabel value="Email: " /><p:spacer width="20" height="15" />
                         <p:inputText value="#{beanAlumno.alumnos.email}" style="width:  350px;">
                             <p:keyFilter regEx="/[a-z0-9_\.\-@◆/i" />
@@ -85,12 +85,12 @@ and open the template in the editor.
                         <h:outputLabel value="Direccion: "/>
                         <p:inputText value="#{beanAlumno.alumnos.direccion}" style="width:  350px;" />
                         <br/><br/>
-                        
+
                         <h:outputLabel value="Edad: "/><p:spacer width="20" height="15"/><p:inputText size="1" maxlength="4" value="#{beanAlumno.alumnos.edad}" ><p:keyFilter regEx="/[\d\-]/" /></p:inputText>
                         <p:spacer width="25" />
                         <h:outputLabel value="Fecha de Nacimiento:" /><p:spacer width="20" height="15"/><p:inputMask size="6" mask="99/99/9999" value="#{beanAlumno.alumnos.fechaNacimiento}" />
                         <br/><br/>
-                        
+
                         <h:outputLabel value="Escuela: "/><p:spacer width="20"/>
                         <h:selectOneMenu style="width: 170px;" value="#{beanAlumno.alumnos.codigoEscuela.codigoEscuela}">
                             <f:selectItem itemLabel="Escoger Escuela" itemValue=""/>
@@ -126,35 +126,46 @@ and open the template in the editor.
                     <p:column  styleClass="columna">
                         <h:outputText value="#{listAl.nie}" />
                     </p:column>
-                     <p:column styleClass="columna">
-                         <h:outputText value="#{listAl.apellido}, #{listAl.nombre}" />
+                    <p:column styleClass="columna">
+                        <h:outputText value="#{listAl.apellido}, #{listAl.nombre}" />
                     </p:column>
-                     <p:column styleClass="columna">
-                         <h:outputText value="#{listAl.email}" />
+                    <p:column styleClass="columna">
+                        <h:outputText value="#{listAl.email}" />
                     </p:column>
-                     <p:column styleClass="columna">
-                         <h:outputText value="#{listAl.edad}" />
+                    <p:column styleClass="columna">
+                        <h:outputText value="#{listAl.edad}" />
                     </p:column>
-                     <p:column styleClass="columna">
-                         <h:outputText value="#{listAl.fechaNacimiento}" />
+                    <p:column styleClass="columna">
+                        <h:outputText value="#{listAl.fechaNacimiento}" />
                     </p:column>
-                     <p:column styleClass="columna">
-                         <h:outputText value="#{listAl.fechaRegistro}" />
+                    <p:column styleClass="columna">
+                        <h:outputText value="#{listAl.fechaRegistro}" />
                     </p:column>
-                     <p:column styleClass="columna">
-                         <h:outputText value="#{listAl.idAcceso.usuario}" />
+                    <p:column styleClass="columna">
+                        <h:outputText value="#{listAl.idAcceso.usuario}" />
                     </p:column>
-                     <p:column styleClass="columna">
-                         <h:outputText value="#{listAl.codigoEscuela.nombreEscuela}" />
+                    <p:column styleClass="columna">
+                        <h:outputText value="#{listAl.codigoEscuela.nombreEscuela}" />
                     </p:column>
-                     <p:column styleClass="columna">
-                         <h:outputText value="#{listAl.grado.grado}" />
+                    <p:column styleClass="columna">
+                        <h:outputText value="#{listAl.grado.grado}" />
                     </p:column>
                     <p:column styleClass="columna">
                         <p:commandButton value="Editar" styleClass="Ac" icon="ui-icon-pencil" actionListener="#{beanAlumno.modificar(listAl)}" oncomplete="PF('wdlgdesplegable').show();" update=":desplegable msg"/>
                     </p:column>
                     <p:column styleClass="columna">
                         <p:commandButton value="Eliminar" styleClass="btnBo" icon="ui-icon-close" actionListener="#{beanAlumno.eliminar(listAl)}" update="Tab,msg"/>
+
+                        <p:growl id="message" showDetail="true" />
+
+                        <p:commandButton value="Eliminar" styleClass="btnBo" icon="ui-icon-close" action="#{beanAlumno.eliminar(listAl)}" update="Tab,msg,message">
+                            <p:confirm header="Eliminar" message="¿Estas seguro?" icon="pi pi-exclamation-triangle" />
+                        </p:commandButton>
+
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+                        </p:confirmDialog>
                     </p:column>
                 </p:dataTable>
             </center>
@@ -162,41 +173,41 @@ and open the template in the editor.
         <p:dialog id="desplegable" style="text-align: center;background-image: url(imagenes/fondos/fondo4.jpg)" header="Actualizar" widgetVar="wdlgdesplegable">
             <h:form>
                 <center>
-                        <h:outputLabel value="Nie: " /><p:spacer width="20" height="15"/>
-                        <p:inputText value="#{beanAlumno.alumnos.nie}" readonly="#{not facesContext.postback or facesContext.renderResponse}"/>
-                        <br /><br/>
-                        <h:outputLabel value="Acceso " /><p:spacer width="20" height="15"/>
-                        <p:inputText value="#{beanAlumno.alumnos.idAcceso.idAcceso}" readonly="#{not facesContext.postback or facesContext.renderResponse}"/>
-                        <br /><br/>
-                        <h:outputLabel value="Nombre: "/> <p:spacer width="180" height="15" />
-                        <h:outputLabel value="Apellido: " /><br/>
-                        
-                        <p:inputText value="#{beanAlumno.alumnos.nombre}" readonly="#{not facesContext.postback or facesContext.renderResponse}" /><p:spacer width="30" />
-                        <p:inputText value="#{beanAlumno.alumnos.apellido}" readonly="#{not facesContext.postback or facesContext.renderResponse}" />
-                        <br/><br/>
-                        
-                        <h:outputLabel value="Email: " /><p:spacer width="20" height="15" />
-                        <p:inputText value="#{beanAlumno.alumnos.email}" style="width:  350px;"/>
-                        <p:spacer width="20" height="15"/>
-                        <h:outputLabel value="Direccion: "/>
-                        <p:inputText value="#{beanAlumno.alumnos.direccion}" style="width:  350px;" />
-                        <br/><br/>
-                        
-                        <h:outputLabel value="Edad: "/><p:spacer width="20" height="15"/><p:inputText size="1" maxlength="4" value="#{beanAlumno.alumnos.edad}" />
-                        <p:spacer width="25" />
-                        <h:outputLabel value="Fecha de Nacimiento:" /><p:spacer width="20" height="15"/><p:inputText size="6" value="#{beanAlumno.alumnos.fechaNacimiento}" readonly="#{not facesContext.postback or facesContext.renderResponse}" />
-                        <p:spacer width="25" />
-                        <h:outputLabel value="Fecha de registro: " /><p:spacer width="20" height="15"/><p:inputText size="6" value="#{beanAlumno.alumnos.fechaRegistro}" readonly="#{not facesContext.postback or facesContext.renderResponse}" />
-                        <br/><br/>
-                        
-                        <h:outputLabel value="Escuela: "/><p:spacer width="20"/>
-                        <p:inputText value="#{beanAlumno.alumnos.codigoEscuela.codigoEscuela}" style="width:  350px;" />
-                        <p:spacer width="30" />
-                        <h:outputLabel value="Grado: "/><p:spacer width="20"/>
-                        <p:inputText value="#{beanAlumno.alumnos.grado.grado}" style="width:  350px;" />
-                        <br/><br/>
-                        <p:commandButton value="Guardar" actionListener="#{beanAlumno.actualizar()}" update=":fo:Tab desplegable,msg" />
-                    </center>
+                    <h:outputLabel value="Nie: " /><p:spacer width="20" height="15"/>
+                    <p:inputText value="#{beanAlumno.alumnos.nie}" readonly="#{not facesContext.postback or facesContext.renderResponse}"/>
+                    <br /><br/>
+                    <h:outputLabel value="Acceso " /><p:spacer width="20" height="15"/>
+                    <p:inputText value="#{beanAlumno.alumnos.idAcceso.idAcceso}" readonly="#{not facesContext.postback or facesContext.renderResponse}"/>
+                    <br /><br/>
+                    <h:outputLabel value="Nombre: "/> <p:spacer width="180" height="15" />
+                    <h:outputLabel value="Apellido: " /><br/>
+
+                    <p:inputText value="#{beanAlumno.alumnos.nombre}" readonly="#{not facesContext.postback or facesContext.renderResponse}" /><p:spacer width="30" />
+                    <p:inputText value="#{beanAlumno.alumnos.apellido}" readonly="#{not facesContext.postback or facesContext.renderResponse}" />
+                    <br/><br/>
+
+                    <h:outputLabel value="Email: " /><p:spacer width="20" height="15" />
+                    <p:inputText value="#{beanAlumno.alumnos.email}" style="width:  350px;"/>
+                    <p:spacer width="20" height="15"/>
+                    <h:outputLabel value="Direccion: "/>
+                    <p:inputText value="#{beanAlumno.alumnos.direccion}" style="width:  350px;" />
+                    <br/><br/>
+
+                    <h:outputLabel value="Edad: "/><p:spacer width="20" height="15"/><p:inputText size="1" maxlength="4" value="#{beanAlumno.alumnos.edad}" />
+                    <p:spacer width="25" />
+                    <h:outputLabel value="Fecha de Nacimiento:" /><p:spacer width="20" height="15"/><p:inputText size="6" value="#{beanAlumno.alumnos.fechaNacimiento}" readonly="#{not facesContext.postback or facesContext.renderResponse}" />
+                    <p:spacer width="25" />
+                    <h:outputLabel value="Fecha de registro: " /><p:spacer width="20" height="15"/><p:inputText size="6" value="#{beanAlumno.alumnos.fechaRegistro}" readonly="#{not facesContext.postback or facesContext.renderResponse}" />
+                    <br/><br/>
+
+                    <h:outputLabel value="Escuela: "/><p:spacer width="20"/>
+                    <p:inputText value="#{beanAlumno.alumnos.codigoEscuela.codigoEscuela}" style="width:  350px;" />
+                    <p:spacer width="30" />
+                    <h:outputLabel value="Grado: "/><p:spacer width="20"/>
+                    <p:inputText value="#{beanAlumno.alumnos.grado.grado}" style="width:  350px;" />
+                    <br/><br/>
+                    <p:commandButton value="Guardar" actionListener="#{beanAlumno.actualizar()}" update=":fo:Tab desplegable,msg" />
+                </center>
             </h:form>
         </p:dialog>
     </h:body>
