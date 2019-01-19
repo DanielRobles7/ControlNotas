@@ -145,8 +145,31 @@ public class BeanNotas {
     public void actualizar() {
         System.out.println("este es de actualizar" + notas);
         MantenimientoNotas man = new MantenimientoNotas();
-//        man.Actualizar(notas);
-        System.out.println(man.Actualizar(notas));
+        MantenimientoMaterias mant= new MantenimientoMaterias();
+        double resultado1,resultado2,resultado3,resultado4,resultado5,resultado6,promedio,notafinal;
+        Materias materias = new Materias();
+        materias = mant.consultarMateria(notas.getNombreMateria().getNombreMateria());
+        resultado1 = (notas.getNota1()*materias.getPonderacion1())/100;
+        resultado2=(notas.getNota2()*materias.getPonderacion2())/100;
+        resultado3= (notas.getNota3()*materias.getPonderacion3())/100;
+        resultado4= (notas.getNota4()*materias.getPonderacion4())/100;
+        resultado5= (notas.getNota5()*materias.getPonderacion5())/100;
+        resultado6= (notas.getNota6()*materias.getPonderacion6())/100;
+        promedio = (resultado1+resultado2+resultado3+resultado4+resultado5+resultado6)/100;
+        notas.setPromerio(promedio);
+        if ( notas.getReposicion()!=0){
+        notafinal= (promedio+notas.getReposicion())/2;  
+         notas.setFinal1(notafinal);
+        }else {
+         notafinal= promedio;
+          notas.setFinal1(notafinal);
+            
+        }
+        
+        
+        
+        
+       System.out.println(man.Actualizar(notas));
 
         String adv = "";
         System.out.println("esta es actualizar" + notas);
