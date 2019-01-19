@@ -155,7 +155,7 @@ and open the template in the editor.
                     </p:column>
                     <p:column styleClass="columna">
                         <p:commandButton value="Eliminar" styleClass="btnBo" icon="ui-icon-close" actionListener="#{beanAlumno.eliminar(listAl)}" update="Tab,msg"/>
-
+                        <!-- inicio boton confirmacion-->
                         <p:growl id="message" showDetail="true" />
 
                         <p:commandButton value="Eliminar" styleClass="btnBo" icon="ui-icon-close" action="#{beanAlumno.eliminar(listAl)}" update="Tab,msg,message">
@@ -166,6 +166,7 @@ and open the template in the editor.
                             <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
                             <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
                         </p:confirmDialog>
+                        <!-- inicio boton confirmacion-->
                     </p:column>
                 </p:dataTable>
             </center>
