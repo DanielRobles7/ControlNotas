@@ -34,9 +34,11 @@ and open the template in the editor.
             <h1 style="text-align: center">Notas</h1>
             <p:button href="Alumno.xhtml" styleClass="Btn" style="width: 100%" value="Alumnos" icon=" ui-icon-person" />
             <p:separator/>
-            <p:separator/>
-            <p:button href="Escuela.xhtml" styleClass="Btn" style="width: 100%" value="Escuela" icon=" ui-icon-home" />
-            <p:separator/>
+            <p:panel rendered="#{beanLoginAcceso.acces_lvl.equals('Director')}">
+                <p:separator/>
+                <p:button href="Escuela.xhtml" styleClass="Btn" style="width: 100%" value="Escuela" icon=" ui-icon-home" />
+                <p:separator/>
+            </p:panel>
             <p:separator/>
             <p:button href="Materias.xhtml" styleClass="Btn" style="width: 100%" value="Materias" icon=" ui-icon-document" />
             <p:separator/>
@@ -53,6 +55,9 @@ and open the template in the editor.
             <p:button href="Inicio.xhtml" styleClass="Btn" style="width: 100%" value="Inicio" icon=" ui-icon-home" />
             <p:separator/>
             <p:separator/>
+            <h:form>
+                <p:commandButton value="Cerrar sesion" actionListener="#{beanLoginAcceso.cierreSesion()}"/>
+            </h:form>
         </p:sidebar>
         <p:commandButton id="menu" icon="ui-icon-circle-plus" styleClass="Main" oncomplete="PF('sidebar1').show()" />
     </h:body>

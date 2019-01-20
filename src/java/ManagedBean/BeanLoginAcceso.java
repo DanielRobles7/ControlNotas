@@ -61,7 +61,7 @@ public class BeanLoginAcceso {
     }
 
     public String getAcces_lvl() {
-        acces_lvl = session.getAttribute("acces_lvl").toString();
+        acces_lvl = session.getAttribute("acces_level").toString();
         return acces_lvl;
     }
 
@@ -104,8 +104,8 @@ public class BeanLoginAcceso {
         }
     }
     
-    public String cierreSesion() throws IOException{
+    public void cierreSesion() throws IOException{
         session.invalidate();
-        return "index";
+        FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
     }
 }
