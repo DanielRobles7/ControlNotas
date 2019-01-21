@@ -154,7 +154,6 @@ and open the template in the editor.
                         <p:commandButton value="Editar" styleClass="Ac" icon="ui-icon-pencil" actionListener="#{beanAlumno.modificar(listAl)}" oncomplete="PF('wdlgdesplegable').show();" update=":desplegable msg"/>
                     </p:column>
                     <p:column styleClass="columna">
-                        <p:commandButton value="Eliminar" styleClass="btnBo" icon="ui-icon-close" actionListener="#{beanAlumno.eliminar(listAl)}" update="Tab,msg"/>
                         <!-- inicio boton confirmacion-->
                         <p:growl id="message" showDetail="true" />
 
