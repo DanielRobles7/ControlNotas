@@ -68,10 +68,10 @@ public class BeanEscuela implements Serializable {
         password= usuario+numeroAleatorio;
         
         acceso.setContrasena(password);
-        acceso.setEstado("Activo");
+        acceso.setEstado("activo");
         acceso.setIdAcceso(0);
         acceso.setUsuario(usuario);
-        acceso.setNivelAcceso("Director");
+        acceso.setNivelAcceso("director");
         
         MantenimientoAcceso ma=new MantenimientoAcceso();
         ma.guardarAcesso(acceso);
@@ -82,7 +82,7 @@ public class BeanEscuela implements Serializable {
         acces.setIdAcceso(idMax);
         
         escuela.setIdAcceso(acces);
-        escuela.setEstado("Activo");
+        escuela.setEstado("activo");
     
         //Agregar Escuela
         MantenimientoEscuela me=new MantenimientoEscuela();
