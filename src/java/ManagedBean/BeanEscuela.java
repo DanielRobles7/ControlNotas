@@ -71,7 +71,7 @@ public class BeanEscuela implements Serializable {
         acceso.setEstado("activo");
         acceso.setIdAcceso(0);
         acceso.setUsuario(usuario);
-        acceso.setNivelAcceso("director");
+        acceso.setNivelAcceso("Director");
         
         MantenimientoAcceso ma=new MantenimientoAcceso();
         ma.guardarAcesso(acceso);

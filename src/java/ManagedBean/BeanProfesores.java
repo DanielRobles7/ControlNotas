@@ -145,7 +145,7 @@ public class BeanProfesores {
         password = usuario + numeroAleatorio;
         
         acceso.setContrasena(password);
-        acceso.setEstado("Activo");
+        acceso.setEstado("activo");
         acceso.setIdAcceso(0);
         acceso.setUsuario(usuario);
         acceso.setNivelAcceso("Profesor");
