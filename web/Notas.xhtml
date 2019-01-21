@@ -100,16 +100,22 @@ and open the template in the editor.
                         <p:column rowspan="2" headerText="Nombre" styleClass="columna"></p:column>
                         <p:column rowspan="2" headerText="Apellido" styleClass="columna"></p:column>
                         <p:column rowspan="2" headerText="Materia" styleClass="columna"></p:column>
-                        <p:column colspan="9" headerText="Notas" styleClass="columna"></p:column>
+                        <p:column colspan="15" headerText="Notas" styleClass="columna"></p:column>
                         <p:column rowspan="2" styleClass="columna"> </p:column>
                         <p:column rowspan="2" styleClass="columna"> </p:column>
                     </p:row>
                     <p:row>
+                        <p:column headerText="%1" styleClass="columna" ></p:column>
                         <p:column headerText="Nota1" styleClass="columna"></p:column>
+                        <p:column headerText="%2" styleClass="columna"></p:column>
                         <p:column headerText="Nota2" styleClass="columna"></p:column>
+                        <p:column headerText="%3" styleClass="columna"></p:column>
                         <p:column headerText="Nota3" styleClass="columna"></p:column>
+                        <p:column headerText="%4" styleClass="columna"></p:column>
                         <p:column headerText="Nota4" styleClass="columna"></p:column>
+                        <p:column headerText="%5" styleClass="columna"></p:column>
                         <p:column headerText="Nota5" styleClass="columna"></p:column>
+                        <p:column headerText="%6" styleClass="columna"></p:column>
                         <p:column headerText="Nota6" styleClass="columna"></p:column>
                         <p:column headerText="Promedio" styleClass="columna"></p:column>
                         <p:column headerText="Reposición" styleClass="columna"></p:column>
@@ -129,19 +135,37 @@ and open the template in the editor.
                     <h:outputText value="#{listNo.nombreMateria.nombreMateria}"></h:outputText>
                 </p:column>
                 <p:column>
+                    <h:outputText value="#{listNo.nombreMateria.ponderacion1}"></h:outputText>
+                </p:column>
+                <p:column>
                     <h:outputText value="#{listNo.nota1}"></h:outputText>
+                </p:column>
+                 <p:column>
+                    <h:outputText value="#{listNo.nombreMateria.ponderacion2}"></h:outputText>
                 </p:column>
                 <p:column>
                     <h:outputText value="#{listNo.nota2}"></h:outputText>
                 </p:column>
+                 <p:column>
+                    <h:outputText value="#{listNo.nombreMateria.ponderacion3}"></h:outputText>
+                </p:column>
                 <p:column>
                     <h:outputText value="#{listNo.nota3}"></h:outputText>
+                </p:column>
+                 <p:column>
+                    <h:outputText value="#{listNo.nombreMateria.ponderacion4}"></h:outputText>
                 </p:column>
                 <p:column>
                     <h:outputText value="#{listNo.nota4}"></h:outputText>
                 </p:column>
+                 <p:column>
+                    <h:outputText value="#{listNo.nombreMateria.ponderacion5}"></h:outputText>
+                </p:column>
                 <p:column>
                     <h:outputText value="#{listNo.nota5}"></h:outputText>
+                </p:column>
+                 <p:column>
+                    <h:outputText value="#{listNo.nombreMateria.ponderacion6}"></h:outputText>
                 </p:column>
                 <p:column>
                     <h:outputText value="#{listNo.nota6}"></h:outputText>
