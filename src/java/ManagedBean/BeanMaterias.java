@@ -137,16 +137,35 @@ public class BeanMaterias {
         System.out.println(mm.ActualizarMaterias(materia));
         materia.setEstadoPeriodo("activo");
         materia.setEstado("activo");
+        
+        double resultado = 
+        materia.getPonderacion1() +
+        materia.getPonderacion2() +
+        materia.getPonderacion3() +
+        materia.getPonderacion4() +
+        materia.getPonderacion5() +
+        materia.getPonderacion6();
+        
         String adv = "";
-        System.out.println("esta es actualizar" + materia);
-        if (mm.ActualizarMaterias(materia) == 1) {
+        if (resultado == 0 || resultado == 100) {
+            
+            if (mm.ActualizarMaterias(materia) == 1) {
             listM = mm.consultartodasMaterias();
             adv = "Se ha Actualizado Correctamente";
         } else {
             adv = "No se ha podido actualizar";
+        }        
+        }else{
+            adv="Las ponderaciones deben de sumar 100";
         }
         FacesMessage msg = new FacesMessage(adv);
         FacesContext.getCurrentInstance().addMessage(null, msg);
+        
+        
+        
+        System.out.println("esta es actualizar" + materia);
+        
+        
     }
     
 }
