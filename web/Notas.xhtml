@@ -21,7 +21,7 @@ and open the template in the editor.
             }
             form .tabla{
                 background-image:url(imagenes/fondos/fondo4.jpg);
-                font-size: 13px;
+                 font-size: 13px !important;
                 color: black;
             }
             form .btnBo{
@@ -53,6 +53,7 @@ and open the template in the editor.
                 background-image:url(imagenes/fondos/fondo2.jpg);  
             }
             form .columna{
+                 font-size: 13px !important;
                 background-color: rgba(  93, 173, 226 ,0.05) !important;
                 color: black;
             }
@@ -94,7 +95,7 @@ and open the template in the editor.
             </center>
             <br />
             <br />
-            <p:dataTable  rowStyleClass="tabla" style="text-align: center"  id="tableNotas" value="#{beanNotas.listNo}" var="listNo"  paginatorPosition="bottom" paginator="true" rows="10">
+            <p:dataTable tableStyle="table-layout: auto;width:auto" rowStyleClass="tabla" style="text-align: center"  id="tableNotas" value="#{beanNotas.listNo}" var="listNo"  paginatorPosition="bottom" paginator="true" rows="10">
                 <p:columnGroup type="header"  >
                     <p:row >
                         <p:column rowspan="2" headerText="Id" styleClass="columna"></p:column>
@@ -126,10 +127,10 @@ and open the template in the editor.
                 <p:column>
                     <h:outputText value="#{listNo.idNota}"></h:outputText>
                 </p:column>
-                <p:column>
-                    <h:outputText value="#{listNo.nie.nombre}"></h:outputText>
+                <p:column  style="min-width: 100px;">
+                    <h:outputText  value="#{listNo.nie.nombre}"></h:outputText>
                 </p:column>
-                <p:column>
+                <p:column  style="min-width: 100px;">
                     <h:outputText value="#{listNo.nie.apellido}"></h:outputText>
                 </p:column>
                 <p:column>
