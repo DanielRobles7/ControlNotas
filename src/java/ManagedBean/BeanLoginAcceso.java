@@ -56,7 +56,7 @@ public class BeanLoginAcceso {
     }
 
     public String getNames() {
-        names = session.getAttribute("names").toString();
+        names = session.getAttribute("username").toString();
         return names;
     }
 
@@ -76,11 +76,11 @@ public class BeanLoginAcceso {
             session.setAttribute("acces_level", acceso.getNivelAcceso());
 
             switch (acceso.getNivelAcceso()) {
-                case "director":
+                case "Director":
                     MantenimientoEscuela mantenimientoEscuela = new MantenimientoEscuela();
                     session.setAttribute("username", mantenimientoEscuela.nombreDirector(acceso.getIdAcceso()));
                     break;
-                case "profesor":
+                case "Profesor":
                     MantenimientoProfesores mantenimientoProfesores = new MantenimientoProfesores();
                     session.setAttribute("username", mantenimientoProfesores.nombreProfesor(acceso.getIdAcceso()));
                     break;

@@ -48,8 +48,7 @@ public class BeanNotas {
         listNo = man.consultar();
         listM = manm.consultartodasMaterias();
 
-       // int idLogueado = beanLoginAcceso.getUser_id();  //aca debemos traer el valor del alumno logueado
-       int idLogueado = 16; 
+        int idLogueado = beanLoginAcceso.getUser_id();  //aca debemos traer el valor del alumno logueado
         List<Notas> newList = new LinkedList<>();        
 
         for (int i = 0; i < listNo.size(); i++) {

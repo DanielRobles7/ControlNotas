@@ -69,7 +69,8 @@ and open the template in the editor.
         <p:growl id="msg" showDetail="true"/>
         <h:form id="fo">
             <center>
-                <p:panel styleClass="Formu"  style="background-image: url(imagenes/fondos/fondo4.jpg);border: #b3d5f5;margin-bottom:20px" id="horizontal" header="" toggleable="true" toggleOrientation="horizontal" collapsed="true">
+                <p:panel styleClass="Formu"  style="background-image: url(imagenes/fondos/fondo4.jpg);border: #b3d5f5;margin-bottom:20px" id="horizontal" header="" toggleable="true" toggleOrientation="horizontal" collapsed="true"
+                         rendered="#{beanLoginAcceso.acces_lvl.contains('Director')  or beanLoginAcceso.acces_lvl.contains('Profesor')}">
                     <center>
                         <h:outputLabel style="color:black" value="NIE: " /> 
                         <h:selectOneMenu  value="#{beanNotas.notas.nie.nie}" style="width:225px" >
@@ -101,21 +102,21 @@ and open the template in the editor.
                         <p:column rowspan="2" headerText="Apellido" styleClass="columna"></p:column>
                         <p:column rowspan="2" headerText="Materia" styleClass="columna"></p:column>
                         <p:column colspan="15" headerText="Notas" styleClass="columna"></p:column>
-                        <p:column rowspan="2" styleClass="columna"> </p:column>
-                        <p:column rowspan="2" styleClass="columna"> </p:column>
+                        <p:column rowspan="2" styleClass="columna" rendered="#{beanLoginAcceso.acces_lvl.contains('Director')  or beanLoginAcceso.acces_lvl.contains('Profesor')}"> </p:column>
+                        <p:column rowspan="2" styleClass="columna" rendered="#{beanLoginAcceso.acces_lvl.contains('Director')  or beanLoginAcceso.acces_lvl.contains('Profesor')}"> </p:column>
                     </p:row>
                     <p:row>
-                        <p:column headerText="%1" styleClass="columna" ></p:column>
+                        <p:column headerText="(%)" styleClass="columna" ></p:column>
                         <p:column headerText="Nota1" styleClass="columna"></p:column>
-                        <p:column headerText="%2" styleClass="columna"></p:column>
+                        <p:column headerText="(%)" styleClass="columna"></p:column>
                         <p:column headerText="Nota2" styleClass="columna"></p:column>
-                        <p:column headerText="%3" styleClass="columna"></p:column>
+                        <p:column headerText="(%)" styleClass="columna"></p:column>
                         <p:column headerText="Nota3" styleClass="columna"></p:column>
-                        <p:column headerText="%4" styleClass="columna"></p:column>
+                        <p:column headerText="(%)" styleClass="columna"></p:column>
                         <p:column headerText="Nota4" styleClass="columna"></p:column>
-                        <p:column headerText="%5" styleClass="columna"></p:column>
+                        <p:column headerText="(%)" styleClass="columna"></p:column>
                         <p:column headerText="Nota5" styleClass="columna"></p:column>
-                        <p:column headerText="%6" styleClass="columna"></p:column>
+                        <p:column headerText="(%)" styleClass="columna"></p:column>
                         <p:column headerText="Nota6" styleClass="columna"></p:column>
                         <p:column headerText="Promedio" styleClass="columna"></p:column>
                         <p:column headerText="Reposición" styleClass="columna"></p:column>
@@ -179,10 +180,10 @@ and open the template in the editor.
                 <p:column>
                     <h:outputText value="#{listNo.final1}"></h:outputText>
                 </p:column>
-                <p:column>
+                <p:column rendered="#{beanLoginAcceso.acces_lvl.contains('Director')  or beanLoginAcceso.acces_lvl.contains('Profesor')}">
                     <p:commandButton value="Borrar" styleClass="btnBo" actionListener="#{beanNotas.eliminar(listNo)}" ajax="false" icon="ui-icon-close" update="msg,tableNotas" />
                 </p:column>
-                <p:column>
+                <p:column rendered="#{beanLoginAcceso.acces_lvl.contains('Director')  or beanLoginAcceso.acces_lvl.contains('Profesor')}">
                     <p:commandButton value="Editar" styleClass="Ac" icon="ui-icon-pencil" actionListener="#{beanNotas.modificar(listNo)}" oncomplete="PF('wdlgdesplegable').show();" update=":desplegableNotas msg"/>
                 </p:column>
             </p:dataTable>
