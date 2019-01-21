@@ -48,12 +48,17 @@ public class BeanNotas {
         listNo = man.consultar();
         listM = manm.consultartodasMaterias();
 
-        int idLogueado = beanLoginAcceso.getUser_id();  //aca debemos traer el valor del alumno logueado
-        List<Notas> newList = new LinkedList<>();
+       // int idLogueado = beanLoginAcceso.getUser_id();  //aca debemos traer el valor del alumno logueado
+       int idLogueado = 16; 
+        List<Notas> newList = new LinkedList<>();        
 
         for (int i = 0; i < listNo.size(); i++) {
-            if (listNo.get(i).getNie().getIdAcceso().getIdAcceso() == idLogueado) {           
+            if (listNo.get(i).getNie().getIdAcceso().getIdAcceso() == idLogueado) {    
+                System.out.println("OBJETO DENTRO DEL IF");
+                System.out.println(listNo.get(i).toString());
+                
                 // de notas
+                notas = new Notas();
                 notas.setIdNota(listNo.get(i).getIdNota());
                 notas.setNota1(listNo.get(i).getNota1());
                 notas.setNota2(listNo.get(i).getNota2());
@@ -66,11 +71,13 @@ public class BeanNotas {
                 notas.setFinal1(listNo.get(i).getFinal1());
 
                 // de alumno
+                alumnos = new Alumnos();
                 alumnos.setNombre(listNo.get(i).getNie().getNombre());
                 alumnos.setApellido(listNo.get(i).getNie().getApellido());
                 notas.setNie(alumnos);
 
                 // de materia
+                materias = new Materias();
                 materias.setNombreMateria(listNo.get(i).getNombreMateria().getNombreMateria());
                 materias.setPonderacion1(listNo.get(i).getNombreMateria().getPonderacion1());
                 materias.setPonderacion2(listNo.get(i).getNombreMateria().getPonderacion2());
@@ -79,8 +86,12 @@ public class BeanNotas {
                 materias.setPonderacion5(listNo.get(i).getNombreMateria().getPonderacion5());
                 materias.setPonderacion6(listNo.get(i).getNombreMateria().getPonderacion6());
                 notas.setNombreMateria(materias);
-
-                newList.add(notas);
+                System.out.println("INDICE: "+i);
+                System.out.println("NOTAS: ");
+                System.out.println(notas.toString());
+                newList.add(notas);                
+                System.out.println("LISTA: ");
+                System.out.println(newList.toString());
             }
         }
         if (newList.size() > 0) {
